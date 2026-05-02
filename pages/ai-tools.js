@@ -38,7 +38,7 @@ const ANSWERS = {
   'What should relocation buyers know about the Triangle?':
     'The Triangle is many cities in one — Chapel Hill, Durham, Raleigh, and Cary all feel different day to day. Ashley\'s relocation certification means structured discovery, virtual tours, and concierge-level coordination.',
   'Can Ashley help me compare neighborhoods?':
-    'Yes — try the Neighborhood Compare tool under Buyer Tools, then book a consultation. Ashley will tailor the comparison to your priorities (schools, commute, lifestyle, luxury).',
+    'Yes — try the Area & Neighborhood Comparison tool under Buyer Tools, then book a consultation. Ashley will tailor the comparison to your priorities (schools, commute, lifestyle, luxury).',
   'Can Ashley help me find a home with a reasonable commute?':
     'Absolutely. Try the Commute Time Finder under Buyer Tools. From there, Ashley can build a curated home search shaped around your daily route to UNC, Duke, RTP, or Raleigh.',
 };
