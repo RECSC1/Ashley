@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function SEO({ title, description, path = '' }) {
+export default function SEO({ title, description, path = '', noindex = false }) {
   const fullTitle = title || 'Ashley Smith | Chapel Hill Realtor® | Compass North Carolina';
   const desc =
     description ||
@@ -9,6 +9,7 @@ export default function SEO({ title, description, path = '' }) {
     <Head>
       <title>{fullTitle}</title>
       <meta name="description" content={desc} />
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:type" content="website" />

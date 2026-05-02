@@ -2,35 +2,13 @@ import { useState } from 'react';
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 import { logEvent, KEYS } from '../lib/store';
+import { ARTICLES, BLOG_CATEGORIES as BLOG_CATS } from '../lib/content/articles';
+import { GUIDES } from '../lib/content/guides';
 
 const TABS = [
   { id: 'blog', label: 'Blog' },
   { id: 'guides', label: 'Guides' },
   { id: 'market', label: 'Market Updates' },
-];
-
-const BLOG_CATS = ['All', 'Buying', 'Selling', 'Relocation', 'Luxury', 'Neighborhoods', 'Market Updates', 'UNC Moves', 'Commute & Lifestyle'];
-
-const ARTICLES = [
-  { title: 'Moving to Chapel Hill: What Buyers Should Know', cat: 'Relocation', date: '[Date]', read: '6 min', excerpt: 'A primer on neighborhoods, schools, and lifestyle in Chapel Hill.' },
-  { title: 'Chapel Hill vs. Carrboro: Which Area Fits Your Lifestyle?', cat: 'Neighborhoods', date: '[Date]', read: '5 min', excerpt: 'Two beloved towns, two distinct rhythms — a side-by-side look.' },
-  { title: 'How to Prepare Your Triangle Home for Market', cat: 'Selling', date: '[Date]', read: '7 min', excerpt: 'Editorial-level prep that positions your home to sell with confidence.' },
-  { title: 'Relocating to the Triangle: A Local Guide', cat: 'Relocation', date: '[Date]', read: '8 min', excerpt: 'Concierge-level orientation for buyers moving to North Carolina.' },
-  { title: 'What Luxury Buyers Look for in Chapel Hill', cat: 'Luxury', date: '[Date]', read: '6 min', excerpt: 'Discreet, refined homes — what defines luxury in our market.' },
-  { title: 'What UNC-Related Buyers Should Know Before Moving', cat: 'UNC Moves', date: '[Date]', read: '5 min', excerpt: 'Faculty, residents, and grad students — timing and tactics.' },
-  { title: 'Selling in Chapel Hill: How to Position Your Home', cat: 'Selling', date: '[Date]', read: '6 min', excerpt: 'Marketing strategy tailored for the Chapel Hill buyer pool.' },
-  { title: 'Durham, Cary, or Raleigh: Comparing Triangle Lifestyles', cat: 'Neighborhoods', date: '[Date]', read: '7 min', excerpt: 'A clear-eyed look at three of the Triangle\'s biggest cities.' },
-  { title: 'Why Commute Time Matters When Buying in the Triangle', cat: 'Commute & Lifestyle', date: '[Date]', read: '5 min', excerpt: 'How daily routes shape which area feels right.' },
-];
-
-const GUIDES = [
-  { title: 'Chapel Hill Relocation Guide', desc: 'Everything you need to know before relocating to Chapel Hill and the Triangle.' },
-  { title: 'Buyer Guide', desc: 'A calm, step-by-step companion for first-time and move-up buyers.' },
-  { title: 'Seller Guide', desc: 'How to prepare, position, and present your home for top results.' },
-  { title: 'Luxury Buyer Guide', desc: 'A discreet, polished resource for distinctive estate purchases.' },
-  { title: 'Triangle Neighborhood Guide', desc: 'A neighborhood-by-neighborhood overview of the Triangle.' },
-  { title: 'Downsizing Guide', desc: 'Thoughtful planning for empty nesters and retirees.' },
-  { title: 'Commute-Friendly Home Search Guide', desc: 'How to shape your Triangle search around your daily route.' },
 ];
 
 function GuideCard({ g }) {
