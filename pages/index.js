@@ -103,19 +103,19 @@ export default function Home() {
           <div className="absolute -top-32 -right-32 w-[40rem] h-[40rem] rounded-full bg-blush/30 blur-3xl" />
           <div className="absolute -bottom-40 -left-32 w-[40rem] h-[40rem] rounded-full bg-sage/30 blur-3xl" />
         </div>
-        <div className="container-wide pt-20 md:pt-28 pb-20 md:pb-32 grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
-            <p className="eyebrow mb-5">Chapel Hill · Carrboro · The Triangle</p>
-            <h1 className="font-serif text-5xl md:text-7xl text-navy leading-[1.05]">
+        <div className="container-wide pt-10 md:pt-28 pb-14 md:pb-32 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <p className="eyebrow mb-4">Chapel Hill · Carrboro · The Triangle</p>
+            <h1 className="font-serif text-navy leading-[1.08] text-[clamp(2.1rem,8.5vw,4.5rem)] md:text-7xl">
               Luxury-level guidance.
               <br />
               <span className="italic text-gold">Neighborly care.</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-navy/75 leading-relaxed max-w-xl">
+            <p className="mt-5 text-base sm:text-lg md:text-xl text-navy/75 leading-relaxed max-w-xl">
               Elegant, people-first real estate guidance for Chapel Hill, Carrboro, and the
               Triangle, rooted in local insight, calm confidence, and genuine care.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-3 btn-stack-sm">
               <Link href="/contact" className="btn btn-primary">
                 Schedule a Consultation
               </Link>
@@ -123,7 +123,7 @@ export default function Home() {
                 Explore Buyer Tools
               </Link>
             </div>
-            <div className="mt-10 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap gap-2">
               {TRUST_BADGES.map((b) => (
                 <span key={b} className="badge bg-warmwhite border border-taupe/30 text-navy/80">
                   {b}
@@ -131,9 +131,9 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 order-1 lg:order-2">
             <div
-              className="relative rounded-3xl overflow-hidden shadow-soft border border-taupe/20 bg-warmwhite mx-auto w-full max-w-md"
+              className="relative rounded-3xl overflow-hidden shadow-soft border border-taupe/20 bg-warmwhite mx-auto w-full max-w-sm md:max-w-md"
               style={{ aspectRatio: '4 / 5' }}
             >
               <Image
@@ -141,15 +141,15 @@ export default function Home() {
                 alt="Ashley Smith, Realtor® with Compass North Carolina"
                 fill
                 priority
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 60vw, 90vw"
                 className="object-cover object-top"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent p-6 md:p-8 text-center pointer-events-none">
-                <p className="font-serif text-2xl md:text-3xl text-ivory">Ashley Smith</p>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent p-5 md:p-8 text-center pointer-events-none">
+                <p className="font-serif text-xl md:text-3xl text-ivory">Ashley Smith</p>
                 <p className="text-[10px] md:text-xs uppercase tracking-widewide text-gold mt-1">
                   Realtor® · Compass NC
                 </p>
-                <p className="mt-3 md:mt-4 text-xs md:text-sm text-ivory/90 italic">
+                <p className="mt-2 md:mt-4 text-[11px] md:text-sm text-ivory/90 italic leading-snug">
                   "A people-first realtor, shaped by years in social work — calm, advocate-minded, and deeply local."
                 </p>
               </div>
@@ -395,11 +395,11 @@ export default function Home() {
       <section className="section bg-warmwhite">
         <div className="container-narrow text-center">
           <p className="eyebrow mb-3">Your Next Chapter</p>
-          <h2 className="font-serif text-4xl md:text-6xl text-navy leading-tight max-w-3xl mx-auto">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl text-navy leading-tight max-w-3xl mx-auto">
             Your next chapter deserves thoughtful guidance.
           </h2>
           <div className="divider-thin mt-6 mx-auto" />
-          <div className="mt-10 flex flex-wrap gap-3 justify-center">
+          <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:justify-center btn-stack-sm">
             <Link href="/contact" className="btn btn-primary">
               Schedule a Consultation
             </Link>
