@@ -10,7 +10,8 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
-        <meta name="theme-color" content="#14213D" />
+        <meta name="theme-color" content="#F8F4EF" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#14213D" media="(prefers-color-scheme: dark)" />
         {/* Google Analytics / Search Console placeholder */}
         {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> */}
       </Head>

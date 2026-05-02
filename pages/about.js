@@ -44,22 +44,22 @@ export default function About() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-warmwhite via-ivory to-blush/20" />
-        <div className="container-wide pt-20 pb-16 grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
+        <div className="container-wide pt-10 md:pt-20 pb-12 md:pb-16 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-7 order-2 lg:order-1">
             <p className="eyebrow mb-4">About Ashley</p>
-            <h1 className="font-serif text-5xl md:text-7xl text-navy leading-[1.05]">
+            <h1 className="font-serif text-navy leading-[1.08] text-[clamp(2rem,8vw,4.25rem)] md:text-7xl">
               The same heart for people, <span className="italic text-gold">a new way to serve them.</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-navy/75 leading-relaxed max-w-xl">
+            <p className="mt-5 text-base sm:text-lg md:text-xl text-navy/75 leading-relaxed max-w-xl">
               Ashley Smith is a Realtor® with Compass North Carolina, LLC, serving Chapel Hill,
               Carrboro, Durham, and the broader Triangle. Her work is shaped by years in social
               work — and a lifelong belief that real estate, done well, is deeply personal.
             </p>
           </div>
-          <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft bg-gradient-to-br from-blush/40 via-warmwhite to-sage/40 border border-taupe/20 flex items-center justify-center">
-              <div className="text-center p-10">
-                <div className="w-32 h-32 rounded-full mx-auto bg-warmwhite/80 border border-taupe/30 flex items-center justify-center mb-4">
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft bg-gradient-to-br from-blush/40 via-warmwhite to-sage/40 border border-taupe/20 flex items-center justify-center mx-auto w-full max-w-sm md:max-w-md">
+              <div className="text-center p-8 md:p-10">
+                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto bg-warmwhite/80 border border-taupe/30 flex items-center justify-center mb-4">
                   <span className="text-xs uppercase tracking-widewide text-taupe">[Headshot]</span>
                 </div>
                 <p className="font-serif text-2xl text-navy">Ashley Smith</p>
@@ -159,7 +159,7 @@ export default function About() {
             Ashley meets clients where they are — exploring, planning a future move, or ready to
             begin. The first conversation is always thoughtful and unrushed.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+          <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:justify-center btn-stack-sm">
             <Link href="/contact" className="btn btn-gold">
               Schedule a Consultation
             </Link>

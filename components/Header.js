@@ -24,18 +24,35 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handle);
   }, []);
 
+  // Lock background scroll when the mobile nav is open
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ivory/95 backdrop-blur-md shadow-soft' : 'bg-ivory/80 backdrop-blur-sm'
+        scrolled
+          ? 'bg-ivory/95 backdrop-blur-md shadow-soft'
+          : 'bg-ivory/85 backdrop-blur-sm'
       }`}
     >
-      <div className="container-wide flex items-center justify-between py-4">
-        <Link href="/" className="flex flex-col leading-tight group">
-          <span className="font-serif text-2xl text-navy group-hover:text-gold transition">
+      <div className="container-wide flex items-center justify-between gap-3 py-3 md:py-4">
+        <Link
+          href="/"
+          onClick={() => setOpen(false)}
+          className="flex flex-col leading-tight group min-w-0"
+        >
+          <span className="font-serif text-xl sm:text-2xl text-navy group-hover:text-gold transition truncate">
             Ashley Smith
           </span>
-          <span className="text-[10px] uppercase tracking-widewide text-taupe">
+          <span className="text-[10px] uppercase tracking-widewide text-taupe truncate">
             Realtor® · Compass North Carolina
           </span>
         </Link>
@@ -62,8 +79,9 @@ export default function Header() {
         </div>
 
         <button
-          aria-label="Open menu"
-          className="lg:hidden p-2 text-navy"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          className="lg:hidden p-2 -mr-2 text-navy shrink-0"
           onClick={() => setOpen(!open)}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -81,24 +99,32 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-taupe/30 bg-warmwhite">
+        <div className="lg:hidden border-t border-taupe/30 bg-warmwhite max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="container-wide py-4 flex flex-col gap-1">
             {NAV.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="py-2 text-navy hover:text-gold transition"
+                className="py-3 text-navy hover:text-gold transition border-b border-taupe/15 last:border-b-0"
               >
                 {n.label}
               </Link>
             ))}
-            <div className="flex gap-2 mt-3">
-              <Link href="/buyer-tools" onClick={() => setOpen(false)} className="btn btn-outline text-xs flex-1">
+            <div className="flex flex-col sm:flex-row gap-2 mt-4">
+              <Link
+                href="/buyer-tools"
+                onClick={() => setOpen(false)}
+                className="btn btn-outline text-xs flex-1"
+              >
                 Buyer Tools
               </Link>
-              <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-primary text-xs flex-1">
-                Consultation
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="btn btn-primary text-xs flex-1"
+              >
+                Schedule a Consultation
               </Link>
             </div>
           </div>
