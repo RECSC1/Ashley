@@ -884,13 +884,13 @@ export default function BuyerTools() {
             subtitle="Search schools, study commutes, compare neighborhoods, and run financial scenarios — all in one calm workspace."
           />
 
-          <div className="overflow-x-auto no-scrollbar mb-8">
-            <div className="flex gap-2 border-b border-taupe/30 min-w-max">
+          <div className="mb-8 border-b border-taupe/30">
+            <div className="flex flex-wrap gap-x-2 gap-y-1">
               {TABS.map((t) => (
                 <button
                   key={t.id}
                   onClick={() => setTab(t.id)}
-                  className={`px-4 py-3 text-sm whitespace-nowrap border-b-2 transition ${
+                  className={`px-3 sm:px-4 py-3 text-sm whitespace-nowrap border-b-2 -mb-px transition ${
                     tab === t.id
                       ? 'border-gold text-navy font-medium'
                       : 'border-transparent text-navy/60 hover:text-navy'
