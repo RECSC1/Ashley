@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 import LeadForm from '../components/LeadForm';
@@ -131,18 +132,24 @@ export default function Home() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft bg-gradient-to-br from-blush/40 via-warmwhite to-sage/40 border border-taupe/20">
-              <img
+            <div
+              className="relative rounded-3xl overflow-hidden shadow-soft border border-taupe/20 bg-warmwhite mx-auto w-full max-w-md"
+              style={{ aspectRatio: '4 / 5' }}
+            >
+              <Image
                 src="/images/ashley-smith-headshot.png"
                 alt="Ashley Smith, Realtor® with Compass North Carolina"
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover object-top"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent p-8 text-center">
-                <p className="font-serif text-3xl text-ivory">Ashley Smith</p>
-                <p className="text-xs uppercase tracking-widewide text-gold mt-1">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent p-6 md:p-8 text-center pointer-events-none">
+                <p className="font-serif text-2xl md:text-3xl text-ivory">Ashley Smith</p>
+                <p className="text-[10px] md:text-xs uppercase tracking-widewide text-gold mt-1">
                   Realtor® · Compass NC
                 </p>
-                <p className="mt-4 text-sm text-ivory/85 italic">
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-ivory/90 italic">
                   "A people-first realtor, shaped by years in social work — calm, advocate-minded, and deeply local."
                 </p>
               </div>
