@@ -15,8 +15,8 @@ export default function Footer() {
             and the Greater Triangle area of North Carolina.
           </p>
           <div className="mt-6 space-y-1 text-sm text-ivory/80">
-            <p>[Ashley's phone number]</p>
-            <p>[Ashley's email]</p>
+            <p><a href="tel:+19196362098" className="hover:text-gold">(919) 636-2098</a></p>
+            <p><a href="mailto:ashley.m.smith@compass.com" className="hover:text-gold">ashley.m.smith@compass.com</a></p>
           </div>
         </div>
 

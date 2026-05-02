@@ -26,8 +26,8 @@ export default function Contact() {
               <p className="font-serif text-2xl text-navy">Ashley Smith</p>
               <p>Realtor® · Luxury Certified · Relocation Certified</p>
               <p>Compass North Carolina, LLC</p>
-              <p className="pt-3"><span className="text-gold uppercase tracking-widewide text-xs mr-2">Phone</span>[Ashley's phone number]</p>
-              <p><span className="text-gold uppercase tracking-widewide text-xs mr-2">Email</span>[Ashley's email]</p>
+              <p className="pt-3"><span className="text-gold uppercase tracking-widewide text-xs mr-2">Phone</span><a href="tel:+19196362098" className="hover:text-gold transition">(919) 636-2098</a></p>
+              <p><span className="text-gold uppercase tracking-widewide text-xs mr-2">Email</span><a href="mailto:ashley.m.smith@compass.com" className="hover:text-gold transition">ashley.m.smith@compass.com</a></p>
               <p><span className="text-gold uppercase tracking-widewide text-xs mr-2">Social</span>[Instagram] · [Facebook] · [LinkedIn]</p>
             </div>
             <div className="mt-8">

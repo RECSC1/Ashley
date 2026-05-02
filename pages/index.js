@@ -132,17 +132,17 @@ export default function Home() {
           </div>
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft bg-gradient-to-br from-blush/40 via-warmwhite to-sage/40 border border-taupe/20">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center">
-                <div className="w-32 h-32 rounded-full bg-warmwhite/80 border border-taupe/30 flex items-center justify-center mb-6">
-                  <span className="text-xs uppercase tracking-widewide text-taupe">
-                    [Ashley's headshot]
-                  </span>
-                </div>
-                <p className="font-serif text-3xl text-navy">Ashley Smith</p>
+              <img
+                src="/images/ashley-smith-headshot.png"
+                alt="Ashley Smith, Realtor® with Compass North Carolina"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent p-8 text-center">
+                <p className="font-serif text-3xl text-ivory">Ashley Smith</p>
                 <p className="text-xs uppercase tracking-widewide text-gold mt-1">
                   Realtor® · Compass NC
                 </p>
-                <p className="mt-6 text-sm text-navy/70 italic">
+                <p className="mt-4 text-sm text-ivory/85 italic">
                   "A people-first realtor, shaped by years in social work — calm, advocate-minded, and deeply local."
                 </p>
               </div>
@@ -368,11 +368,11 @@ export default function Home() {
             <div className="mt-8 space-y-3 text-navy/80 text-sm">
               <p>
                 <span className="text-gold uppercase tracking-widewide text-xs mr-2">Phone</span>
-                [Ashley's phone number]
+                <a href="tel:+19196362098" className="hover:text-gold transition">(919) 636-2098</a>
               </p>
               <p>
                 <span className="text-gold uppercase tracking-widewide text-xs mr-2">Email</span>
-                [Ashley's email]
+                <a href="mailto:ashley.m.smith@compass.com" className="hover:text-gold transition">ashley.m.smith@compass.com</a>
               </p>
               <p>
                 <span className="text-gold uppercase tracking-widewide text-xs mr-2">Office</span>
