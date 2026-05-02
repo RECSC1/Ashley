@@ -10,7 +10,7 @@ const NAV = [
   { href: '/resources', label: 'Resources' },
   { href: '/client-portal', label: 'Client Portal' },
   { href: '/contact', label: 'Contact' },
-  { href: '/admin', label: 'Admin' },
+  { href: '/admin', label: 'Admin (Preview)' },
 ];
 
 export default function Header() {
