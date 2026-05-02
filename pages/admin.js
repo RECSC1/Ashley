@@ -301,9 +301,10 @@ export default function Admin() {
   return (
     <>
       <SEO
-        title="Admin Dashboard (Demo Preview) | Ashley Smith Real Estate"
+        title="Admin Preview (Demo) | Ashley Smith Real Estate"
         description="Non-functional preview of a future admin dashboard for Ashley Smith's Chapel Hill real estate website. Not connected to a CMS or live data."
         path="/admin"
+        noindex
       />
       {!signedIn ? (
         <Login onLogin={() => setSignedIn(true)} />
