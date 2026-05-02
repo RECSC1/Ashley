@@ -1,63 +1,185 @@
-.bg-soft-ivory {
-  background-color: #F6F5F3;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ivory: #F8F4EF;
+  --warmwhite: #FFFFFF;
+  --navy: #14213D;
+  --blush: #D8A7A7;
+  --gold: #C8A96A;
+  --taupe: #B7A99A;
+  --sage: #A8B8A0;
 }
 
-.bg-warm-white {
-  background-color: #FAF8F0;
+/* Reset and global mobile-safe sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.text-deep-navy {
-  color: #002147;
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--ivory);
+  color: var(--navy);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* Prevent right-side gutter / horizontal scrolling on mobile */
+  overflow-x: hidden;
 }
 
-.text-dusty-blush {
-  color: #EAB8C8;
+/* Avoid letting any descendant push horizontal width past viewport */
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
 }
 
-.text-champagne-gold {
-  color: #F7E7CE;
+h1, h2, h3, h4, .serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.005em;
 }
 
-.text-muted-taupe {
-  color: #C8BDA2;
+@layer components {
+  .container-narrow {
+    @apply w-full max-w-6xl mx-auto px-5 sm:px-8;
+  }
+  .container-wide {
+    @apply w-full max-w-7xl mx-auto px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply uppercase tracking-widewide text-xs text-gold font-medium;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-300;
+    min-height: 44px;
+  }
+  .btn-primary {
+    @apply bg-navy text-ivory hover:bg-navy-900;
+  }
+  .btn-outline {
+    @apply border border-navy text-navy hover:bg-navy hover:text-ivory;
+  }
+  .btn-gold {
+    @apply bg-gold text-navy hover:bg-navy hover:text-ivory;
+  }
+  .btn-ghost {
+    @apply text-navy hover:text-gold;
+  }
+  .card {
+    @apply bg-warmwhite rounded-2xl p-6 shadow-soft;
+  }
+  .input {
+    @apply w-full px-4 py-3 rounded-md border border-taupe/40 bg-warmwhite text-navy placeholder:text-taupe focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition;
+  }
+  .label {
+    @apply block text-xs uppercase tracking-widewide text-navy/70 mb-1.5 font-medium;
+  }
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium uppercase tracking-widewide;
+  }
+  .section {
+    @apply py-14 md:py-24;
+  }
+  .divider-thin {
+    @apply h-px w-16 bg-gold/70;
+  }
 }
 
-.text-soft-sage {
-  color: #C9D6D5;
+/* Sticky CTA on mobile — elegant, with safe-area inset */
+.sticky-cta {
+  position: fixed;
+  left: 50%;
+  bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 40;
+  pointer-events: none;
+}
+.sticky-cta > * {
+  pointer-events: auto;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: background-color 0.3s;
+/* When the mobile sticky CTA is rendered, push the page up so it never
+   covers content, and keep the consultation pill out of the footer. */
+.has-sticky-cta {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
-.btn-primary {
-  background-color: #002147;
-  color: #FAF8F0;
+@media (min-width: 768px) {
+  .has-sticky-cta {
+    padding-bottom: 0;
+  }
 }
 
-.btn-primary:hover {
-  background-color: #C8BDA2;
+/* Basic prose */
+.prose-luxe p { color: #14213D; line-height: 1.75; }
+.prose-luxe p + p { margin-top: 1rem; }
+
+/* Hide scrollbar for tab strips */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Mobile typography & spacing refinements */
+@media (max-width: 768px) {
+  /* Soften any large display headings so they never crop */
+  h1 {
+    font-size: clamp(2rem, 8.5vw, 3rem);
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
+    line-height: 1.15;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+    line-height: 1.25;
+  }
+
+  /* Buttons: comfortable tap targets, allow stacked full-width groups */
+  .btn {
+    @apply px-5 py-3 text-sm;
+  }
+
+  /* Cards: a little more breathing room */
+  .card {
+    @apply p-5;
+  }
+
+  /* Section padding tuned for mobile */
+  .section {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+
+  /* Trust badges: smaller and tighter so they wrap cleanly */
+  .badge {
+    @apply px-2.5 py-1 text-[10px];
+  }
 }
 
-.card {
-  background-color: #FAF8F0;
-  border: 1px solid #EAB8C8;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+@media (max-width: 480px) {
+  .section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .container-wide,
+  .container-narrow {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
 }
 
-h1, h2, h3 {
-  font-family: 'Georgia', serif;
-  color: #002147;
-}
-
-p {
-  font-family: 'Arial', sans-serif;
-  color: #2c2c2c;
+/* Make stacked button rows full-width on small screens */
+@media (max-width: 480px) {
+  .btn-stack-sm > .btn,
+  .btn-stack-sm > a.btn {
+    width: 100%;
+  }
 }

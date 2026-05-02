@@ -1,0 +1,24 @@
+import { Html, Head, Main, NextScript } from 'next/document';
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="theme-color" content="#F8F4EF" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#14213D" media="(prefers-color-scheme: dark)" />
+        {/* Google Analytics / Search Console placeholder */}
+        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> */}
+      </Head>
+      <body className="bg-ivory text-navy">
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
