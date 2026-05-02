@@ -18,12 +18,12 @@ const SECTIONS = [
 ];
 
 const ANALYTICS = [
-  { label: 'Site Visitors', value: '4,287', sub: '+12% MoM' },
-  { label: 'Contact Form Submissions', value: '38', sub: 'last 30 days' },
-  { label: 'Tool Interactions', value: '162', sub: 'localStorage + mock' },
-  { label: 'Valuation Requests', value: '14', sub: '$1.4M avg list value' },
-  { label: 'Blog Views', value: '2,143', sub: 'last 30 days' },
-  { label: 'Property Alert Signups', value: '46', sub: 'all-time placeholder' },
+  { label: 'Site Visitors', value: '4,287', sub: 'placeholder figure' },
+  { label: 'Contact Form Submissions', value: '38', sub: 'placeholder figure' },
+  { label: 'Tool Interactions', value: '162', sub: 'localStorage + placeholder' },
+  { label: 'Valuation Requests', value: '14', sub: 'placeholder figure' },
+  { label: 'Blog Views', value: '2,143', sub: 'placeholder figure' },
+  { label: 'Property Alert Signups', value: '46', sub: 'placeholder figure' },
   { label: 'Commute Searches', value: '—', sub: 'see Tool Interactions' },
 ];
 
@@ -69,16 +69,26 @@ function Login({ onLogin }) {
   return (
     <section className="section">
       <div className="container-narrow max-w-md">
-        <p className="eyebrow mb-3">Admin</p>
-        <h1 className="font-serif text-4xl text-navy">Admin Dashboard</h1>
-        <p className="text-navy/70 mt-2">Demo access — replace with real authentication in production.</p>
+        <p className="eyebrow mb-3">Admin · Demo Preview</p>
+        <h1 className="font-serif text-4xl text-navy">Admin Dashboard (Demo Preview)</h1>
+        <p className="text-navy/70 mt-2">
+          This is a non-functional preview of how a future admin area could look. It is not connected to a CMS,
+          database, or the live website. Nothing entered here is saved or published.
+        </p>
         <form onSubmit={onSubmit} className="card mt-6">
+          <div className="rounded-lg bg-blush/30 border border-gold/40 p-3 mb-4">
+            <p className="text-[11px] uppercase tracking-widewide text-navy font-medium">Demo / preview only</p>
+            <p className="text-xs text-navy/80 mt-1">
+              This dashboard is a static design mockup. A real content management system (Decap CMS + Netlify Identity)
+              has not yet been installed.
+            </p>
+          </div>
           <label className="label">Access code</label>
           <input className="input" value={code} onChange={(e) => setCode(e.target.value)} placeholder="Try: demo" />
           {err && <p className="text-xs text-red-600 mt-2">Invalid code. Try "demo".</p>}
-          <button className="btn btn-primary mt-4 w-full">Sign In</button>
+          <button className="btn btn-primary mt-4 w-full">Enter Preview</button>
           <p className="text-[11px] text-taupe mt-3">
-            For demo purposes only. Production should use Netlify Identity, Auth0, or similar.
+            For visual preview only. No real authentication is in place. A production CMS would use Netlify Identity.
           </p>
         </form>
       </div>
@@ -133,8 +143,10 @@ function Settings() {
           </div>
         ))}
       </div>
-      <button className="btn btn-primary mt-5">Save Settings</button>
-      <p className="text-[11px] text-taupe mt-3">Demo only — wire to your CMS or API in production.</p>
+      <button className="btn btn-primary mt-5" disabled title="Demo only — disabled until CMS is installed">Save Settings (disabled — preview)</button>
+      <p className="text-[11px] text-taupe mt-3">
+        Preview only — these fields are not connected to anything. Editing and saving will be enabled once Decap CMS is installed.
+      </p>
     </div>
   );
 }
@@ -157,7 +169,10 @@ function CrudList({ title, initial, columns, addPlaceholder }) {
             onChange={(e) => setDraft({ ...draft, [c.key]: e.target.value })} />
         ))}
       </div>
-      <button onClick={add} className="btn btn-outline text-xs">{addPlaceholder || 'Add'}</button>
+      <button onClick={add} className="btn btn-outline text-xs" title="Demo only — not saved">{addPlaceholder || 'Add (preview only)'}</button>
+      <p className="text-[11px] text-taupe mt-2">
+        Preview only — items added here exist in your browser session and are not saved, published, or visible on the live site.
+      </p>
       <div className="mt-5 overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
@@ -286,8 +301,8 @@ export default function Admin() {
   return (
     <>
       <SEO
-        title="Admin Dashboard | Ashley Smith Real Estate"
-        description="Admin dashboard for Ashley Smith's Chapel Hill real estate website. Manage analytics, listings, testimonials, valuations, AI conversations, and tool interactions including commute searches."
+        title="Admin Dashboard (Demo Preview) | Ashley Smith Real Estate"
+        description="Non-functional preview of a future admin dashboard for Ashley Smith's Chapel Hill real estate website. Not connected to a CMS or live data."
         path="/admin"
       />
       {!signedIn ? (
@@ -295,12 +310,22 @@ export default function Admin() {
       ) : (
         <section className="section">
           <div className="container-wide">
+            <div className="rounded-xl bg-blush/30 border border-gold/40 p-4 mb-6">
+              <p className="text-[11px] uppercase tracking-widewide text-navy font-medium">Demo / preview dashboard</p>
+              <p className="text-sm text-navy/80 mt-1">
+                This is a visual preview only. It is not connected to a content management system, database, or the
+                public website. Nothing on this page is editable, saved, or published — actions are simulated in your
+                browser session and disappear on reload. A working content editor will be available after Decap CMS
+                and Netlify Identity are installed.
+              </p>
+            </div>
             <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
               <div>
-                <p className="eyebrow mb-2">Admin</p>
-                <h1 className="font-serif text-4xl text-navy">Dashboard</h1>
+                <p className="eyebrow mb-2">Admin · Demo Preview</p>
+                <h1 className="font-serif text-4xl text-navy">Dashboard (Demo Preview)</h1>
+                <p className="text-sm text-navy/70 mt-2">Static mockup — not a working CMS.</p>
               </div>
-              <button onClick={() => setSignedIn(false)} className="btn btn-outline text-xs">Sign Out</button>
+              <button onClick={() => setSignedIn(false)} className="btn btn-outline text-xs">Exit Preview</button>
             </div>
 
             <div className="grid lg:grid-cols-12 gap-8">
@@ -323,7 +348,12 @@ export default function Admin() {
                     </div>
                     <div className="card">
                       <p className="font-serif text-xl text-navy">Recent Tool Interactions</p>
-                      <p className="text-sm text-navy/70 mt-1">A live count of localStorage-backed tool sessions appears under Tool Interactions.</p>
+                      <p className="text-sm text-navy/70 mt-1">
+                        The numbers above are placeholder figures for layout purposes only and do not reflect real
+                        traffic. The Tool Interactions tab does show real localStorage-backed entries from this
+                        browser, which will be replaced by Netlify Forms / function-backed data once wiring is
+                        complete.
+                      </p>
                     </div>
                   </>
                 )}
