@@ -1,1 +1,26 @@
-{\n  \"name\": \"ashley-real-estate\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"format\": \"prettier --write .\",\n    \"lint\": \"eslint .\"\n  },\n  \"dependencies\": {\n    \"next\": \"latest\",\n    \"react\": \"latest\",\n    \"react-dom\": \"latest\",\n    \"tailwindcss\": \"latest\",\n    \"autoprefixer\": \"latest\",\n    \"postcss\": \"latest\",\n    \"react-helmet\": \"latest\"\n  },\n  \"devDependencies\": {\n    \"eslint\": \"latest\",\n    \"eslint-config-next\": \"latest\",\n    \"prettier\": \"latest\"\n  }\n}
+{
+  "name": "ashley-real-estate",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "latest",
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "react-helmet": "latest"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "prettier": "latest"
+  }
+}
