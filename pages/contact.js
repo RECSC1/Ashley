@@ -56,6 +56,11 @@ export default function Contact() {
               ]}
               title="Schedule a Consultation"
               subtitle="Calm, considered, no pressure. Ashley will respond within one business day."
+              formName="contact"
+              pageName="contact"
+              formType="consultation-request"
+              leadSource="website-contact-page"
+              clientName="Ashley Smith"
             />
           </div>
         </div>

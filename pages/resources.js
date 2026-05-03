@@ -29,7 +29,14 @@ function GuideCard({ g }) {
       {submitted ? (
         <p className="mt-5 text-sm text-gold">Sent — your guide is on its way to your inbox.</p>
       ) : (
-        <form onSubmit={onSubmit} className="mt-5 space-y-2">
+        <form name="neighborhood-guide-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="mt-5 space-y-2">
+          <input type="hidden" name="form-name" value="neighborhood-guide-request" />
+          <input type="hidden" name="page_name" value="resources" />
+          <input type="hidden" name="form_type" value="guide-request" />
+          <input type="hidden" name="lead_source" value="website-resources-page" />
+          <input type="hidden" name="client_name" value="Ashley Smith" />
+          <input type="hidden" name="guide_title" value={g.title} />
+          <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={(e) => setData({ ...data, bot: e.target.value })} /></label></p>
           <input required className="input" placeholder="Your name" onChange={(e) => setData({ ...data, name: e.target.value })} />
           <input required type="email" className="input" placeholder="Email" onChange={(e) => setData({ ...data, email: e.target.value })} />
           <button className="btn btn-primary w-full">Download Guide</button>
@@ -48,7 +55,13 @@ function MarketSignup() {
     setSubmitted(true);
   };
   return (
-    <form onSubmit={onSubmit} className="card">
+    <form name="market-update-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="card">
+      <input type="hidden" name="form-name" value="market-update-signup" />
+      <input type="hidden" name="page_name" value="resources" />
+      <input type="hidden" name="form_type" value="market-update-subscription" />
+      <input type="hidden" name="lead_source" value="website-resources-page" />
+      <input type="hidden" name="client_name" value="Ashley Smith" />
+      <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={(e) => setEmail(e.target.value)} /></label></p>
       <p className="font-serif text-2xl text-navy">Get Market Updates</p>
       <p className="text-sm text-navy/70 mt-2">A monthly snapshot of the Chapel Hill and Triangle market — thoughtful, never noisy.</p>
       {submitted ? (
@@ -112,7 +125,7 @@ export default function Resources() {
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-taupe/20 text-[11px] uppercase tracking-widewide text-taupe">
                       <span>{a.date}</span><span>{a.read} read</span>
                     </div>
-                    <button className="btn btn-outline mt-4 text-xs">Read Article</button>
+                    <a href="/contact" className="btn btn-outline mt-4 text-xs">Request This Article</a>
                   </article>
                 ))}
               </div>

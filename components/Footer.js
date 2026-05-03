@@ -36,10 +36,10 @@ export default function Footer() {
         <div>
           <p className="text-xs uppercase tracking-widewide text-gold mb-4">Connect</p>
           <ul className="space-y-2 text-sm text-ivory/80">
-            <li><a href="#" className="hover:text-gold">[Instagram]</a></li>
-            <li><a href="#" className="hover:text-gold">[Facebook]</a></li>
-            <li><a href="#" className="hover:text-gold">[LinkedIn]</a></li>
-            <li><a href="#" className="hover:text-gold">[Compass Profile]</a></li>
+            <li><a href="/contact" className="hover:text-gold">Instagram (available on request)</a></li>
+            <li><a href="/contact" className="hover:text-gold">Facebook (available on request)</a></li>
+            <li><a href="/contact" className="hover:text-gold">LinkedIn (available on request)</a></li>
+            <li><a href="/contact" className="hover:text-gold">Compass profile (available on request)</a></li>
           </ul>
           <p className="text-xs text-ivory/50 mt-6 leading-relaxed">
             [Compass compliance language placeholder]
