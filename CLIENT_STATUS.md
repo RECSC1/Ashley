@@ -10,17 +10,16 @@ Extended Market: Carrboro, Durham, Hillsborough, Pittsboro, Cary, Raleigh, and t
 
 ## Payment Status
 
-Total Project Fee: $1,400  
-Google Business Profile Setup Fee: $250, if approved separately  
-Payment Status: UPDATE THIS BEFORE WORK  
-Invoice Link: ADD LINK HERE  
+Total Project Fee: $1,1750
+Google Business Profile Setup Fee: $250, website development $1400
+Payment Status: $250 paid for GBP, $1400 being paid tomorrow
 Scope Approved: YES  
-Start Date: ADD DATE HERE  
+Start Date: 5/2/2026 
 Delivery Date: ADD DATE HERE  
 
 ## Work Rule
 
-No client-specific customization, build work, deployment, backend configuration, form routing, SEO setup, revisions, or handoff materials may begin until Payment Status is marked:
+Going forward - No client-specific customization, build work, deployment, backend configuration, form routing, SEO setup, revisions, or handoff materials may begin until Payment Status is marked:
 
 `PAID IN FULL`
 
