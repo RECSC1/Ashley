@@ -8,7 +8,7 @@ Business: Ashley Smith Real Estate, Compass
 Primary Market: Chapel Hill, North Carolina  
 Extended Market: Carrboro, Durham, Hillsborough, Pittsboro, Cary, Raleigh, and the greater Triangle  
 
-## Payment Status
+## Payment Status: NOT PAID IN FULL
 
 Total Project Fee: $1,1750
 Google Business Profile Setup Fee: $250, website development $1400
