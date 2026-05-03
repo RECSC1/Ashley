@@ -62,3 +62,8 @@ The following client-safety updates were completed:
 3. Confirm contact fallback links behave as expected.
 4. Confirm demo pages should remain public-preview or be hidden before launch.
 5. Replace remaining compliance placeholders after Compass review.
+
+
+### Netlify Next.js forms migration note
+
+This project includes `public/netlify-forms.html` to register Netlify Forms at build time for the Netlify Next.js runtime. Keep this file in sync with live form names and fields.
