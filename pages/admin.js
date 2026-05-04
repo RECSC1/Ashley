@@ -113,9 +113,9 @@ function Settings() {
     area: 'Chapel Hill, NC',
     email: '[Ashley\'s email]',
     phone: '[Ashley\'s phone number]',
-    instagram: '[Instagram URL]',
-    facebook: '[Facebook URL]',
-    linkedin: '[LinkedIn URL]',
+    instagram: 'https://www.instagram.com/ashley_m_smith26',
+    facebook: 'https://facebook.com/ashleym.smith28',
+    compass_profile: 'https://www.compass.com/agents/ashley-smith/',
     keywords: 'Chapel Hill Realtor, Carrboro real estate, Triangle relocation, luxury Chapel Hill',
   });
   return (
@@ -130,7 +130,7 @@ function Settings() {
           ['phone', 'Contact phone'],
           ['instagram', 'Instagram'],
           ['facebook', 'Facebook'],
-          ['linkedin', 'LinkedIn'],
+          ['compass_profile', 'Compass Profile'],
           ['keywords', 'SEO keywords'],
         ].map(([k, l]) => (
           <div key={k} className={k === 'description' || k === 'keywords' ? 'sm:col-span-2' : ''}>
