@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 
@@ -57,16 +58,15 @@ export default function About() {
             </p>
           </div>
           <div className="lg:col-span-5 order-1 lg:order-2">
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft bg-gradient-to-br from-blush/40 via-warmwhite to-sage/40 border border-taupe/20 flex items-center justify-center mx-auto w-full max-w-sm md:max-w-md">
-              <div className="text-center p-8 md:p-10">
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto bg-warmwhite/80 border border-taupe/30 flex items-center justify-center mb-4">
-                  <span className="text-xs uppercase tracking-widewide text-taupe">[Headshot]</span>
-                </div>
-                <p className="font-serif text-2xl text-navy">Ashley Smith</p>
-                <p className="text-xs uppercase tracking-widewide text-gold mt-1">
-                  Realtor® · Compass NC
-                </p>
-              </div>
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft border border-taupe/20 mx-auto w-full max-w-sm md:max-w-md bg-warmwhite">
+              <Image
+                src="/images/ashley-smith-headshot.png"
+                alt="Ashley Smith, Compass real estate agent in Chapel Hill, North Carolina."
+                fill
+                sizes="(max-width: 768px) 85vw, (max-width: 1200px) 40vw, 420px"
+                className="object-cover object-center"
+                priority
+              />
             </div>
           </div>
         </div>
