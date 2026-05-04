@@ -911,10 +911,10 @@ export default function BuyerTools() {
           {tab === 'valuation' && <HomeValuation />}
           <div className="card bg-warmwhite border border-taupe/30 mt-8">
             <p className="font-serif text-2xl text-navy">Relocating to the Triangle?</p>
-            <p className="text-sm text-navy/70 mt-2">Not sure where to start? Take the Triangle Relocation Match Quiz and Ashley will follow up with personalized neighborhood and next-step guidance.</p>
+            <p className="text-sm text-navy/70 mt-2">Not sure where to start? Compare Chapel Hill, Carrboro, Durham, Hillsborough, Pittsboro, Cary, and Raleigh based on lifestyle, priorities, commute, and local fit.</p>
             <div className="flex flex-wrap gap-3 mt-4">
               <a href="/relocation-quiz" className="btn btn-primary">Take the Relocation Quiz</a>
-              <a href="/triangle-community-guide" className="btn btn-outline">View Community Match Guide</a>
+              <a href="/triangle-community-guide" className="btn btn-outline">View the Triangle Community Guide</a>
             </div>
           </div>
         </div>
