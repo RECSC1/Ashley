@@ -159,16 +159,16 @@ export default function ClientPortal() {
         title="Client Portal | Ashley Smith Real Estate"
         description="Private client portal for buyers and sellers working with Ashley Smith, Realtor® at Compass North Carolina. Track your timeline, documents, curated home matches, and messages."
         path="/client-portal"
+        noindex
       />
       <section className="section">
         <div className="container-wide">
           <div className="mb-12 max-w-2xl">
             <p className="eyebrow mb-3">Client Portal</p>
-            <h1 className="font-serif text-5xl text-navy">A private workspace for your transaction.</h1>
+            <h1 className="font-serif text-5xl text-navy">Client portal preview, not a live account area.</h1>
             <div className="divider-thin mt-6" />
             <p className="mt-4 text-navy/70 leading-relaxed text-lg">
-              Track milestones, review documents, and message Ashley securely. Full backend authentication
-              will be wired in for production — for now, the portal includes a polished demo experience.
+              This page is a visual demo only. It is not connected to live account logins, secure document storage, or transaction systems yet.
             </p>
           </div>
 

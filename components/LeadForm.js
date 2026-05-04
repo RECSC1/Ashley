@@ -18,17 +18,38 @@ export default function LeadForm({
   showTimeline = false,
   title = 'Begin the Conversation',
   subtitle = 'Share a little about your goals and Ashley will follow up personally.',
+  formName = 'contact',
+  pageName = 'contact',
+  formType = 'general-contact',
+  leadSource = 'website',
+  clientName = 'Ashley Smith',
 }) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({});
 
   const onChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    logEvent(storageKey, data);
-    setSubmitted(true);
+    setError('');
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!res.ok) throw new Error('Form submission failed');
+
+      logEvent(storageKey, data);
+      setSubmitted(true);
+    } catch (_err) {
+      setError('We could not submit your form right now. Please try again in a moment.');
+    }
   };
 
   if (submitted) {
@@ -44,7 +65,24 @@ export default function LeadForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className={`card ${compact ? '' : 'p-8 md:p-10'}`}>
+    <form
+      name={formName}
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+      className={`card ${compact ? '' : 'p-8 md:p-10'}`}
+    >
+      <input type="hidden" name="form-name" value={formName} />
+      <input type="hidden" name="page_name" value={pageName} />
+      <input type="hidden" name="form_type" value={formType} />
+      <input type="hidden" name="lead_source" value={leadSource} />
+      <input type="hidden" name="client_name" value={clientName} />
+      <p className="hidden">
+        <label>
+          Don't fill this out: <input name="bot-field" onChange={onChange} />
+        </label>
+      </p>
       {title && (
         <div className="mb-6">
           <p className="eyebrow mb-2">Connect</p>
@@ -101,6 +139,7 @@ export default function LeadForm({
       <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto">
         Schedule a Consultation
       </button>
+      {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
       <p className="text-[11px] text-taupe mt-4">
         Your information is kept private and used solely to support your real estate goals.
       </p>

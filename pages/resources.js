@@ -13,11 +13,26 @@ const TABS = [
 
 function GuideCard({ g }) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({});
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    logEvent(KEYS.GUIDES, { guide: g.title, ...data });
-    setSubmitted(true);
+    setError('');
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+      if (!res.ok) throw new Error('Form submission failed');
+
+      logEvent(KEYS.GUIDES, { guide: g.title, ...data });
+      setSubmitted(true);
+    } catch (_err) {
+      setError('We could not send your request right now. Please try again in a moment.');
+    }
   };
   return (
     <div className="card flex flex-col">
@@ -29,10 +44,18 @@ function GuideCard({ g }) {
       {submitted ? (
         <p className="mt-5 text-sm text-gold">Sent — your guide is on its way to your inbox.</p>
       ) : (
-        <form onSubmit={onSubmit} className="mt-5 space-y-2">
-          <input required className="input" placeholder="Your name" onChange={(e) => setData({ ...data, name: e.target.value })} />
-          <input required type="email" className="input" placeholder="Email" onChange={(e) => setData({ ...data, email: e.target.value })} />
+        <form name="neighborhood-guide-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="mt-5 space-y-2">
+          <input type="hidden" name="form-name" value="neighborhood-guide-request" />
+          <input type="hidden" name="page_name" value="resources" />
+          <input type="hidden" name="form_type" value="guide-request" />
+          <input type="hidden" name="lead_source" value="website-resources-page" />
+          <input type="hidden" name="client_name" value="Ashley Smith" />
+          <input type="hidden" name="guide_title" value={g.title} />
+          <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={(e) => setData({ ...data, bot: e.target.value })} /></label></p>
+          <input name="name" required className="input" placeholder="Your name" onChange={(e) => setData({ ...data, name: e.target.value })} />
+          <input name="email" required type="email" className="input" placeholder="Email" onChange={(e) => setData({ ...data, email: e.target.value })} />
           <button className="btn btn-primary w-full">Download Guide</button>
+          {error && <p className="text-sm text-red-700">{error}</p>}
         </form>
       )}
     </div>
@@ -41,24 +64,46 @@ function GuideCard({ g }) {
 
 function MarketSignup() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [email, setEmail] = useState('');
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    logEvent(KEYS.GUIDES, { intent: 'market_updates', email });
-    setSubmitted(true);
+    setError('');
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+      if (!res.ok) throw new Error('Form submission failed');
+
+      logEvent(KEYS.GUIDES, { intent: 'market_updates', email });
+      setSubmitted(true);
+    } catch (_err) {
+      setError('We could not subscribe you right now. Please try again in a moment.');
+    }
   };
   return (
-    <form onSubmit={onSubmit} className="card">
+    <form name="market-update-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="card">
+      <input type="hidden" name="form-name" value="market-update-signup" />
+      <input type="hidden" name="page_name" value="resources" />
+      <input type="hidden" name="form_type" value="market-update-subscription" />
+      <input type="hidden" name="lead_source" value="website-resources-page" />
+      <input type="hidden" name="client_name" value="Ashley Smith" />
+      <p className="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
       <p className="font-serif text-2xl text-navy">Get Market Updates</p>
       <p className="text-sm text-navy/70 mt-2">A monthly snapshot of the Chapel Hill and Triangle market — thoughtful, never noisy.</p>
       {submitted ? (
         <p className="mt-4 text-gold">You're on the list.</p>
       ) : (
         <div className="flex gap-2 mt-4">
-          <input required type="email" className="input flex-1" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input name="email" required type="email" className="input flex-1" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <button className="btn btn-primary">Subscribe</button>
         </div>
       )}
+      {error && <p className="text-sm text-red-700 mt-3">{error}</p>}
     </form>
   );
 }
@@ -112,7 +157,7 @@ export default function Resources() {
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-taupe/20 text-[11px] uppercase tracking-widewide text-taupe">
                       <span>{a.date}</span><span>{a.read} read</span>
                     </div>
-                    <button className="btn btn-outline mt-4 text-xs">Read Article</button>
+                    <a href="/contact" className="btn btn-outline mt-4 text-xs">Request This Article</a>
                   </article>
                 ))}
               </div>

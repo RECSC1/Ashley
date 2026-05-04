@@ -34,3 +34,36 @@ Before making client-specific edits, always check:
 
 ```text
 CLIENT_STATUS.md
+```
+
+## Pre-Launch Safety Updates (May 2026)
+
+The following client-safety updates were completed:
+
+- Converted primary lead forms to Netlify-compatible forms with clear form names.
+- Added hidden tracking fields: `page_name`, `form_type`, `lead_source`, and `client_name`.
+- Added honeypot anti-spam fields on Netlify forms.
+- Replaced placeholder `#` social links with safe contact fallbacks.
+- Added stronger demo-only messaging on Client Portal/Admin preview areas.
+- Marked demo pages (`/client-portal`, `/admin`) as `noindex` to keep them out of search results.
+- Added a default Open Graph image in SEO metadata.
+
+### Netlify Settings
+
+- Base directory: `/`
+- Build command: `npm run build`
+- Publish directory: `.next`
+- Functions directory: `netlify/functions`
+
+### Manual QA Emily should run before client handoff
+
+1. Submit each Netlify form once and confirm submissions appear in Netlify > Forms.
+2. Confirm form notification emails are configured in Netlify.
+3. Confirm contact fallback links behave as expected.
+4. Confirm demo pages should remain public-preview or be hidden before launch.
+5. Replace remaining compliance placeholders after Compass review.
+
+
+### Netlify Next.js forms migration note
+
+This project includes `public/netlify-forms.html` to register Netlify Forms at build time for the Netlify Next.js runtime. Keep this file in sync with live form names and fields.
