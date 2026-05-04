@@ -130,7 +130,10 @@ export default function Resources() {
           <div className="card bg-warmwhite border border-taupe/30 mb-8">
             <p className="font-serif text-2xl text-navy">Moving to Chapel Hill or the Triangle?</p>
             <p className="text-sm text-navy/70 mt-2">Not sure where to start? Take the Triangle Relocation Match Quiz and Ashley will follow up with personalized neighborhood and next-step guidance.</p>
-            <a href="/relocation-quiz" className="btn btn-primary mt-4">Start the Relocation Quiz</a>
+            <div className="flex flex-wrap gap-3 mt-4">
+              <a href="/relocation-quiz" className="btn btn-primary">Start the Relocation Quiz</a>
+              <a href="/triangle-community-guide" className="btn btn-outline">Explore the Community Match Guide</a>
+            </div>
           </div>
 
           <div className="flex gap-2 border-b border-taupe/30 mb-8">

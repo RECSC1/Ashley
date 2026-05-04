@@ -912,7 +912,10 @@ export default function BuyerTools() {
           <div className="card bg-warmwhite border border-taupe/30 mt-8">
             <p className="font-serif text-2xl text-navy">Relocating to the Triangle?</p>
             <p className="text-sm text-navy/70 mt-2">Not sure where to start? Take the Triangle Relocation Match Quiz and Ashley will follow up with personalized neighborhood and next-step guidance.</p>
-            <a href="/relocation-quiz" className="btn btn-primary mt-4">Take the Relocation Quiz</a>
+            <div className="flex flex-wrap gap-3 mt-4">
+              <a href="/relocation-quiz" className="btn btn-primary">Take the Relocation Quiz</a>
+              <a href="/triangle-community-guide" className="btn btn-outline">View Community Match Guide</a>
+            </div>
           </div>
         </div>
       </section>
