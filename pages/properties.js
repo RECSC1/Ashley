@@ -47,7 +47,7 @@ function ListingCard({ l }) {
           <div><span className="block text-[10px] uppercase tracking-widewide text-taupe">Sq Ft</span>{l.sqft}</div>
         </div>
         <p className="mt-4 font-medium text-navy">{l.price}</p>
-        <button className="btn btn-outline mt-5 text-xs self-start">Request Details</button>
+        <a href="/contact" className="btn btn-outline mt-5 text-xs self-start">Request Details</a>
       </div>
     </div>
   );
@@ -73,7 +73,13 @@ function PropertyAlerts() {
     );
   }
   return (
-    <form onSubmit={onSubmit} className="card p-8">
+    <form name="property-alert-interest" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="card p-8">
+      <input type="hidden" name="form-name" value="property-alert-interest" />
+      <input type="hidden" name="page_name" value="properties" />
+      <input type="hidden" name="form_type" value="property-interest-request" />
+      <input type="hidden" name="lead_source" value="website-properties-page" />
+      <input type="hidden" name="client_name" value="Ashley Smith" />
+      <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={onChange} /></label></p>
       <h3 className="font-serif text-3xl text-navy">Create a Property Alert</h3>
       <p className="text-navy/70 mt-2">
         Tell Ashley what you're looking for and she'll send curated matches as they hit the market.
@@ -113,7 +119,7 @@ export default function Properties() {
           <SectionHeader
             eyebrow="Properties"
             title="Active listings, recent sales & featured Triangle communities"
-            subtitle="Listings and recent sales will be updated once Ashley's approved listing data or IDX connection is available."
+            subtitle="Listings and recent sales are concierge previews. Ashley will share current availability and next steps directly after you reach out."
           />
 
           {/* TABS */}
@@ -149,7 +155,7 @@ export default function Properties() {
                 <div key={c.name} className="card">
                   <p className="font-serif text-2xl text-navy">{c.name}</p>
                   <p className="mt-2 text-navy/70">{c.blurb}</p>
-                  <button className="btn btn-outline mt-5 text-xs">Explore Community</button>
+                  <a href="/contact" className="btn btn-outline mt-5 text-xs">Request Community Details</a>
                 </div>
               ))}
             </div>

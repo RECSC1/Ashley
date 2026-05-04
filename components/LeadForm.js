@@ -18,6 +18,11 @@ export default function LeadForm({
   showTimeline = false,
   title = 'Begin the Conversation',
   subtitle = 'Share a little about your goals and Ashley will follow up personally.',
+  formName = 'contact',
+  pageName = 'contact',
+  formType = 'general-contact',
+  leadSource = 'website',
+  clientName = 'Ashley Smith',
 }) {
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState({});
@@ -44,7 +49,24 @@ export default function LeadForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className={`card ${compact ? '' : 'p-8 md:p-10'}`}>
+    <form
+      name={formName}
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+      className={`card ${compact ? '' : 'p-8 md:p-10'}`}
+    >
+      <input type="hidden" name="form-name" value={formName} />
+      <input type="hidden" name="page_name" value={pageName} />
+      <input type="hidden" name="form_type" value={formType} />
+      <input type="hidden" name="lead_source" value={leadSource} />
+      <input type="hidden" name="client_name" value={clientName} />
+      <p className="hidden">
+        <label>
+          Don't fill this out: <input name="bot-field" onChange={onChange} />
+        </label>
+      </p>
       {title && (
         <div className="mb-6">
           <p className="eyebrow mb-2">Connect</p>
