@@ -127,6 +127,12 @@ export default function Resources() {
             subtitle="Articles, guides, and market updates — written for thoughtful Triangle buyers and sellers."
           />
 
+          <div className="card bg-warmwhite border border-taupe/30 mb-8">
+            <p className="font-serif text-2xl text-navy">Moving to Chapel Hill or the Triangle?</p>
+            <p className="text-sm text-navy/70 mt-2">Not sure where to start? Take the Triangle Relocation Match Quiz and Ashley will follow up with personalized neighborhood and next-step guidance.</p>
+            <a href="/relocation-quiz" className="btn btn-primary mt-4">Start the Relocation Quiz</a>
+          </div>
+
           <div className="flex gap-2 border-b border-taupe/30 mb-8">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}

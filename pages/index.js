@@ -122,6 +122,9 @@ export default function Home() {
               <Link href="/buyer-tools" className="btn btn-outline">
                 Explore Buyer Tools
               </Link>
+              <Link href="/relocation-quiz" className="btn btn-outline">
+                Take Relocation Quiz
+              </Link>
             </div>
             <div className="mt-8 flex flex-wrap gap-2">
               {TRUST_BADGES.map((b) => (

@@ -909,6 +909,11 @@ export default function BuyerTools() {
           {tab === 'commute' && <CommuteFinder />}
           {tab === 'mortgage' && <MortgageCalc />}
           {tab === 'valuation' && <HomeValuation />}
+          <div className="card bg-warmwhite border border-taupe/30 mt-8">
+            <p className="font-serif text-2xl text-navy">Relocating to the Triangle?</p>
+            <p className="text-sm text-navy/70 mt-2">Not sure where to start? Take the Triangle Relocation Match Quiz and Ashley will follow up with personalized neighborhood and next-step guidance.</p>
+            <a href="/relocation-quiz" className="btn btn-primary mt-4">Take the Relocation Quiz</a>
+          </div>
         </div>
       </section>
     </>
