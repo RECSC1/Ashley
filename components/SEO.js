@@ -4,7 +4,7 @@ export default function SEO({ title, description, path = '', noindex = false }) 
   const fullTitle = title || 'Ashley Smith | Chapel Hill Realtor® | Compass North Carolina';
   const desc =
     description ||
-    'Curated, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle. Luxury Certified and Relocation Certified Realtor® with Compass North Carolina, LLC.';
+    'Individually curated, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle. Luxury Certified and Relocation Certified Realtor® with Compass North Carolina, LLC.';
   return (
     <Head>
       <title>{fullTitle}</title>

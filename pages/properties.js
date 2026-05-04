@@ -96,7 +96,7 @@ function PropertyAlerts() {
       <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={onChange} /></label></p>
       <h3 className="font-serif text-3xl text-navy">Create a Property Alert</h3>
       <p className="text-navy/70 mt-2">
-        Tell Ashley what you're looking for and she'll send curated matches as they hit the market.
+        Tell Ashley what you're looking for and she'll send individually curated matches as they hit the market.
       </p>
       <div className="grid sm:grid-cols-2 gap-4 mt-6">
         <div><label className="label">Name</label><input name="name" required className="input" onChange={onChange} /></div>

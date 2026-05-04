@@ -40,7 +40,7 @@ const ANSWERS = {
   'Can Ashley help me compare neighborhoods?':
     'Yes — try the Area & Neighborhood Comparison tool under Buyer Tools, then book a consultation. Ashley will tailor the comparison to your priorities (schools, commute, lifestyle, luxury).',
   'Can Ashley help me find a home with a reasonable commute?':
-    'Absolutely. Try the Commute Time Finder under Buyer Tools. From there, Ashley can build a curated home search shaped around your daily route to UNC, Duke, RTP, or Raleigh.',
+    'Absolutely. Try the Commute Time Finder under Buyer Tools. From there, Ashley can build an individually curated home search shaped around your daily route to UNC, Duke, RTP, or Raleigh.',
 };
 
 function Concierge() {

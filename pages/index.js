@@ -93,7 +93,7 @@ export default function Home() {
     <>
       <SEO
         title="Ashley Smith | Chapel Hill Realtor® | Compass North Carolina"
-        description="Curated, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle. Ashley Smith — Realtor®, Luxury Certified, Relocation Certified — with Compass North Carolina, LLC."
+        description="Individually curated, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle. Ashley Smith — Realtor®, Luxury Certified, Relocation Certified — with Compass North Carolina, LLC."
       />
 
       {/* HERO */}
@@ -112,7 +112,7 @@ export default function Home() {
               <span className="italic text-gold">Neighborly care.</span>
             </h1>
             <p className="mt-5 text-base sm:text-lg md:text-xl text-navy/75 leading-relaxed max-w-xl">
-              Curated, people-first real estate guidance for Chapel Hill, Carrboro, and the
+              Individually curated, people-first real estate guidance for Chapel Hill, Carrboro, and the
               Triangle, rooted in local insight, calm confidence, and genuine care.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-3 btn-stack-sm">

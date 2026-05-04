@@ -29,7 +29,7 @@ const HOME_MATCHES = [
 const SAMPLE_MESSAGES = [
   { from: 'ashley', text: 'Welcome to your private portal. I\'ve added the buyer consultation packet for review.', at: 'Today, 9:14 AM' },
   { from: 'client', text: 'Thank you! I\'ll review tonight and send questions tomorrow.', at: 'Today, 11:42 AM' },
-  { from: 'ashley', text: 'Take your time. I\'ll have curated home matches ready by Friday.', at: 'Today, 11:50 AM' },
+  { from: 'ashley', text: 'Take your time. I\'ll have individually curated home matches ready by Friday.', at: 'Today, 11:50 AM' },
 ];
 
 function PortalView() {
@@ -157,7 +157,7 @@ export default function ClientPortal() {
     <>
       <SEO
         title="Client Portal | Ashley Smith Real Estate"
-        description="Private client portal for buyers and sellers working with Ashley Smith, Realtor® at Compass North Carolina. Track your timeline, documents, curated home matches, and messages."
+        description="Private client portal for buyers and sellers working with Ashley Smith, Realtor® at Compass North Carolina. Track your timeline, documents, individually curated home matches, and messages."
         path="/client-portal"
         noindex
       />
@@ -190,7 +190,7 @@ export default function ClientPortal() {
                 <ul className="mt-5 space-y-3 text-sm text-ivory/80">
                   <li>· Real-time milestone tracking</li>
                   <li>· Secure document sharing</li>
-                  <li>· Curated home matches</li>
+                  <li>· Individually curated home matches</li>
                   <li>· Direct messaging with Ashley</li>
                 </ul>
                 <p className="text-[11px] text-ivory/60 mt-6">Full authentication and storage will be wired into the production deployment.</p>
