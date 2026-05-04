@@ -26,10 +26,11 @@ export default function RelocationQuiz() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     setError('');
 
-    fetch('/netlify-forms.html', {
+    fetch(form.action || '/netlify-forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
@@ -73,6 +74,7 @@ export default function RelocationQuiz() {
               <form
                 name="relocation-quiz"
                 method="POST"
+                action="/netlify-forms.html"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 onSubmit={onSubmit}
