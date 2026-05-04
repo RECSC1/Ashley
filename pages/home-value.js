@@ -176,6 +176,9 @@ export default function HomeValuePage() {
 
               <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto">Send My Request</button>
               {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
+              <p className="text-[11px] text-taupe mt-4">
+                Most homeowners are surprised by how much their home value can shift in 12–18 months based on buyer demand, nearby competition, updates, presentation, and timing.
+              </p>
             </form>
           )}
         </div>
