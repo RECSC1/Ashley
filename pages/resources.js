@@ -13,20 +13,25 @@ const TABS = [
 
 function GuideCard({ g }) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({});
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    fetch('/', {
+    setError('');
+    fetch('/netlify-forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
         logEvent(KEYS.GUIDES, { guide: g.title, ...data });
         setSubmitted(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        setError('We could not submit your guide request right now. Please try again.');
+      });
   };
   return (
     <div className="card flex flex-col">
@@ -35,6 +40,7 @@ function GuideCard({ g }) {
       </div>
       <p className="font-serif text-2xl text-navy">{g.title}</p>
       <p className="text-sm text-navy/70 mt-2 flex-1">{g.desc}</p>
+      {error && <p className="mt-4 text-sm text-red-700">{error}</p>}
       {submitted ? (
         <p className="mt-5 text-sm text-gold">Sent — your guide is on its way to your inbox.</p>
       ) : (
@@ -57,20 +63,25 @@ function GuideCard({ g }) {
 
 function MarketSignup() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    fetch('/', {
+    setError('');
+    fetch('/netlify-forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
         logEvent(KEYS.GUIDES, { intent: 'market_updates', email });
         setSubmitted(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        setError('We could not submit your signup right now. Please try again.');
+      });
   };
   return (
     <form name="market-update-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="card">
@@ -82,6 +93,7 @@ function MarketSignup() {
       <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={(e) => setEmail(e.target.value)} /></label></p>
       <p className="font-serif text-2xl text-navy">Get Market Updates</p>
       <p className="text-sm text-navy/70 mt-2">A monthly snapshot of the Chapel Hill and Triangle market — thoughtful, never noisy.</p>
+      {error && <p className="mt-4 text-sm text-red-700">{error}</p>}
       {submitted ? (
         <p className="mt-4 text-gold">You're on the list.</p>
       ) : (
