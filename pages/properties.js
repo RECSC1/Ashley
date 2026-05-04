@@ -55,21 +55,26 @@ function ListingCard({ l }) {
 
 function PropertyAlerts() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({});
   const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    fetch('/', {
+    setError('');
+    fetch('/netlify-forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
         logEvent(KEYS.ALERTS, data);
         setSubmitted(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        setError('We could not submit your request right now. Please try again.');
+      });
   };
   if (submitted) {
     return (
@@ -107,6 +112,7 @@ function PropertyAlerts() {
         </div>
         <div className="sm:col-span-2"><label className="label">Notes</label><textarea name="notes" rows={3} className="input" onChange={onChange} /></div>
       </div>
+      {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
       <button className="btn btn-primary mt-6">Set Up My Alerts</button>
     </form>
   );

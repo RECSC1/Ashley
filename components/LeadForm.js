@@ -25,6 +25,7 @@ export default function LeadForm({
   clientName = 'Ashley Smith',
 }) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({});
 
   const onChange = (e) =>
@@ -33,16 +34,20 @@ export default function LeadForm({
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    fetch('/', {
+    setError('');
+    fetch('/netlify-forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
         logEvent(storageKey, data);
         setSubmitted(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        setError('We could not submit your form right now. Please try again.');
+      });
   };
 
   if (submitted) {
@@ -132,6 +137,7 @@ export default function LeadForm({
       <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto">
         Schedule a Consultation
       </button>
+      {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
       <p className="text-[11px] text-taupe mt-4">
         Your information is kept private and used solely to support your real estate goals.
       </p>
