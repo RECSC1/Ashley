@@ -24,7 +24,7 @@ const ANSWERS = {
   default:
     'Great question. Here is a thoughtful overview to get you started — and Ashley would love to walk through the specifics with you personally.',
   'What should I know before moving to Chapel Hill?':
-    'Chapel Hill blends UNC-driven culture, top-rated CHCCS schools, and quietly elegant historic neighborhoods. Lifestyle is leafy, walkable in pockets, and deeply community-oriented. Ashley can pair you with the right pocket of town based on your routine.',
+    'Chapel Hill blends UNC-driven culture, top-rated CHCCS schools, and quietly curated historic neighborhoods. Lifestyle is leafy, walkable in pockets, and deeply community-oriented. Ashley can pair you with the right pocket of town based on your routine.',
   'Is Chapel Hill or Carrboro better for my lifestyle?':
     'Chapel Hill leans historic and refined; Carrboro is independent, walkable, and creative. Many buyers fall in love with both — the right answer depends on your daily life and the home itself.',
   'What should UNC-related buyers know?':
