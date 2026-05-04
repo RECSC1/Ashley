@@ -43,6 +43,13 @@ export default function Contact() {
                 {AREAS.map((a) => <span key={a} className="badge bg-warmwhite border border-taupe/30 text-navy/80">{a}</span>)}
               </div>
             </div>
+            <div className="mt-8 card border border-taupe/25 bg-warmwhite">
+              <p className="eyebrow mb-2">Seller Planning</p>
+              <p className="text-navy/80 text-sm">
+                Curious what your home might be worth in today&apos;s market? Start with Ashley&apos;s thoughtful local review.
+              </p>
+              <a href="/home-value" className="btn btn-outline mt-4">Request Home Value Review</a>
+            </div>
             <div className="mt-8 rounded-2xl overflow-hidden border border-taupe/30 aspect-[16/9] bg-gradient-to-br from-sage/30 via-warmwhite to-blush/30 flex items-center justify-center">
               <span className="text-xs uppercase tracking-widewide text-taupe">[Service area map placeholder]</span>
             </div>

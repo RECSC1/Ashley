@@ -122,6 +122,9 @@ export default function Home() {
               <Link href="/buyer-tools" className="btn btn-outline">
                 Explore Buyer Tools
               </Link>
+              <Link href="/home-value" className="btn btn-outline">
+                Request Home Value Review
+              </Link>
               <Link href="/relocation-quiz" className="btn btn-outline">
                 Take Relocation Quiz
               </Link>

@@ -9,6 +9,7 @@ const NAV = [
   { href: '/ai-tools', label: 'AI Tools' },
   { href: '/resources', label: 'Resources' },
   { href: '/triangle-community-guide', label: 'Community Guide' },
+  { href: '/home-value', label: 'Home Value' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -69,8 +70,8 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/buyer-tools" className="btn btn-outline text-xs">
-            Explore Buyer Tools
+          <Link href="/home-value" className="btn btn-outline text-xs">
+            Home Value
           </Link>
           <Link href="/contact" className="btn btn-primary text-xs">
             Schedule a Consultation
@@ -112,11 +113,11 @@ export default function Header() {
             ))}
             <div className="flex flex-col sm:flex-row gap-2 mt-4">
               <Link
-                href="/buyer-tools"
+                href="/home-value"
                 onClick={() => setOpen(false)}
                 className="btn btn-outline text-xs flex-1"
               >
-                Buyer Tools
+                Home Value
               </Link>
               <Link
                 href="/contact"
