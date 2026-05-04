@@ -56,7 +56,7 @@ export default function RelocationQuiz() {
           <p className="eyebrow mb-3">Relocation Support</p>
           <h1 className="font-serif text-4xl md:text-5xl text-navy leading-tight">Triangle Relocation Match Quiz</h1>
           <p className="mt-4 text-navy/75 text-lg leading-relaxed">
-            Not sure where to start? Share your move details, priorities, and timeline. Ashley will follow up with personalized neighborhood and next-step guidance.
+            Not sure where to start? Explore the Community Guide first, then share your move details, priorities, and timeline. Ashley will follow up with personalized neighborhood and next-step guidance.
           </p>
           <p className="text-sm text-navy/65 mt-3">
             This quiz is for planning support and personal follow-up. It does not provide automated MLS matches or legal, financial, lending, or school-assignment advice.
@@ -70,7 +70,7 @@ export default function RelocationQuiz() {
                   Your relocation quiz has been submitted. Ashley will review your details and follow up personally with thoughtful neighborhood and next-step guidance.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 mt-6">
-                  <a href="/triangle-community-guide" className="btn btn-outline">Browse the Community Match Guide</a>
+                  <a href="/triangle-community-guide" className="btn btn-outline">Compare Triangle Communities</a>
                   <a href="/contact" className="btn btn-primary">Contact Ashley</a>
                 </div>
               </div>

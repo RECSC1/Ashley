@@ -8,6 +8,7 @@ const NAV = [
   { href: '/buyer-tools', label: 'Buyer Tools' },
   { href: '/ai-tools', label: 'AI Tools' },
   { href: '/resources', label: 'Resources' },
+  { href: '/triangle-community-guide', label: 'Community Guide' },
   { href: '/contact', label: 'Contact' },
 ];
 

@@ -224,8 +224,17 @@ export default function Home() {
           <SectionHeader
             eyebrow="Service Areas"
             title="Local expertise across the Triangle"
-            subtitle="From the historic streets of Chapel Hill to Pittsboro's rolling estates, Ashley represents buyers and sellers across North Carolina's most loved communities."
+            subtitle="From the historic streets of Chapel Hill to Pittsboro's rolling estates, Ashley represents buyers and sellers across North Carolina's most loved communities. Compare Chapel Hill, Carrboro, Durham, Hillsborough, Pittsboro, Cary, and Raleigh based on lifestyle, priorities, commute, and local fit."
           />
+          <div className="mt-6 rounded-2xl border border-taupe/30 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <p className="text-sm md:text-base text-navy/80">
+              Not sure where to start? Explore the Triangle Community Guide for side-by-side local insight before you tour.
+            </p>
+            <Link href="/triangle-community-guide" className="btn btn-outline whitespace-nowrap">
+              Explore the Community Guide
+            </Link>
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {AREAS.map((a) => (
               <Link
@@ -284,6 +293,15 @@ export default function Home() {
             title="Active listings & recent stories"
             subtitle="Listings and recent sales will be updated as Ashley's approved data or IDX connection becomes available."
           />
+          <div className="mt-6 rounded-2xl border border-taupe/30 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <p className="text-sm md:text-base text-navy/80">
+              Not sure where to start? Explore the Triangle Community Guide for side-by-side local insight before you tour.
+            </p>
+            <Link href="/triangle-community-guide" className="btn btn-outline whitespace-nowrap">
+              Explore the Community Guide
+            </Link>
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {LISTINGS.map((l, i) => (
               <div key={i} className="card p-0 overflow-hidden">
