@@ -69,6 +69,10 @@ export default function RelocationQuiz() {
                 <p className="mt-3 text-navy/70 max-w-2xl mx-auto">
                   Your relocation quiz has been submitted. Ashley will review your details and follow up personally with thoughtful neighborhood and next-step guidance.
                 </p>
+                <div className="flex flex-wrap justify-center gap-3 mt-6">
+                  <a href="/triangle-community-guide" className="btn btn-outline">Browse the Community Match Guide</a>
+                  <a href="/contact" className="btn btn-primary">Contact Ashley</a>
+                </div>
               </div>
             ) : (
               <form
