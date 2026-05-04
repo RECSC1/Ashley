@@ -8,7 +8,6 @@ const NAV = [
   { href: '/buyer-tools', label: 'Buyer Tools' },
   { href: '/ai-tools', label: 'AI Tools' },
   { href: '/resources', label: 'Resources' },
-  { href: '/client-portal', label: 'Client Portal' },
   { href: '/contact', label: 'Contact' },
 ];
 
