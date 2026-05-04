@@ -59,8 +59,17 @@ function PropertyAlerts() {
   const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
-    logEvent(KEYS.ALERTS, data);
-    setSubmitted(true);
+    const formData = new FormData(e.target);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        logEvent(KEYS.ALERTS, data);
+        setSubmitted(true);
+      })
+      .catch(() => {});
   };
   if (submitted) {
     return (
