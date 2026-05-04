@@ -32,8 +32,17 @@ export default function LeadForm({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    logEvent(storageKey, data);
-    setSubmitted(true);
+    const formData = new FormData(e.target);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        logEvent(storageKey, data);
+        setSubmitted(true);
+      })
+      .catch(() => {});
   };
 
   if (submitted) {

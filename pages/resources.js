@@ -16,8 +16,17 @@ function GuideCard({ g }) {
   const [data, setData] = useState({});
   const onSubmit = (e) => {
     e.preventDefault();
-    logEvent(KEYS.GUIDES, { guide: g.title, ...data });
-    setSubmitted(true);
+    const formData = new FormData(e.target);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        logEvent(KEYS.GUIDES, { guide: g.title, ...data });
+        setSubmitted(true);
+      })
+      .catch(() => {});
   };
   return (
     <div className="card flex flex-col">
@@ -37,8 +46,8 @@ function GuideCard({ g }) {
           <input type="hidden" name="client_name" value="Ashley Smith" />
           <input type="hidden" name="guide_title" value={g.title} />
           <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={(e) => setData({ ...data, bot: e.target.value })} /></label></p>
-          <input required className="input" placeholder="Your name" onChange={(e) => setData({ ...data, name: e.target.value })} />
-          <input required type="email" className="input" placeholder="Email" onChange={(e) => setData({ ...data, email: e.target.value })} />
+          <input required name="name" className="input" placeholder="Your name" onChange={(e) => setData({ ...data, name: e.target.value })} />
+          <input required name="email" type="email" className="input" placeholder="Email" onChange={(e) => setData({ ...data, email: e.target.value })} />
           <button className="btn btn-primary w-full">Download Guide</button>
         </form>
       )}
@@ -51,8 +60,17 @@ function MarketSignup() {
   const [email, setEmail] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
-    logEvent(KEYS.GUIDES, { intent: 'market_updates', email });
-    setSubmitted(true);
+    const formData = new FormData(e.target);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        logEvent(KEYS.GUIDES, { intent: 'market_updates', email });
+        setSubmitted(true);
+      })
+      .catch(() => {});
   };
   return (
     <form name="market-update-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="card">
@@ -68,7 +86,7 @@ function MarketSignup() {
         <p className="mt-4 text-gold">You're on the list.</p>
       ) : (
         <div className="flex gap-2 mt-4">
-          <input required type="email" className="input flex-1" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input required name="email" type="email" className="input flex-1" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <button className="btn btn-primary">Subscribe</button>
         </div>
       )}
