@@ -13,11 +13,11 @@ export default function SEO({ title, description, path = '', noindex = false }) 
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://ashleysmithrealestate.netlify.app/images/ashley-smith-headshot.png" />
-      <meta property="og:url" content={`https://ashleysmithrealestate.netlify.app${path}`} />
+      <meta property="og:image" content="https://ashleysmithrealestate.live/images/ashley-smith-headshot.png" />
+      <meta property="og:url" content={`https://ashleysmithrealestate.live${path}`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="canonical" href={`https://ashleysmithrealestate.netlify.app${path}`} />
+      <link rel="canonical" href={`https://ashleysmithrealestate.live${path}`} />
     </Head>
   );
 }

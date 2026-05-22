@@ -11,7 +11,7 @@ export default function Terms() {
           <div className="divider-thin mt-6" />
           <div className="prose-luxe mt-8 text-lg">
             <p>
-              By using ashleysmithrealestate.netlify.app, you agree to use the content and tools for
+              By using ashleysmithrealestate.live, you agree to use the content and tools for
               their intended purpose: exploring Triangle real estate and connecting with Ashley Smith,
               Realtor® at Compass North Carolina, LLC.
             </p>
