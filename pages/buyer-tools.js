@@ -16,68 +16,116 @@ const TABS = [
 
 /* -------- TOOL 1: SCHOOL RATING SEARCH -------- */
 function SchoolSearch() {
-  const [results, setResults] = useState(null);
-  const [data, setData] = useState({ address: '', type: 'All' });
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [data, setData] = useState({});
+  const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
+
   const onSubmit = (e) => {
     e.preventDefault();
-    logEvent(KEYS.SCHOOLS, data);
-    const mock = [
-      { name: 'Chapel Hill Elementary', type: 'Elementary', rating: 9, distance: '0.6 mi', district: 'Chapel Hill–Carrboro CSD' },
-      { name: 'Carrboro Middle School', type: 'Middle', rating: 8, distance: '1.2 mi', district: 'Chapel Hill–Carrboro CSD' },
-      { name: 'East Chapel Hill High', type: 'High School', rating: 9, distance: '2.3 mi', district: 'Chapel Hill–Carrboro CSD' },
-      { name: 'Triangle Magnet Academy', type: 'Magnet', rating: 10, distance: '3.4 mi', district: 'Magnet Network' },
-    ].filter((s) => data.type === 'All' || s.type === data.type);
-    setResults(mock);
+    const formData = new FormData(e.target);
+    setError('');
+
+    fetch('/netlify-forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
+        logEvent(KEYS.SCHOOLS, data);
+        setSubmitted(true);
+      })
+      .catch(() => {
+        setError('We could not submit your request right now. Please try again.');
+      });
   };
-  return (
-    <div className="grid lg:grid-cols-12 gap-8">
-      <form onSubmit={onSubmit} className="card lg:col-span-5">
-        <h3 className="font-serif text-2xl text-navy mb-1">Find Schools Near a Home</h3>
-        <p className="text-navy/70 text-sm mb-5">Enter an address or neighborhood to view nearby school ratings.</p>
-        <div className="space-y-4">
-          <div><label className="label">Address or neighborhood</label>
-            <input className="input" required value={data.address} onChange={(e) => setData({ ...data, address: e.target.value })} placeholder="e.g. 100 Franklin St, Chapel Hill" />
-          </div>
-          <div><label className="label">School type</label>
-            <select className="input" value={data.type} onChange={(e) => setData({ ...data, type: e.target.value })}>
-              <option>All</option><option>Elementary</option><option>Middle</option><option>High School</option><option>Magnet</option>
-            </select>
-          </div>
-          <div><label className="label">District (optional)</label>
-            <input className="input" placeholder="District name" />
-          </div>
-        </div>
-        <button className="btn btn-primary mt-5">Search Schools</button>
-        <p className="text-[11px] text-taupe mt-3">Results are illustrative until live school-data integration is connected.</p>
-      </form>
-      <div className="lg:col-span-7">
-        {results ? (
-          <div className="space-y-3">
-            {results.map((s, i) => (
-              <div key={i} className="card flex items-center justify-between gap-4">
-                <div>
-                  <p className="font-serif text-xl text-navy">{s.name}</p>
-                  <p className="text-xs text-taupe">{s.type} · {s.district} · {s.distance}</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-serif text-3xl text-gold">{s.rating}<span className="text-sm text-taupe">/10</span></p>
-                  <p className="text-[10px] uppercase tracking-widewide text-taupe">Rating</p>
-                </div>
-              </div>
-            ))}
-            <div className="card bg-navy text-ivory">
-              <p className="font-serif text-2xl">Found the right school district?</p>
-              <p className="text-ivory/70 mt-1 text-sm">Let Ashley help you find homes nearby.</p>
-              <a href="/contact" className="btn btn-gold mt-4">Connect with Ashley</a>
-            </div>
-          </div>
-        ) : (
-          <div className="card h-full flex items-center justify-center text-center text-navy/60">
-            <p>Search above to view nearby schools and ratings.</p>
-          </div>
-        )}
-      </div>
+
+  if (submitted) return (
+    <div className="card text-center py-12">
+      <p className="font-serif text-3xl text-navy">Thanks. Your school-priority request has been sent.</p>
+      <p className="text-navy/70 mt-3 max-w-xl mx-auto">Ashley can help you evaluate homes and neighborhoods based on your school needs, commute, lifestyle, and timeline.</p>
+      <a href="/contact" className="btn btn-primary mt-6">Connect with Ashley</a>
     </div>
+  );
+
+  return (
+    <form
+      name="school-search"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+      className="card max-w-2xl mx-auto"
+    >
+      <input type="hidden" name="form-name" value="school-search" />
+      <input type="hidden" name="page_name" value="buyer-tools-schools" />
+      <input type="hidden" name="form_type" value="school-search-request" />
+      <input type="hidden" name="lead_source" value="website-buyer-tools" />
+      <input type="hidden" name="client_name" value="Ashley Smith" />
+      <p className="hidden"><label>Don&apos;t fill this out: <input name="bot-field" onChange={onChange} /></label></p>
+
+      <h3 className="font-serif text-2xl text-navy mb-1">School Priority Search</h3>
+      <p className="text-navy/70 text-sm mb-5">Search by address, city, ZIP code, neighborhood, or district anywhere in the U.S. Ashley can help you understand how school priorities fit into your home search.</p>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="sm:col-span-2">
+          <label className="label">Address, city, ZIP, neighborhood, or school district</label>
+          <input name="location" required className="input" onChange={onChange} placeholder="e.g. 27514, Chapel Hill, Cary, or any U.S. location" />
+        </div>
+        <div>
+          <label className="label">State</label>
+          <input name="state" className="input" onChange={onChange} placeholder="e.g. North Carolina" />
+        </div>
+        <div>
+          <label className="label">School level</label>
+          <select name="school_level" className="input" onChange={onChange}>
+            <option value="Any">Any</option>
+            <option value="Elementary">Elementary</option>
+            <option value="Middle">Middle</option>
+            <option value="High School">High School</option>
+            <option value="Private">Private</option>
+            <option value="Charter">Charter</option>
+            <option value="Magnet">Magnet</option>
+          </select>
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label">Preferred district or school, if any</label>
+          <input name="preferred_district" className="input" onChange={onChange} placeholder="e.g. Chapel Hill-Carrboro City Schools" />
+        </div>
+        <div>
+          <label className="label">Buyer timeline</label>
+          <select name="timeline" className="input" onChange={onChange}>
+            <option value="">Select</option>
+            <option>Immediately</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>6–12 months</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+        <div>
+          <label className="label">Name</label>
+          <input name="name" required className="input" onChange={onChange} />
+        </div>
+        <div>
+          <label className="label">Email</label>
+          <input name="email" required type="email" className="input" onChange={onChange} />
+        </div>
+        <div>
+          <label className="label">Phone</label>
+          <input name="phone" className="input" onChange={onChange} />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label">Notes</label>
+          <textarea name="notes" rows={3} className="input" onChange={onChange} placeholder="Anything Ashley should know about your school priorities or move" />
+        </div>
+      </div>
+
+      <button type="submit" className="btn btn-primary mt-6">Send School Priorities to Ashley</button>
+      {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
+      <p className="text-[11px] text-taupe mt-4">Live school ratings require a school data integration such as GreatSchools, NCES, or another approved source. Until that is connected, this tool captures your priorities so Ashley can help guide the search personally.</p>
+    </form>
   );
 }
 
@@ -822,9 +870,30 @@ function MortgageCalc() {
 /* -------- TOOL 7: HOME VALUATION -------- */
 function HomeValuation() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({});
   const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
-  const onSubmit = (e) => { e.preventDefault(); logEvent(KEYS.VALUATION, data); setSubmitted(true); };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    setError('');
+
+    fetch('/netlify-forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
+        logEvent(KEYS.VALUATION, data);
+        setSubmitted(true);
+      })
+      .catch(() => {
+        setError('We could not submit your request right now. Please try again.');
+      });
+  };
+
   if (submitted) return (
     <div className="card text-center py-12">
       <p className="font-serif text-3xl text-navy">Thank you — your valuation request is in.</p>
@@ -832,7 +901,21 @@ function HomeValuation() {
     </div>
   );
   return (
-    <form onSubmit={onSubmit} className="card max-w-2xl mx-auto">
+    <form
+      name="home-valuation"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+      className="card max-w-2xl mx-auto"
+    >
+      <input type="hidden" name="form-name" value="home-valuation" />
+      <input type="hidden" name="page_name" value="buyer-tools-valuation" />
+      <input type="hidden" name="form_type" value="home-valuation-request" />
+      <input type="hidden" name="lead_source" value="website-buyer-tools" />
+      <input type="hidden" name="client_name" value="Ashley Smith" />
+      <p className="hidden"><label>Don&apos;t fill this out: <input name="bot-field" onChange={onChange} /></label></p>
+
       <h3 className="font-serif text-2xl text-navy">Request My Home Valuation</h3>
       <p className="text-navy/70 mt-1">A thoughtful, hand-prepared estimate from Ashley — not a generic algorithm.</p>
       <div className="grid sm:grid-cols-2 gap-4 mt-6">
@@ -840,19 +923,29 @@ function HomeValuation() {
         <div><label className="label">Email</label><input name="email" required type="email" className="input" onChange={onChange} /></div>
         <div><label className="label">Phone</label><input name="phone" className="input" onChange={onChange} /></div>
         <div><label className="label">Property address</label><input name="address" required className="input" onChange={onChange} /></div>
+        <div><label className="label">Property type</label>
+          <select name="property_type" className="input" onChange={onChange}>
+            <option value="">Select</option><option>Single Family</option><option>Townhouse</option><option>Condo</option><option>Multi-Family</option><option>Land / Lot</option><option>Other</option>
+          </select>
+        </div>
+        <div><label className="label">Beds / Baths</label><input name="beds_baths" className="input" onChange={onChange} placeholder="e.g. 3 bed / 2 bath" /></div>
+        <div><label className="label">Approximate square footage</label><input name="sqft" className="input" onChange={onChange} placeholder="e.g. 2,200" /></div>
         <div><label className="label">Property condition</label>
           <select name="condition" className="input" onChange={onChange}>
             <option value="">Select</option><option>Excellent</option><option>Good</option><option>Average</option><option>Needs work</option>
           </select>
         </div>
+        <div className="sm:col-span-2"><label className="label">Updates or renovations made</label><input name="updates" className="input" onChange={onChange} placeholder="e.g. new kitchen, roof replaced 2023" /></div>
         <div><label className="label">Timeline to sell</label>
           <select name="timeline" className="input" onChange={onChange}>
             <option value="">Select</option><option>Immediately</option><option>1–3 months</option><option>3–6 months</option><option>6–12 months</option><option>Just curious</option>
           </select>
         </div>
+        <div><label className="label">Desired price, if known</label><input name="desired_price" className="input" onChange={onChange} placeholder="Optional" /></div>
         <div className="sm:col-span-2"><label className="label">Notes</label><textarea name="notes" rows={3} className="input" onChange={onChange} /></div>
       </div>
-      <button className="btn btn-primary mt-6">Request My Home Valuation</button>
+      <button type="submit" className="btn btn-primary mt-6">Request My Home Valuation</button>
+      {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
     </form>
   );
 }

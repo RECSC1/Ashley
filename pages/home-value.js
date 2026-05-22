@@ -115,14 +115,14 @@ export default function HomeValuePage() {
             </div>
           ) : (
             <form
-              name="home-value-request"
+              name="home-value"
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
               onSubmit={onSubmit}
               className="card p-8 md:p-10"
             >
-              <input type="hidden" name="form-name" value="home-value-request" />
+              <input type="hidden" name="form-name" value="home-value" />
               <input type="hidden" name="page_name" value="home-value" />
               <input type="hidden" name="form_type" value="home-value-review-request" />
               <input type="hidden" name="lead_source" value="website-home-value-page" />
