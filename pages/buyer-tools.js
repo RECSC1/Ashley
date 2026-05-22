@@ -607,205 +607,133 @@ function NeighborhoodCompare() {
 }
 
 /* -------- TOOL 5: COMMUTE TIME FINDER -------- */
-// Calls a Netlify Function that integrates with a real routing API
-// (Google Maps Distance Matrix or Mapbox Directions). If no API key is
-// configured, the UI shows a clear "live data pending" message and
-// NEVER invents commute times or distances.
 
 function CommuteFinder() {
-  const [data, setData] = useState({ origin: '', dest: '', mode: 'Driving', depart: 'Leave now' });
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [leadSubmitted, setLeadSubmitted] = useState(false);
-  const [lead, setLead] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [data, setData] = useState({});
+  const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
 
-  const calculate = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    setErrorMsg(null);
-    setResult(null);
-    setLoading(true);
-    try {
-      const res = await fetch('/.netlify/functions/commute', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
-      logEvent(KEYS.COMMUTE, { ...data, result: json });
-      setResult(json);
-    } catch (err) {
-      setErrorMsg('Could not reach the commute service. Please try again.');
-      logEvent(KEYS.COMMUTE, { ...data, error: err.message });
-    } finally {
-      setLoading(false);
-    }
+    const formData = new FormData(e.target);
+    setError('');
+
+    fetch('/netlify-forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Submission failed');
+        logEvent(KEYS.COMMUTE, { lead: true, ...data });
+        setSubmitted(true);
+      })
+      .catch(() => setError('Something went wrong. Please try again or contact Ashley directly.'));
   };
 
-  const submitLead = (e) => {
-    e.preventDefault();
-    logEvent(KEYS.COMMUTE, { lead: true, ...lead, origin: data.origin, dest: data.dest });
-    setLeadSubmitted(true);
-  };
-
-  const live = result && result.configured && !result.error;
-  const pending = result && (!result.configured || result.error);
+  if (submitted) {
+    return (
+      <div className="max-w-2xl mx-auto">
+        <div className="card text-center py-12">
+          <p className="font-serif text-2xl text-navy mb-4">Your commute-priority request has been sent.</p>
+          <p className="text-navy/80 leading-relaxed">
+            Ashley can help you compare Chapel Hill, Carrboro, Durham, Raleigh, Cary, Hillsborough,
+            Pittsboro, and surrounding Triangle communities based on your daily routine, commute,
+            lifestyle, and home search goals.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="grid lg:grid-cols-12 gap-8">
-      <form onSubmit={calculate} className="card lg:col-span-5">
+      <form onSubmit={onSubmit} className="card lg:col-span-7">
+        <input type="hidden" name="form-name" value="commute-time" />
+        <input type="hidden" name="page_name" value="buyer-tools" />
+        <input type="hidden" name="form_type" value="commute-priority-intake" />
+        <input type="hidden" name="lead_source" value="Commute Time Finder" />
+        <input type="hidden" name="client_name" value="Ashley Smith" />
+        <p className="hidden"><label>Don&#8217;t fill this out: <input name="bot-field" /></label></p>
+
         <h3 className="font-serif text-2xl text-navy mb-1">Commute Time Finder</h3>
-        <p className="text-navy/70 text-sm mb-5">Estimate the commute between two Triangle addresses — invaluable for relocation, UNC, Duke, and RTP buyers.</p>
+        <p className="text-navy/70 text-sm mb-5">
+          Tell Ashley about your commute priorities and she will help you find the right area
+          in the Triangle based on your daily routine, workplace, and lifestyle.
+        </p>
+
+        {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+
         <div className="space-y-4">
           <div><label className="label">Starting address</label>
-            <input required className="input" value={data.origin} onChange={(e) => setData({ ...data, origin: e.target.value })} placeholder="Home address" />
+            <input name="origin" required className="input" onChange={onChange} placeholder="Home address or current location" />
           </div>
           <div><label className="label">Destination address</label>
-            <input required className="input" value={data.dest} onChange={(e) => setData({ ...data, dest: e.target.value })} placeholder="Work, school, hospital" />
+            <input name="destination" required className="input" onChange={onChange} placeholder="Work, school, hospital" />
           </div>
-          <div><label className="label">Travel mode</label>
-            <select className="input" value={data.mode} onChange={(e) => setData({ ...data, mode: e.target.value })}>
-              <option>Driving</option><option>Walking</option><option>Biking</option><option>Transit</option>
-            </select>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div><label className="label">Travel mode</label>
+              <select name="travel_mode" className="input" onChange={onChange}>
+                <option value="Driving">Driving</option>
+                <option value="Walking">Walking</option>
+                <option value="Biking">Biking</option>
+                <option value="Transit">Transit</option>
+              </select>
+            </div>
+            <div><label className="label">Departure timing</label>
+              <select name="departure_timing" className="input" onChange={onChange}>
+                <option value="Morning commute">Morning commute</option>
+                <option value="Afternoon commute">Afternoon commute</option>
+                <option value="Evening commute">Evening commute</option>
+                <option value="Flexible">Flexible</option>
+              </select>
+            </div>
           </div>
-          <div><label className="label">Departure time (optional)</label>
-            <select className="input" value={data.depart} onChange={(e) => setData({ ...data, depart: e.target.value })}>
-              <option>Leave now</option><option>Morning commute</option><option>Afternoon commute</option><option>Evening commute</option>
-            </select>
+          <div><label className="label">Ideal maximum commute time</label>
+            <input name="ideal_max_commute" className="input" onChange={onChange} placeholder="e.g. under 25 minutes" />
+          </div>
+          <div><label className="label">Preferred areas</label>
+            <input name="preferred_areas" className="input" onChange={onChange} placeholder="e.g. Chapel Hill, Carrboro, Durham" />
+          </div>
+          <hr className="border-taupe/20 my-2" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div><label className="label">Name</label>
+              <input name="name" required className="input" onChange={onChange} />
+            </div>
+            <div><label className="label">Email</label>
+              <input name="email" required type="email" className="input" onChange={onChange} />
+            </div>
+          </div>
+          <div><label className="label">Phone (optional)</label>
+            <input name="phone" className="input" onChange={onChange} />
+          </div>
+          <div><label className="label">Notes (optional)</label>
+            <textarea name="notes" rows={3} className="input" onChange={onChange} placeholder="Anything else Ashley should know about your commute needs" />
           </div>
         </div>
-        <button className="btn btn-primary mt-5" disabled={loading}>{loading ? 'Calculating…' : 'Calculate Commute'}</button>
-        <p className="text-[11px] text-taupe mt-3">
-          Commute times vary based on route, time of day, traffic, road closures, and weather.
-          Estimates are for planning purposes only.
-        </p>
+        <button className="btn btn-primary mt-5">Send Commute Priorities to Ashley</button>
       </form>
 
-      <div className="lg:col-span-7 space-y-6">
-        {errorMsg && (
-          <div className="card border border-dustyblush/40 bg-dustyblush/10 text-navy">
-            <p className="font-serif text-xl">Something went wrong</p>
-            <p className="text-sm text-navy/80 mt-1">{errorMsg}</p>
-          </div>
-        )}
+      <div className="lg:col-span-5 space-y-6">
+        <div className="card">
+          <p className="font-serif text-xl text-navy">Why commute time matters</p>
+          <p className="mt-2 text-navy/70 leading-relaxed">
+            Commute time can completely change which area feels right. Ashley can help you compare
+            Chapel Hill, Carrboro, Durham, Cary, Raleigh, Hillsborough, and Pittsboro based on your
+            work, school, lifestyle, and daily routine.
+          </p>
+          <a href="/properties" className="btn btn-primary mt-5">Browse Homes in the Triangle</a>
+        </div>
 
-        {live && (
-          <div className="card bg-navy text-ivory">
-            <p className="eyebrow text-gold mb-2">Live Estimate {result.traffic_aware ? '· Traffic-Aware' : ''}</p>
-            <p className="font-serif text-5xl">
-              {result.duration_text || `${result.minutes} min`}{' '}
-              <span className="text-2xl text-ivory/70">by {String(result.mode).toLowerCase()}</span>
-            </p>
-            <p className="mt-2 text-ivory/80">
-              Approximate distance: <span className="font-medium">{result.distance_text || `${result.miles} miles`}</span>
-            </p>
-            <div className="grid sm:grid-cols-2 gap-3 mt-6 text-sm">
-              <div className="p-4 rounded-xl bg-ivory/5 border border-ivory/10">
-                <p className="text-[10px] uppercase tracking-widewide text-gold mb-1">From</p>
-                <p className="text-ivory/90">{result.origin}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-ivory/5 border border-ivory/10">
-                <p className="text-[10px] uppercase tracking-widewide text-gold mb-1">To</p>
-                <p className="text-ivory/90">{result.dest}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-ivory/5 border border-ivory/10">
-                <p className="text-[10px] uppercase tracking-widewide text-gold mb-1">Departure</p>
-                <p className="text-ivory/90">{result.depart}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-ivory/5 border border-ivory/10">
-                <p className="text-[10px] uppercase tracking-widewide text-gold mb-1">Route Summary</p>
-                <p className="text-ivory/90">{result.summary || (result.provider === 'google' ? 'Google Distance Matrix' : 'Mapbox Directions')}</p>
-              </div>
-            </div>
-            <p className="text-[11px] text-ivory/60 mt-5">
-              Powered by {result.provider === 'google' ? 'Google Maps Distance Matrix API' : 'Mapbox Directions API'}.
-              Commute times vary based on route, time of day, traffic, road closures, and weather.
-              Estimates are for planning purposes only.
-            </p>
-          </div>
-        )}
-
-        {pending && (
-          <div className="card border border-gold/40">
-            <p className="eyebrow text-gold mb-2">Live commute data not yet connected</p>
-            <p className="font-serif text-2xl text-navy">
-              Live commute estimates require map / directions integration.
-            </p>
-            <p className="text-navy/80 mt-2">
-              This tool is currently prepared for live commute data and will display accurate drive times once connected.
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-3 mt-5 text-sm">
-              <div className="p-4 rounded-xl bg-ivory border border-taupe/30">
-                <p className="text-[10px] uppercase tracking-widewide text-taupe mb-1">Starting address</p>
-                <p className="text-navy">{result.origin}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-ivory border border-taupe/30">
-                <p className="text-[10px] uppercase tracking-widewide text-taupe mb-1">Destination address</p>
-                <p className="text-navy">{result.dest}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-ivory border border-taupe/30">
-                <p className="text-[10px] uppercase tracking-widewide text-taupe mb-1">Travel mode</p>
-                <p className="text-navy">{result.mode}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-ivory border border-taupe/30">
-                <p className="text-[10px] uppercase tracking-widewide text-taupe mb-1">Status</p>
-                <p className="text-navy">Real-time commute data pending API integration</p>
-              </div>
-            </div>
-
-            <a href="/contact" className="btn btn-primary mt-5">Ask Ashley to help compare commute-friendly areas</a>
-
-            <p className="text-[11px] text-taupe mt-4">
-              Commute times vary based on route, time of day, traffic, road closures, and weather.
-              Estimates are for planning purposes only.
-            </p>
-          </div>
-        )}
-
-        {(live || pending) && (
-          <div className="card">
-            <p className="font-serif text-xl text-navy">Why commute time matters</p>
-            <p className="mt-2 text-navy/70 leading-relaxed">
-              Commute time can completely change which area feels right. Ashley can help you compare
-              Chapel Hill, Carrboro, Durham, Cary, Raleigh, Hillsborough, and Pittsboro based on your
-              work, school, lifestyle, and daily routine.
-            </p>
-            <a href="/properties" className="btn btn-primary mt-5">Find Homes That Fit Your Commute</a>
-          </div>
-        )}
-
-        {(live || pending) && !leadSubmitted && (
-          <form onSubmit={submitLead} className="card">
-            <p className="font-serif text-2xl text-navy">Want Ashley to plan around this commute?</p>
-            <p className="text-navy/70 mt-1 text-sm">Share a few details and Ashley will build a tailored list.</p>
-            <div className="grid sm:grid-cols-2 gap-4 mt-5">
-              <div><label className="label">Name</label><input required className="input" onChange={(e) => setLead({ ...lead, name: e.target.value })} /></div>
-              <div><label className="label">Email</label><input required type="email" className="input" onChange={(e) => setLead({ ...lead, email: e.target.value })} /></div>
-              <div><label className="label">Phone (optional)</label><input className="input" onChange={(e) => setLead({ ...lead, phone: e.target.value })} /></div>
-              <div><label className="label">Ideal commute time</label><input className="input" placeholder="e.g. under 25 min" onChange={(e) => setLead({ ...lead, ideal_time: e.target.value })} /></div>
-              <div className="sm:col-span-2"><label className="label">Work / school destination</label><input className="input" onChange={(e) => setLead({ ...lead, destination: e.target.value })} /></div>
-              <div className="sm:col-span-2"><label className="label">Preferred areas</label><input className="input" placeholder="e.g. Chapel Hill, Carrboro" onChange={(e) => setLead({ ...lead, preferred_areas: e.target.value })} /></div>
-              <div className="sm:col-span-2"><label className="label">Notes</label><textarea rows={3} className="input" onChange={(e) => setLead({ ...lead, notes: e.target.value })} /></div>
-            </div>
-            <button className="btn btn-primary mt-5">Send to Ashley</button>
-          </form>
-        )}
-
-        {leadSubmitted && (
-          <div className="card text-center py-10">
-            <p className="font-serif text-2xl text-navy">Sent — Ashley will follow up personally.</p>
-          </div>
-        )}
-
-        {!result && !errorMsg && (
-          <div className="card h-full flex items-center justify-center text-center text-navy/60 min-h-[260px]">
-            <div>
-              <p className="font-serif text-2xl text-navy mb-2">Estimate a Triangle commute</p>
-              <p>Enter two addresses to see a real, traffic-aware drive time once map integration is connected.</p>
-            </div>
-          </div>
-        )}
+        <div className="card border border-gold/40 bg-gold/5">
+          <p className="eyebrow text-gold mb-2">About this tool</p>
+          <p className="text-navy/80 text-sm leading-relaxed">
+            Real-time commute estimates require live map/directions integration, such as Google Maps
+            Routes API or a similar routing service. Until that is connected, this tool captures your
+            commute priorities so Ashley can help guide the search personally.
+          </p>
+        </div>
       </div>
     </div>
   );
