@@ -11,7 +11,7 @@ export default function Document() {
           rel="stylesheet"
         />
         <meta name="theme-color" content="#F8F4EF" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#14213D" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#1C1C1C" media="(prefers-color-scheme: dark)" />
         {/* Google Analytics / Search Console placeholder */}
         {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> */}
       </Head>
