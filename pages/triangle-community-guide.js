@@ -99,7 +99,7 @@ export default function TriangleCommunityGuide() {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
             {COMMUNITIES.map((community) => (
-              <article key={community.name} className="card flex flex-col">
+              <article key={community.name} id={community.name.toLowerCase().replace(/\s+/g, '-')} className="card flex flex-col scroll-mt-24">
                 <p className="font-serif text-2xl text-navy">{community.name}</p>
                 <div className="space-y-3 mt-4 text-sm text-navy/80 flex-1">
                   <p><span className="font-medium text-navy">General buyer profile:</span> {community.buyer}</p>
@@ -110,6 +110,17 @@ export default function TriangleCommunityGuide() {
                 <a href="/contact" className="btn btn-primary mt-6">Ask Ashley about this area</a>
               </article>
             ))}
+          </div>
+
+          <div id="greater-triangle" className="card mt-8 scroll-mt-24">
+            <p className="font-serif text-2xl text-navy">Greater Triangle</p>
+            <div className="space-y-3 mt-4 text-sm text-navy/80">
+              <p><span className="font-medium text-navy">General buyer profile:</span> Buyers exploring the full Triangle region who want to compare communities, commutes, and lifestyle options before narrowing their search.</p>
+              <p><span className="font-medium text-navy">Lifestyle notes:</span> The Triangle offers a range of settings from urban energy to small-town charm, all connected by major employers, universities, and a growing cultural scene.</p>
+              <p><span className="font-medium text-navy">Housing style notes:</span> Everything from downtown condos and historic bungalows to master-planned communities, custom estates, and land-forward properties.</p>
+              <p><span className="font-medium text-navy">Best fit:</span> Ideal for relocation buyers, flexible professionals, and anyone who wants expert guidance comparing communities across the region.</p>
+            </div>
+            <a href="/contact" className="btn btn-primary mt-6">Ask Ashley about the Triangle</a>
           </div>
 
           <div className="card mt-8">
