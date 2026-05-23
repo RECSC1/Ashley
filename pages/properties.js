@@ -3,9 +3,21 @@ import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 import { logEvent, KEYS } from '../lib/store';
 
+/*
+ * IDX INTEGRATION NOTE (for developer reference):
+ * If IDX is added later, Doorify MLS rules require:
+ * - Proper MLS attribution and copyright notices on every page displaying IDX data
+ * - Brokerage branding displayed alongside IDX results
+ * - Data update frequency disclosed and maintained per Doorify requirements
+ * - IDX display registration with Doorify MLS
+ * - Approved IDX disclaimers on all pages displaying listing data
+ * - All placeholder content below must be replaced with live, attributed IDX feeds
+ * Do not display Doorify MLS copyright or IDX language unless the site is actively displaying IDX data.
+ */
+
 const TABS = [
-  { id: 'active', label: 'Active Listings' },
-  { id: 'sold', label: 'Recently Sold' },
+  { id: 'active', label: 'Current Listings (Placeholder)' },
+  { id: 'sold', label: 'Recent Sales (Placeholder)' },
   { id: 'communities', label: 'Featured Communities' },
   { id: 'alerts', label: 'Property Alerts' },
 ];
@@ -125,7 +137,7 @@ export default function Properties() {
     <>
       <SEO
         title="Chapel Hill & Triangle Homes | Ashley Smith Realtor®"
-        description="Browse Chapel Hill, Carrboro, Durham, Cary, and Raleigh homes for sale. Active listings, recent sales, featured Triangle communities, and personalized property alerts from Ashley Smith, Realtor® with Compass North Carolina."
+        description="Explore Chapel Hill, Carrboro, Durham, Cary, and Raleigh real estate with Ashley Smith, Realtor® with Compass North Carolina. Featured Triangle communities, personalized property alerts, and concierge listing previews."
         path="/properties"
       />
 
@@ -133,8 +145,8 @@ export default function Properties() {
         <div className="container-wide">
           <SectionHeader
             eyebrow="Properties"
-            title="Active listings, recent sales & featured Triangle communities"
-            subtitle="Listings and recent sales are concierge previews. Ashley will share current availability and next steps directly after you reach out."
+            title="Concierge listing previews & featured Triangle communities"
+            subtitle="The listings and recent sales shown below are placeholders. Listings and recent sales will be updated once approved property data or IDX integration is available. Ashley will share current availability and next steps directly after you reach out."
           />
 
           {/* TABS */}
@@ -155,14 +167,28 @@ export default function Properties() {
           </div>
 
           {tab === 'active' && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PLACEHOLDER_LISTINGS.map((l, i) => <ListingCard l={l} key={i} />)}
-            </div>
+            <>
+              <div className="rounded-xl border border-gold/40 bg-gold/5 p-4 mb-6">
+                <p className="text-sm text-navy/80">
+                  <strong>Placeholder listings.</strong> The property cards below are layout placeholders only and do not represent real active listings or live MLS/IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {PLACEHOLDER_LISTINGS.map((l, i) => <ListingCard l={l} key={i} />)}
+              </div>
+            </>
           )}
           {tab === 'sold' && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PLACEHOLDER_SOLD.map((l, i) => <ListingCard l={l} key={i} />)}
-            </div>
+            <>
+              <div className="rounded-xl border border-gold/40 bg-gold/5 p-4 mb-6">
+                <p className="text-sm text-navy/80">
+                  <strong>Placeholder sales data.</strong> The cards below are layout placeholders only and do not represent real recent sales or live MLS/IDX data. Recent sales will be updated once approved property data or IDX integration is available.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {PLACEHOLDER_SOLD.map((l, i) => <ListingCard l={l} key={i} />)}
+              </div>
+            </>
           )}
           {tab === 'communities' && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

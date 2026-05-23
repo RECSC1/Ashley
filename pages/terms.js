@@ -21,9 +21,22 @@ export default function Terms() {
               a licensed professional for transaction-specific advice.
             </p>
             <p>
+              This website does not currently display live MLS or IDX data. All property listing
+              cards, recent sales sections, and market metrics shown on this site are placeholders
+              only and do not represent real active listings, completed sales, or live market data.
+              Listings and recent sales will be updated once approved property data or IDX
+              integration is available.
+            </p>
+            <p>
+              Any home valuation request is for general informational purposes only and is not an
+              appraisal, CMA, broker price opinion, or guarantee of market value. Information
+              provided through website tools is for general guidance only and should be
+              independently verified.
+            </p>
+            <p>
               Compass North Carolina, LLC supports Equal Housing Opportunity and complies with all
-              applicable real estate laws and regulations. [Final compliance and legal language
-              should be reviewed and approved by Compass North Carolina prior to launch.]
+              applicable real estate laws and regulations. Compass and Doorify MLS compliance
+              language pending final approval.
             </p>
           </div>
         </div>

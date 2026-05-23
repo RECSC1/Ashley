@@ -179,6 +179,9 @@ export default function HomeValuePage() {
               <p className="text-[11px] text-taupe mt-4">
                 Most homeowners are surprised by how much their home value can shift in 12–18 months based on buyer demand, nearby competition, updates, presentation, and timing.
               </p>
+              <p className="text-[11px] text-taupe mt-2">
+                Any home valuation request is for general informational purposes only and is not an appraisal, CMA, broker price opinion, or guarantee of market value. Information provided through website tools is for general guidance only and should be independently verified.
+              </p>
             </form>
           )}
         </div>

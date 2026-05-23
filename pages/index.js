@@ -67,10 +67,10 @@ const TOOLS = [
 ];
 
 const LISTINGS = [
-  { tag: 'Active Listing', title: '[Current listing data]', city: 'Chapel Hill, NC', price: '$—' },
-  { tag: 'Recently Sold', title: '[Recent sale data]', city: 'Carrboro, NC', price: '$—' },
-  { tag: 'Coming Soon', title: '[Coming soon]', city: 'Durham, NC', price: '$—' },
-  { tag: 'Buyer Success Story', title: '[Approved client story]', city: 'Cary, NC', price: '' },
+  { tag: 'Placeholder', title: '[Listing data pending]', city: 'Chapel Hill, NC', price: '$—' },
+  { tag: 'Placeholder', title: '[Sale data pending]', city: 'Carrboro, NC', price: '$—' },
+  { tag: 'Placeholder', title: '[Coming soon]', city: 'Durham, NC', price: '$—' },
+  { tag: 'Client Story (Pending)', title: '[Approved client story]', city: 'Cary, NC', price: '' },
 ];
 
 const TESTIMONIALS = Array.from({ length: 3 }).map((_, i) => ({
@@ -293,8 +293,8 @@ export default function Home() {
         <div className="container-wide">
           <SectionHeader
             eyebrow="Properties"
-            title="Active listings & recent stories"
-            subtitle="Listings and recent sales will be updated as Ashley's approved data or IDX connection becomes available."
+            title="Listing previews & client stories"
+            subtitle="The property cards below are placeholders only and do not represent live MLS or IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available."
           />
           <div className="mt-6 rounded-2xl border border-taupe/30 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm md:text-base text-navy/80">
@@ -367,8 +367,8 @@ export default function Home() {
             <h2 className="font-serif text-4xl md:text-5xl">Chapel Hill & Triangle market pulse</h2>
             <div className="divider-thin mt-6 mx-auto" />
             <p className="mt-4 text-ivory/70">
+              The market metrics below are placeholders only and do not represent live market data.
               Live metrics will populate this section once a market data feed is connected.
-              Numbers below are placeholders.
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
@@ -428,7 +428,7 @@ export default function Home() {
               Schedule a Consultation
             </Link>
             <Link href="/properties" className="btn btn-outline">
-              Start Your Home Search
+              Explore Properties
             </Link>
           </div>
         </div>

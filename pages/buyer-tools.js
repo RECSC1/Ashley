@@ -723,7 +723,7 @@ function CommuteFinder() {
             Chapel Hill, Carrboro, Durham, Cary, Raleigh, Hillsborough, and Pittsboro based on your
             work, school, lifestyle, and daily routine.
           </p>
-          <a href="/properties" className="btn btn-primary mt-5">Browse Homes in the Triangle</a>
+          <a href="/properties" className="btn btn-primary mt-5">Explore Properties</a>
         </div>
 
         <div className="card border border-gold/40 bg-gold/5">
@@ -874,6 +874,9 @@ function HomeValuation() {
       </div>
       <button type="submit" className="btn btn-primary mt-6">Request My Home Valuation</button>
       {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
+      <p className="text-[11px] text-taupe mt-4">
+        Any home valuation request is for general informational purposes only and is not an appraisal, CMA, broker price opinion, or guarantee of market value. Information provided through website tools is for general guidance only and should be independently verified.
+      </p>
     </form>
   );
 }
