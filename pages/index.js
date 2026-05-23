@@ -238,7 +238,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
             {AREAS.map((a) => (
               <Link
                 key={a.name}
