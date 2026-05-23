@@ -46,14 +46,14 @@ const SERVICES = [
 ];
 
 const AREAS = [
-  { name: 'Chapel Hill', desc: 'Historic charm, UNC culture, and refined neighborhoods.' },
-  { name: 'Carrboro', desc: 'Walkable, artistic, and full of independent character.' },
-  { name: 'Durham', desc: 'Innovation, food culture, and a thriving creative community.' },
-  { name: 'Hillsborough', desc: 'Storybook downtown with riverside calm and quiet luxury.' },
-  { name: 'Pittsboro', desc: 'Rolling land, equestrian estates, and a slower pace of life.' },
-  { name: 'Cary', desc: 'Family-friendly neighborhoods and exceptional schools.' },
-  { name: 'Raleigh', desc: 'Capital-city energy with leafy, established neighborhoods.' },
-  { name: 'Greater Triangle', desc: 'Connecting it all — a region of opportunity and beauty.' },
+  { name: 'Chapel Hill', slug: 'chapel-hill', desc: 'Historic charm, UNC culture, and refined neighborhoods.' },
+  { name: 'Carrboro', slug: 'carrboro', desc: 'Walkable, artistic, and full of independent character.' },
+  { name: 'Durham', slug: 'durham', desc: 'Innovation, food culture, and a thriving creative community.' },
+  { name: 'Hillsborough', slug: 'hillsborough', desc: 'Storybook downtown with riverside calm and quiet luxury.' },
+  { name: 'Pittsboro', slug: 'pittsboro', desc: 'Rolling land, equestrian estates, and a slower pace of life.' },
+  { name: 'Cary', slug: 'cary', desc: 'Family-friendly neighborhoods and exceptional schools.' },
+  { name: 'Raleigh', slug: 'raleigh', desc: 'Capital-city energy with leafy, established neighborhoods.' },
+  { name: 'Greater Triangle', slug: 'greater-triangle', desc: 'Connecting it all — a region of opportunity and beauty.' },
 ];
 
 const TOOLS = [
@@ -242,7 +242,7 @@ export default function Home() {
             {AREAS.map((a) => (
               <Link
                 key={a.name}
-                href="#service-area-grid"
+                href={`/triangle-community-guide#${a.slug}`}
                 className="group block p-6 rounded-2xl bg-ivory border border-taupe/20 hover:border-gold transition shadow-ring"
               >
                 <p className="font-serif text-2xl text-navy mb-2 group-hover:text-gold transition">
@@ -250,7 +250,7 @@ export default function Home() {
                 </p>
                 <p className="text-sm text-navy/70 leading-relaxed">{a.desc}</p>
                 <p className="mt-4 text-[10px] uppercase tracking-widewide text-taupe">
-                  Explore neighborhood →
+                  View Community Guide →
                 </p>
               </Link>
             ))}
