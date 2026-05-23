@@ -182,7 +182,7 @@ export default function Resources() {
               <div className="lg:col-span-2 card">
                 <p className="eyebrow mb-3">Triangle Market</p>
                 <p className="font-serif text-3xl text-navy">A thoughtful look at where the market is headed.</p>
-                <p className="text-navy/70 mt-3">Live market metrics will populate this section once a market data feed is connected. The placeholders below give a sense of layout.</p>
+                <p className="text-navy/70 mt-3">The market metrics below are placeholders only and do not represent live market data or MLS/IDX information. Live market metrics will populate this section once a market data feed is connected.</p>
                 <div className="grid sm:grid-cols-3 gap-4 mt-6">
                   {['Median Price', 'Days on Market', 'Inventory'].map((m) => (
                     <div key={m} className="rounded-xl bg-ivory p-5 border border-taupe/30">

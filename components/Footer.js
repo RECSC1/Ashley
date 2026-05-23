@@ -41,7 +41,7 @@ export default function Footer() {
             <li><a href="https://www.compass.com/agents/ashley-smith/" target="_blank" rel="noopener noreferrer" className="hover:text-gold">Compass Profile</a></li>
           </ul>
           <p className="text-xs text-ivory/50 mt-6 leading-relaxed">
-            [Compass compliance language placeholder]
+            Compass and Doorify MLS compliance language pending final approval. This website does not currently display live MLS or IDX data. Information provided through website tools is for general guidance only and should be independently verified.
           </p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function Footer() {
             <Link href="/privacy" className="hover:text-gold">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gold">Terms</Link>
           </div>
-          <p className="opacity-70">Equal Housing Opportunity · [Compliance placeholder]</p>
+          <p className="opacity-70">Equal Housing Opportunity · Compass and Doorify MLS compliance language pending final approval.</p>
         </div>
       </div>
     </footer>
