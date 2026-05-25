@@ -53,6 +53,9 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-wide py-8">
           <p className="text-[11px] text-white/50 leading-relaxed max-w-4xl">
+            This website does not currently display live MLS or IDX data. All property listing cards, recent sales sections, and market metrics shown on this site are placeholders only and do not represent real active listings, completed sales, or live market data. Listings and recent sales will be updated once approved property data or IDX integration is available. Information provided through website tools is for general guidance only and should be independently verified.
+          </p>
+          <p className="text-[11px] text-white/50 leading-relaxed max-w-4xl mt-3">
             Ashley Smith is a licensed real estate agent affiliated with Compass, a licensed real estate broker and abides by Equal Housing Opportunity laws. All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. This is not intended to solicit property already listed. Photos may be virtually staged or digitally enhanced and may not reflect actual property conditions.
           </p>
         </div>
