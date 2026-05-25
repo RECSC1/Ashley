@@ -35,7 +35,7 @@ function GuideCard({ g }) {
   };
   return (
     <div className="card flex flex-col">
-      <div className="aspect-[5/3] rounded-xl bg-gradient-to-br from-blush/30 via-warmwhite to-sage/30 mb-5 flex items-center justify-center">
+      <div className="aspect-[5/3] rounded-xl bg-gradient-to-br from-ivory via-warmwhite to-ivory mb-5 flex items-center justify-center">
         <span className="text-[10px] uppercase tracking-widewide text-taupe">[Guide cover]</span>
       </div>
       <p className="font-serif text-2xl text-navy">{g.title}</p>
@@ -127,7 +127,7 @@ export default function Resources() {
             subtitle="Articles, guides, and market updates — written for thoughtful Triangle buyers and sellers."
           />
 
-          <div className="card bg-warmwhite border border-taupe/30 mb-8">
+          <div className="card bg-warmwhite border border-navy/10 mb-8">
             <p className="font-serif text-2xl text-navy">Moving to Chapel Hill or the Triangle?</p>
             <p className="text-sm text-navy/70 mt-2">Not sure where to start? Take the Triangle Relocation Match Quiz and Ashley will follow up with personalized neighborhood and next-step guidance.</p>
             <div className="flex flex-wrap gap-3 mt-4">
@@ -136,7 +136,7 @@ export default function Resources() {
             </div>
           </div>
 
-          <div className="flex gap-2 border-b border-taupe/30 mb-8">
+          <div className="flex gap-2 border-b border-navy/10 mb-8">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
                 className={`px-5 py-3 text-sm border-b-2 transition ${tab === t.id ? 'border-gold text-navy font-medium' : 'border-transparent text-navy/60 hover:text-navy'}`}>
@@ -155,13 +155,13 @@ export default function Resources() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filtered.map((a, i) => (
                   <article key={i} className="card flex flex-col">
-                    <div className="aspect-video rounded-xl bg-gradient-to-br from-sage/30 via-warmwhite to-blush/30 mb-5 flex items-center justify-center">
+                    <div className="aspect-video rounded-xl bg-gradient-to-br from-ivory via-warmwhite to-ivory mb-5 flex items-center justify-center">
                       <span className="text-[10px] uppercase tracking-widewide text-taupe">[Article image]</span>
                     </div>
-                    <span className="badge bg-gold/15 text-gold self-start mb-3">{a.cat}</span>
+                    <span className="badge bg-gold/10 text-gold self-start mb-3">{a.cat}</span>
                     <p className="font-serif text-xl text-navy">{a.title}</p>
                     <p className="text-sm text-navy/70 mt-2 flex-1">{a.excerpt}</p>
-                    <div className="flex items-center justify-between mt-5 pt-4 border-t border-taupe/20 text-[11px] uppercase tracking-widewide text-taupe">
+                    <div className="flex items-center justify-between mt-5 pt-4 border-t border-navy/10 text-[11px] uppercase tracking-widewide text-taupe">
                       <span>{a.date}</span><span>{a.read} read</span>
                     </div>
                     <a href="/contact" className="btn btn-outline mt-4 text-xs">Request This Article</a>
@@ -185,7 +185,7 @@ export default function Resources() {
                 <p className="text-navy/70 mt-3">The market metrics below are placeholders only and do not represent live market data or MLS/IDX information. Live market metrics will populate this section once a market data feed is connected.</p>
                 <div className="grid sm:grid-cols-3 gap-4 mt-6">
                   {['Median Price', 'Days on Market', 'Inventory'].map((m) => (
-                    <div key={m} className="rounded-xl bg-ivory p-5 border border-taupe/30">
+                    <div key={m} className="rounded-xl bg-ivory p-5 border border-navy/10">
                       <p className="font-serif text-3xl text-gold">$—</p>
                       <p className="text-xs uppercase tracking-widewide text-taupe mt-2">{m}</p>
                     </div>

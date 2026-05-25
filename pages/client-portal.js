@@ -46,7 +46,7 @@ function PortalView() {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2 border-b border-taupe/30 mb-8">
+      <div className="flex flex-wrap gap-2 border-b border-navy/10 mb-8">
         {[
           ['overview', 'Overview'],
           ['documents', 'Documents'],
@@ -113,7 +113,7 @@ function PortalView() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {HOME_MATCHES.map((m, i) => (
             <div key={i} className="card p-0 overflow-hidden">
-              <div className="aspect-[4/3] bg-gradient-to-br from-blush/30 via-warmwhite to-sage/30 flex items-center justify-center">
+              <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
                 <span className="text-[10px] uppercase tracking-widewide text-taupe">[Property image]</span>
               </div>
               <div className="p-5">
@@ -132,7 +132,7 @@ function PortalView() {
           <div className="space-y-3 mb-5 max-h-80 overflow-y-auto">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.from === 'client' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${m.from === 'client' ? 'bg-navy text-ivory' : 'bg-ivory border border-taupe/30 text-navy'}`}>
+                <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${m.from === 'client' ? 'bg-navy text-ivory' : 'bg-ivory border border-navy/10 text-navy'}`}>
                   <p>{m.text}</p>
                   <p className="text-[10px] uppercase tracking-widewide opacity-60 mt-2">{m.at}</p>
                 </div>

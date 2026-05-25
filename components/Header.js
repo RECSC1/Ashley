@@ -39,8 +39,8 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-ivory/95 backdrop-blur-md shadow-soft'
-          : 'bg-ivory/85 backdrop-blur-sm'
+          ? 'bg-white/95 backdrop-blur-md shadow-soft'
+          : 'bg-white/85 backdrop-blur-sm'
       }`}
     >
       <div className="container-wide flex items-center justify-between gap-3 py-3 md:py-4">
@@ -52,7 +52,7 @@ export default function Header() {
           <span className="font-serif text-xl sm:text-2xl text-navy group-hover:text-gold transition truncate">
             Ashley Smith
           </span>
-          <span className="text-[10px] uppercase tracking-widewide text-taupe truncate">
+          <span className="text-[10px] uppercase tracking-widewide text-navy/60 truncate">
             Realtor® · Compass North Carolina
           </span>
         </Link>
@@ -99,14 +99,14 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-taupe/30 bg-warmwhite max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="lg:hidden border-t border-navy/10 bg-white max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="container-wide py-4 flex flex-col gap-1">
             {NAV.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="py-3 text-navy hover:text-gold transition border-b border-taupe/15 last:border-b-0"
+                className="py-3 text-navy hover:text-gold transition border-b border-navy/10 last:border-b-0"
               >
                 {n.label}
               </Link>

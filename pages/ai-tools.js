@@ -149,12 +149,12 @@ function Concierge() {
     <div className="grid lg:grid-cols-12 gap-6">
       <div className="lg:col-span-8">
         <div className="card p-0 overflow-hidden">
-          <div className="px-6 py-4 border-b border-taupe/30 bg-warmwhite flex items-center justify-between">
+          <div className="px-6 py-4 border-b border-navy/10 bg-warmwhite flex items-center justify-between">
             <div>
               <p className="font-serif text-xl text-navy">Ashley&rsquo;s Guided Home Concierge</p>
               <p className="text-[11px] uppercase tracking-widewide text-taupe">Powered by Ashley Smith &middot; Compass North Carolina, LLC</p>
             </div>
-            <span className="badge bg-sage/30 text-navy text-xs">
+            <span className="badge bg-ivory text-navy text-xs">
               Triangle-wide guidance
             </span>
           </div>
@@ -163,7 +163,7 @@ function Concierge() {
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.from === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm whitespace-pre-line leading-relaxed ${
-                  m.from === 'user' ? 'bg-navy text-ivory' : 'bg-ivory text-navy border border-taupe/30'
+                  m.from === 'user' ? 'bg-navy text-ivory' : 'bg-ivory text-navy border border-navy/10'
                 }`}>
                   {m.text}
                 </div>
@@ -171,7 +171,7 @@ function Concierge() {
             ))}
           </div>
 
-          <div className="px-6 py-4 border-t border-taupe/30 bg-warmwhite">
+          <div className="px-6 py-4 border-t border-navy/10 bg-warmwhite">
             <form onSubmit={(e) => { e.preventDefault(); send(); }} className="flex gap-2">
               <input className="input flex-1" placeholder="Ask about Chapel Hill, the Triangle, buying, selling, relocation..." value={input} onChange={(e) => setInput(e.target.value)} />
               <button className="btn btn-primary">Send</button>
@@ -189,7 +189,7 @@ function Concierge() {
           <p className="eyebrow mb-3">Common questions</p>
           <div className="space-y-2 max-h-[480px] overflow-y-auto">
             {PROMPTS.map((p) => (
-              <button key={p} onClick={() => send(p)} className="w-full text-left text-sm text-navy/80 hover:text-navy hover:bg-ivory rounded-lg p-3 border border-taupe/30 transition">
+              <button key={p} onClick={() => send(p)} className="w-full text-left text-sm text-navy/80 hover:text-navy hover:bg-ivory rounded-lg p-3 border border-navy/10 transition">
                 {p}
               </button>
             ))}
@@ -392,7 +392,7 @@ export default function AITools() {
             title="Refined intelligence, at your service"
             subtitle="Ashley's Guided Home Concierge covers common buyer, seller, relocation, and luxury questions across the Triangle. For personalized advice, connect with Ashley directly."
           />
-          <div className="flex gap-2 border-b border-taupe/30 mb-8">
+          <div className="flex gap-2 border-b border-navy/10 mb-8">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
                 className={`px-5 py-3 text-sm border-b-2 transition ${

@@ -24,8 +24,11 @@ export default function Privacy() {
               site usage in aggregate. You can control cookie behavior in your browser at any time.
             </p>
             <p>
-              For questions about this policy, please contact Ashley directly. [Final policy language
-              should be reviewed and approved by Compass North Carolina compliance prior to launch.]
+              For questions about this policy, please contact Ashley directly at{' '}
+              <a href="mailto:ashley.m.smith@compass.com" className="text-gold hover:underline">ashley.m.smith@compass.com</a>.
+            </p>
+            <p className="text-sm text-navy/60 mt-6">
+              Ashley Smith is a licensed real estate agent affiliated with Compass, a licensed real estate broker and abides by Equal Housing Opportunity laws. All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. This is not intended to solicit property already listed. Photos may be virtually staged or digitally enhanced and may not reflect actual property conditions.
             </p>
           </div>
         </div>
