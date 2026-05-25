@@ -73,12 +73,26 @@ const LISTINGS = [
   { tag: 'Client Story (Pending)', title: '[Approved client story]', city: 'Cary, NC', price: '' },
 ];
 
-const TESTIMONIALS = Array.from({ length: 3 }).map((_, i) => ({
-  quote:
-    '[Approved testimonial — pending Ashley\'s review and consent. Thoughtful client wording will appear here once collected.]',
-  name: '[Client name]',
-  context: '[Buyer · Chapel Hill]',
-}));
+const TESTIMONIALS = [
+  {
+    quote:
+      'It was a pleasure working with Ashley on our recent home buying process. She was attentive, responded quickly, brought ease to the process, and was absolutely wonderful throughout. Not only was she patient while we pondered several properties, she let us guide the home search on our own timeline without pressure while providing expert advice along the way. Without a doubt, we would highly recommend Ashley for all your realtor needs.',
+    name: 'Aiyani L.',
+    context: 'Buyer Client',
+  },
+  {
+    quote:
+      'We were blown away by the level of detail Ashley put into marketing our home. Her multi-phase strategy, from the professional photography to the targeted social media presence, ensured our property stood out immediately. She captured the unique features of our home perfectly and delivered results faster than we imagined. Her expertise in the Chapel Hill market is second to none.',
+    name: 'David T.',
+    context: 'Seller Client',
+  },
+  {
+    quote:
+      'Working with Ashley was an absolute game-changer. From our very first meeting, it was clear that she possesses an unmatched understanding of the market and a genuine commitment to her clients. She made a complex process feel incredibly simple and stress-free. If you want a professional who is responsive, transparent, and truly has your best interests at heart, look no further.',
+    name: 'Alex G.',
+    context: 'Buyer/Seller Client',
+  },
+];
 
 const METRICS = [
   { label: 'Median Home Price', value: '$—', sub: 'Triangle market · placeholder' },
@@ -337,8 +351,8 @@ export default function Home() {
         <div className="container-wide">
           <SectionHeader
             eyebrow="Testimonials"
-            title="Words from clients"
-            subtitle="Approved client testimonials will be added once Ashley collects and confirms each one."
+            title="Client words that say it best"
+            subtitle="Ashley's clients describe her as attentive, responsive, strategic, and deeply committed to making the buying and selling process feel clear, calm, and supported."
             center
           />
           <div className="grid md:grid-cols-3 gap-6">
@@ -354,7 +368,7 @@ export default function Home() {
             ))}
           </div>
           <p className="text-xs text-center text-taupe mt-8">
-            [Placeholder — replace with approved testimonials.]
+            Trusted guidance, real client results.
           </p>
         </div>
       </section>

@@ -42,8 +42,9 @@ const INITIAL_GUIDES = [
 ];
 
 const INITIAL_TESTIMONIALS = [
-  { id: 1, name: '[Client name]', text: '[Approved testimonial 1]', status: 'Pending Review' },
-  { id: 2, name: '[Client name]', text: '[Approved testimonial 2]', status: 'Pending Review' },
+  { id: 1, name: 'Aiyani L.', text: 'It was a pleasure working with Ashley on our recent home buying process. She was attentive, responded quickly, brought ease to the process, and was absolutely wonderful throughout.', status: 'Approved' },
+  { id: 2, name: 'David T.', text: 'We were blown away by the level of detail Ashley put into marketing our home. Her multi-phase strategy ensured our property stood out immediately.', status: 'Approved' },
+  { id: 3, name: 'Alex G.', text: 'Working with Ashley was an absolute game-changer. She made a complex process feel incredibly simple and stress-free.', status: 'Approved' },
 ];
 
 const INITIAL_LISTINGS = [
