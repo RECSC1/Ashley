@@ -56,7 +56,7 @@ export default function HomeValuePage() {
       />
 
       <section className="relative overflow-hidden section">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ivory via-warmwhite to-blush/20" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ivory via-warmwhite to-ivory" />
         <div className="container-wide grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7">
             <p className="eyebrow mb-3">Home Value Review · Chapel Hill & The Triangle</p>
@@ -96,7 +96,7 @@ export default function HomeValuePage() {
           <h2 className="font-serif text-4xl text-navy">A strategic, Realtor-guided value picture.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {REVIEW_ITEMS.map((item) => (
-              <div key={item} className="card border border-taupe/20">
+              <div key={item} className="card border border-navy/10">
                 <p className="font-serif text-xl text-navy">{item}</p>
               </div>
             ))}
@@ -189,7 +189,7 @@ export default function HomeValuePage() {
 
       <section className="section">
         <div className="container-wide">
-          <div className="card border border-taupe/25 bg-ivory">
+          <div className="card border border-navy/10 bg-ivory">
             <p className="text-lg text-navy/80 leading-relaxed">
               You do not need to be ready to list your home to ask smart questions. Whether you are planning now, exploring options, or simply want a clearer picture of your equity, this review is designed to give you useful information without pressure.
             </p>

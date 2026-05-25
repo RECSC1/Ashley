@@ -162,7 +162,7 @@ function DirectionFinder() {
                 { t: 'Solar Considerations', d: 'Orientation affects rooftop solar potential and energy efficiency.' },
                 { t: 'Feng Shui & Lifestyle', d: 'Some buyers prefer a specific orientation for personal or wellness reasons.' },
               ].map((c) => (
-                <div key={c.t} className="p-4 bg-ivory rounded-xl border border-taupe/30">
+                <div key={c.t} className="p-4 bg-ivory rounded-xl border border-navy/10">
                   <p className="font-serif text-lg text-navy">{c.t}</p>
                   <p className="text-sm text-navy/70 mt-1">{c.d}</p>
                 </div>
@@ -478,7 +478,7 @@ function ComparisonTable({ a1, a2, dataset }) {
         </thead>
         <tbody>
           {COMPARE_CATEGORIES.map(([k, label]) => (
-            <tr key={k} className="border-t border-taupe/30">
+            <tr key={k} className="border-t border-navy/10">
               <td className="py-4 text-xs uppercase tracking-widewide text-taupe align-top">{label}</td>
               <td className="py-4 text-navy/80 align-top">{dataset[a1]?.[k] || '—'}</td>
               <td className="py-4 text-navy/80 align-top">{dataset[a2]?.[k] || '—'}</td>
@@ -726,7 +726,7 @@ function CommuteFinder() {
           <a href="/properties" className="btn btn-primary mt-5">Explore Properties</a>
         </div>
 
-        <div className="card border border-gold/40 bg-gold/5">
+        <div className="card border border-gold/30 bg-gold/5">
           <p className="eyebrow text-gold mb-2">About this tool</p>
           <p className="text-navy/80 text-sm leading-relaxed">
             Real-time commute estimates require live map/directions integration, such as Google Maps
@@ -908,7 +908,7 @@ export default function BuyerTools() {
             subtitle="Search schools, study commutes, compare neighborhoods, and run financial scenarios — all in one calm workspace."
           />
 
-          <div className="mb-8 border-b border-taupe/30">
+          <div className="mb-8 border-b border-navy/10">
             <div className="flex flex-wrap gap-x-2 gap-y-1">
               {TABS.map((t) => (
                 <button
@@ -933,7 +933,7 @@ export default function BuyerTools() {
           {tab === 'commute' && <CommuteFinder />}
           {tab === 'mortgage' && <MortgageCalc />}
           {tab === 'valuation' && <HomeValuation />}
-          <div className="card bg-warmwhite border border-taupe/30 mt-8">
+          <div className="card bg-warmwhite border border-navy/10 mt-8">
             <p className="font-serif text-2xl text-navy">Relocating to the Triangle?</p>
             <p className="text-sm text-navy/70 mt-2">Not sure where to start? Compare Chapel Hill, Carrboro, Durham, Hillsborough, Pittsboro, Cary, and Raleigh based on lifestyle, priorities, commute, and local fit.</p>
             <div className="flex flex-wrap gap-3 mt-4">

@@ -44,7 +44,7 @@ export default function About() {
 
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-warmwhite via-ivory to-blush/20" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-warmwhite via-ivory to-ivory" />
         <div className="container-wide pt-10 md:pt-20 pb-12 md:pb-16 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-7 order-2 lg:order-1">
             <p className="eyebrow mb-4">About Ashley</p>
@@ -58,7 +58,7 @@ export default function About() {
             </p>
           </div>
           <div className="lg:col-span-5 order-1 lg:order-2">
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft border border-taupe/20 mx-auto w-full max-w-sm md:max-w-md bg-warmwhite">
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-soft border border-navy/10 mx-auto w-full max-w-sm md:max-w-md bg-warmwhite">
               <Image
                 src="/images/ashley-smith-headshot.png"
                 alt="Ashley Smith, Compass real estate agent in Chapel Hill, North Carolina."
@@ -134,8 +134,8 @@ export default function About() {
           <SectionHeader eyebrow="Credentials" title="Designations & experience" />
           <div className="grid sm:grid-cols-2 gap-5">
             {CREDENTIALS.map((c) => (
-              <div key={c.label} className="flex items-start gap-4 p-6 rounded-2xl border border-taupe/30 bg-warmwhite">
-                <div className="w-10 h-10 rounded-full bg-blush/40 flex items-center justify-center mt-1">
+              <div key={c.label} className="flex items-start gap-4 p-6 rounded-2xl border border-navy/10 bg-warmwhite">
+                <div className="w-10 h-10 rounded-full bg-ivory flex items-center justify-center mt-1">
                   <span className="w-2 h-2 rounded-full bg-gold" />
                 </div>
                 <div>

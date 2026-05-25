@@ -34,9 +34,7 @@ export default function Terms() {
               independently verified.
             </p>
             <p>
-              Compass North Carolina, LLC supports Equal Housing Opportunity and complies with all
-              applicable real estate laws and regulations. Compass and Doorify MLS compliance
-              language pending final approval.
+              Ashley Smith is a licensed real estate agent affiliated with Compass, a licensed real estate broker and abides by Equal Housing Opportunity laws. All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. This is not intended to solicit property already listed. Photos may be virtually staged or digitally enhanced and may not reflect actual property conditions.
             </p>
           </div>
         </div>

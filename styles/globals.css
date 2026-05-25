@@ -6,10 +6,10 @@
   --ivory: #F8F4EF;
   --warmwhite: #FFFFFF;
   --navy: #1C1C1C;
-  --blush: #D8A7A7;
+  --blush: #E8E0DA;
   --gold: #C8A96A;
-  --taupe: #B7A99A;
-  --sage: #A8B8A0;
+  --taupe: #999189;
+  --sage: #D6D2CD;
 }
 
 /* Reset and global mobile-safe sizing */
@@ -128,10 +128,6 @@ h1, h2, h3, h4, .serif {
 
 /* Mobile typography & spacing refinements */
 @media (max-width: 768px) {
-  :root {
-    --gold: #b68f9b;
-  }
-
   /* Soften any large display headings so they never crop */
   h1 {
     font-size: clamp(2rem, 8.5vw, 3rem);

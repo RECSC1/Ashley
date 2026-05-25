@@ -76,7 +76,7 @@ function Login({ onLogin }) {
           database, or the live website. Nothing entered here is saved or published.
         </p>
         <form onSubmit={onSubmit} className="card mt-6">
-          <div className="rounded-lg bg-blush/30 border border-gold/40 p-3 mb-4">
+          <div className="rounded-lg bg-ivory border border-gold/30 p-3 mb-4">
             <p className="text-[11px] uppercase tracking-widewide text-navy font-medium">Demo / preview only</p>
             <p className="text-xs text-navy/80 mt-1">
               This dashboard is a static design mockup. A real content management system (Decap CMS + Netlify Identity)
@@ -183,7 +183,7 @@ function CrudList({ title, initial, columns, addPlaceholder }) {
           </thead>
           <tbody>
             {items.map((i) => (
-              <tr key={i.id} className="border-t border-taupe/30">
+              <tr key={i.id} className="border-t border-navy/10">
                 {columns.map((c) => <td key={c.key} className="py-3 pr-4 text-navy/80">{i[c.key]}</td>)}
                 <td className="py-3 text-right">
                   <button onClick={() => setItems(items.filter((x) => x.id !== i.id))} className="text-xs text-red-600 hover:text-red-800">Delete</button>
@@ -219,7 +219,7 @@ function LogTable({ title, storageKey, columns, emptyHint }) {
             </tr></thead>
             <tbody>
               {items.map((it, i) => (
-                <tr key={i} className="border-t border-taupe/30 align-top">
+                <tr key={i} className="border-t border-navy/10 align-top">
                   {columns.map((c) => (
                     <td key={c} className="py-3 pr-4 text-navy/80">
                       {c === 'Time' ? new Date(it.ts).toLocaleString() : (it[c.toLowerCase().replace(/\s+/g, '_')] ?? it[c.toLowerCase()] ?? '—')}
@@ -260,7 +260,7 @@ function CommuteLog() {
             </tr></thead>
             <tbody>
               {items.map((it, i) => (
-                <tr key={i} className="border-t border-taupe/30">
+                <tr key={i} className="border-t border-navy/10">
                   <td className="py-3 pr-4 text-navy/80 whitespace-nowrap">{new Date(it.ts).toLocaleString()}</td>
                   <td className="py-3 pr-4 text-navy/80">{it.origin || '—'}</td>
                   <td className="py-3 pr-4 text-navy/80">{it.dest || '—'}</td>
@@ -311,7 +311,7 @@ export default function Admin() {
       ) : (
         <section className="section">
           <div className="container-wide">
-            <div className="rounded-xl bg-blush/30 border border-gold/40 p-4 mb-6">
+            <div className="rounded-xl bg-ivory border border-gold/30 p-4 mb-6">
               <p className="text-[11px] uppercase tracking-widewide text-navy font-medium">Demo / preview dashboard</p>
               <p className="text-sm text-navy/80 mt-1">
                 This is a visual preview only. It is not connected to a content management system, database, or the
@@ -410,7 +410,7 @@ export default function Admin() {
                       </tr></thead>
                       <tbody>
                         {INITIAL_CLIENTS.map((c) => (
-                          <tr key={c.code} className="border-t border-taupe/30">
+                          <tr key={c.code} className="border-t border-navy/10">
                             <td className="py-3 text-navy/80">{c.name}</td>
                             <td className="py-3 text-navy/80 font-mono">{c.code}</td>
                             <td className="py-3 text-navy/80">{c.stage}</td>

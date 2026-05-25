@@ -15,10 +15,10 @@ module.exports = {
           100: '#D9D7D4',
           900: '#111111',
         },
-        blush: '#D8A7A7',
+        blush: '#E8E0DA',
         gold: '#C8A96A',
-        taupe: '#B7A99A',
-        sage: '#A8B8A0',
+        taupe: '#999189',
+        sage: '#D6D2CD',
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],

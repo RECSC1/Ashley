@@ -99,9 +99,9 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-ivory via-warmwhite to-blush/30" />
-          <div className="absolute -top-32 -right-32 w-[40rem] h-[40rem] rounded-full bg-blush/30 blur-3xl" />
-          <div className="absolute -bottom-40 -left-32 w-[40rem] h-[40rem] rounded-full bg-sage/30 blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ivory via-warmwhite to-ivory" />
+          <div className="absolute -top-32 -right-32 w-[40rem] h-[40rem] rounded-full bg-ivory blur-3xl" />
+          <div className="absolute -bottom-40 -left-32 w-[40rem] h-[40rem] rounded-full bg-ivory blur-3xl" />
         </div>
         <div className="container-wide pt-10 md:pt-28 pb-14 md:pb-32 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-7 order-2 lg:order-1">
@@ -131,7 +131,7 @@ export default function Home() {
             </div>
             <div className="mt-8 flex flex-wrap gap-2">
               {TRUST_BADGES.map((b) => (
-                <span key={b} className="badge bg-warmwhite border border-taupe/30 text-navy/80">
+                <span key={b} className="badge bg-warmwhite border border-navy/10 text-navy/80">
                   {b}
                 </span>
               ))}
@@ -139,7 +139,7 @@ export default function Home() {
           </div>
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div
-              className="relative rounded-3xl overflow-hidden shadow-soft border border-taupe/20 bg-warmwhite mx-auto w-full max-w-sm md:max-w-md"
+              className="relative rounded-3xl overflow-hidden shadow-soft border border-navy/10 bg-warmwhite mx-auto w-full max-w-sm md:max-w-md"
               style={{ aspectRatio: '4 / 5' }}
             >
               <Image
@@ -207,7 +207,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((s) => (
               <div key={s.title} className="card hover:shadow-soft transition group">
-                <div className="w-10 h-10 rounded-full bg-blush/40 mb-5 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-ivory mb-5 flex items-center justify-center">
                   <span className="w-2 h-2 rounded-full bg-gold" />
                 </div>
                 <h3 className="font-serif text-2xl text-navy mb-2">{s.title}</h3>
@@ -229,7 +229,7 @@ export default function Home() {
             title="Local expertise across the Triangle"
             subtitle="From the historic streets of Chapel Hill to Pittsboro's rolling estates, Ashley represents buyers and sellers across North Carolina's most loved communities. Compare Chapel Hill, Carrboro, Durham, Hillsborough, Pittsboro, Cary, and Raleigh based on lifestyle, priorities, commute, and local fit."
           />
-          <div className="mt-6 rounded-2xl border border-taupe/30 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="mt-6 rounded-2xl border border-navy/10 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm md:text-base text-navy/80">
               Not sure where to start? Explore the Triangle Community Guide for side-by-side local insight before you tour.
             </p>
@@ -243,7 +243,7 @@ export default function Home() {
               <Link
                 key={a.name}
                 href={`/triangle-community-guide#${a.slug}`}
-                className="group block p-6 rounded-2xl bg-ivory border border-taupe/20 hover:border-gold transition shadow-ring"
+                className="group block p-6 rounded-2xl bg-ivory border border-navy/10 hover:border-gold transition shadow-ring"
               >
                 <p className="font-serif text-2xl text-navy mb-2 group-hover:text-gold transition">
                   {a.name}
@@ -296,7 +296,7 @@ export default function Home() {
             title="Listing previews & client stories"
             subtitle="The property cards below are placeholders only and do not represent live MLS or IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available."
           />
-          <div className="mt-6 rounded-2xl border border-taupe/30 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="mt-6 rounded-2xl border border-navy/10 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm md:text-base text-navy/80">
               Not sure where to start? Explore the Triangle Community Guide for side-by-side local insight before you tour.
             </p>
@@ -308,7 +308,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {LISTINGS.map((l, i) => (
               <div key={i} className="card p-0 overflow-hidden">
-                <div className="aspect-[4/3] bg-gradient-to-br from-blush/30 via-warmwhite to-sage/30 flex items-center justify-center">
+                <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
                   <span className="text-[10px] uppercase tracking-widewide text-taupe">
                     [Property image]
                   </span>
@@ -346,7 +346,7 @@ export default function Home() {
               <div key={i} className="card flex flex-col">
                 <span className="font-serif text-5xl text-gold leading-none mb-4">"</span>
                 <p className="text-navy/80 italic leading-relaxed flex-1">{t.quote}</p>
-                <div className="mt-6 pt-5 border-t border-taupe/30">
+                <div className="mt-6 pt-5 border-t border-navy/10">
                   <p className="font-serif text-lg text-navy">{t.name}</p>
                   <p className="text-xs uppercase tracking-widewide text-taupe">{t.context}</p>
                 </div>

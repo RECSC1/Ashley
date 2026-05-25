@@ -46,7 +46,7 @@ const COMMUNITIES = [
 function ListingCard({ l }) {
   return (
     <div className="card p-0 overflow-hidden flex flex-col">
-      <div className="aspect-[4/3] bg-gradient-to-br from-blush/30 via-warmwhite to-sage/30 flex items-center justify-center">
+      <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
         <span className="text-[10px] uppercase tracking-widewide text-taupe">[Property image]</span>
       </div>
       <div className="p-5 flex-1 flex flex-col">
@@ -150,7 +150,7 @@ export default function Properties() {
           />
 
           {/* TABS */}
-          <div className="flex flex-wrap gap-2 border-b border-taupe/30 mb-10">
+          <div className="flex flex-wrap gap-2 border-b border-navy/10 mb-10">
             {TABS.map((t) => (
               <button
                 key={t.id}
@@ -168,7 +168,7 @@ export default function Properties() {
 
           {tab === 'active' && (
             <>
-              <div className="rounded-xl border border-gold/40 bg-gold/5 p-4 mb-6">
+              <div className="rounded-xl border border-gold/30 bg-gold/5 p-4 mb-6">
                 <p className="text-sm text-navy/80">
                   <strong>Placeholder listings.</strong> The property cards below are layout placeholders only and do not represent real active listings or live MLS/IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available.
                 </p>
@@ -180,7 +180,7 @@ export default function Properties() {
           )}
           {tab === 'sold' && (
             <>
-              <div className="rounded-xl border border-gold/40 bg-gold/5 p-4 mb-6">
+              <div className="rounded-xl border border-gold/30 bg-gold/5 p-4 mb-6">
                 <p className="text-sm text-navy/80">
                   <strong>Placeholder sales data.</strong> The cards below are layout placeholders only and do not represent real recent sales or live MLS/IDX data. Recent sales will be updated once approved property data or IDX integration is available.
                 </p>
