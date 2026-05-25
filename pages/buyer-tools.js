@@ -181,60 +181,177 @@ function DirectionFinder() {
 }
 
 /* -------- TOOL 3: COMMUNITY LANDMARKS -------- */
+const LANDMARK_CATEGORIES = [
+  'Parks', 'Grocery', 'Medical', 'Schools', 'Dining', 'Worship',
+  'Transit', 'Shopping', 'Recreation', 'Coffee', 'Fitness', 'Universities', 'Hospitals',
+];
+
+const LANDMARK_MAP_QUERIES = {
+  Parks: 'parks',
+  Grocery: 'grocery stores',
+  Medical: 'medical centers',
+  Schools: 'schools',
+  Dining: 'restaurants',
+  Worship: 'places of worship',
+  Transit: 'public transit',
+  Shopping: 'shopping',
+  Recreation: 'recreation centers',
+  Coffee: 'coffee shops',
+  Fitness: 'gyms and fitness',
+  Universities: 'universities',
+  Hospitals: 'hospitals',
+};
+
 function LandmarkFinder() {
-  const [data, setData] = useState({ address: '', filter: 'All' });
-  const [results, setResults] = useState(null);
-  const filters = ['All', 'Parks', 'Medical', 'Grocery', 'Schools', 'Worship', 'Transit', 'Dining'];
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [data, setData] = useState({ state: 'NC' });
+  const [selectedCats, setSelectedCats] = useState([]);
+  const onChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
+
+  const toggleCat = (cat) => {
+    setSelectedCats((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    logEvent(KEYS.LANDMARKS, data);
-    const mock = [
-      { name: 'Carolina Coffee Shop', cat: 'Dining', dist: '0.4 mi', rating: 4.6 },
-      { name: 'UNC Hospital', cat: 'Medical', dist: '0.9 mi', rating: 4.5 },
-      { name: 'Weaver Street Market', cat: 'Grocery', dist: '1.1 mi', rating: 4.8 },
-      { name: 'Carrboro Town Commons', cat: 'Parks', dist: '1.4 mi', rating: 4.7 },
-      { name: 'Chapel Hill Public Library', cat: 'Schools', dist: '1.6 mi', rating: 4.6 },
-      { name: 'NC 54 Bus Line', cat: 'Transit', dist: '0.3 mi', rating: 4.2 },
-    ].filter((m) => data.filter === 'All' || m.cat === data.filter);
-    setResults(mock);
+    if (selectedCats.length === 0) {
+      setError('Please select at least one landmark category.');
+      return;
+    }
+    const formData = new FormData(e.target);
+    formData.set('landmark_categories', selectedCats.join(', '));
+    setError('');
+
+    fetch('/netlify-forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Netlify form submission failed');
+        logEvent(KEYS.LANDMARKS, { ...data, categories: selectedCats });
+        setSubmitted(true);
+      })
+      .catch(() => {
+        setError('We could not submit your request right now. Please try again.');
+      });
   };
-  return (
-    <div>
-      <form onSubmit={onSubmit} className="card mb-6">
-        <h3 className="font-serif text-2xl text-navy mb-1">Community Landmarks Finder</h3>
-        <p className="text-navy/70 text-sm mb-5">Discover what surrounds a property — parks, dining, schools, transit, and more.</p>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div><label className="label">Address</label>
-            <input required className="input" value={data.address} onChange={(e) => setData({ ...data, address: e.target.value })} />
-          </div>
-          <div><label className="label">Category</label>
-            <select className="input" value={data.filter} onChange={(e) => setData({ ...data, filter: e.target.value })}>
-              {filters.map((f) => <option key={f}>{f}</option>)}
-            </select>
-          </div>
-        </div>
-        <button className="btn btn-primary mt-5">Find Nearby</button>
-      </form>
-      {results && (
-        <div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {results.map((m, i) => (
-              <div key={i} className="card">
-                <span className="badge bg-gold/15 text-gold mb-3">{m.cat}</span>
-                <p className="font-serif text-xl text-navy">{m.name}</p>
-                <p className="text-xs text-taupe mt-1">{m.dist}</p>
-                <p className="mt-3 text-navy/80 text-sm">★ {m.rating}</p>
-              </div>
-            ))}
-            <div className="card bg-navy text-ivory">
-              <p className="font-serif text-xl">Want to understand the lifestyle around this home?</p>
-              <a href="/contact" className="btn btn-gold mt-4">Connect with Ashley</a>
+
+  if (submitted) {
+    const location = data.location || '';
+    const mapLinks = selectedCats
+      .map((cat) => ({
+        label: cat,
+        url: `https://www.google.com/maps/search/${encodeURIComponent(LANDMARK_MAP_QUERIES[cat])}+near+${encodeURIComponent(location)}`,
+      }));
+
+    return (
+      <div className="card max-w-2xl mx-auto text-center py-12">
+        <p className="font-serif text-3xl text-navy">Thanks. Your community landmarks request has been sent.</p>
+        <p className="text-navy/70 mt-3 max-w-xl mx-auto">Ashley can help you compare areas across Chapel Hill, Carrboro, Durham, Cary, Raleigh, Hillsborough, Pittsboro, and the greater Triangle based on what matters most to your daily life.</p>
+        {location && mapLinks.length > 0 && (
+          <div className="mt-6 text-left max-w-md mx-auto">
+            <p className="text-sm text-navy/80 mb-3">While you wait, explore these categories on Google Maps:</p>
+            <div className="flex flex-wrap gap-2">
+              {mapLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-full text-sm border border-gold/40 text-navy hover:bg-gold/10 transition"
+                >
+                  {link.label} near {location}
+                </a>
+              ))}
             </div>
+            <p className="text-[11px] text-taupe mt-3">Google Maps links open in a new tab and reflect Google&apos;s own data, not a verified integration.</p>
           </div>
-          <p className="text-[11px] text-taupe mt-4">Sample landmarks shown for illustration only. Distances, ratings, and categories are not live data. Verified local information will require a map or places integration.</p>
+        )}
+        <a href="/contact" className="btn btn-primary mt-6">Connect with Ashley</a>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      name="community-landmarks"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+      className="card max-w-2xl mx-auto"
+    >
+      <input type="hidden" name="form-name" value="community-landmarks" />
+      <input type="hidden" name="page_name" value="buyer-tools-landmarks" />
+      <input type="hidden" name="form_type" value="community-landmarks-request" />
+      <input type="hidden" name="lead_source" value="website-buyer-tools" />
+      <input type="hidden" name="client_name" value="Ashley Smith" />
+      <input type="hidden" name="landmark_categories" value="" />
+      <p className="hidden"><label>Don&apos;t fill this out: <input name="bot-field" onChange={onChange} /></label></p>
+
+      <h3 className="font-serif text-2xl text-navy mb-1">Community Landmarks Finder</h3>
+      <p className="text-navy/70 text-sm mb-5">Search by address, neighborhood, city, or ZIP code across the Triangle. Ashley can help you understand what is nearby, from parks and grocery stores to hospitals, schools, restaurants, universities, and daily-life conveniences.</p>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="sm:col-span-2">
+          <label className="label">Address, neighborhood, city, ZIP code, or area</label>
+          <input name="location" required className="input" onChange={onChange} placeholder="e.g. 27514, Chapel Hill, Durham, Cary, or any Triangle location" />
         </div>
-      )}
-    </div>
+        <div>
+          <label className="label">State</label>
+          <input name="state" className="input" value={data.state || ''} onChange={onChange} placeholder="e.g. NC" />
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <label className="label mb-2">What do you want nearby? (select all that apply)</label>
+        <div className="flex flex-wrap gap-2">
+          {LANDMARK_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => toggleCat(cat)}
+              className={`px-3 py-1.5 rounded-full text-sm border transition ${
+                selectedCats.includes(cat)
+                  ? 'bg-navy text-ivory border-navy'
+                  : 'bg-ivory text-navy border-taupe/40 hover:border-navy'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <hr className="border-taupe/20 my-5" />
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="label">Name</label>
+          <input name="name" required className="input" onChange={onChange} />
+        </div>
+        <div>
+          <label className="label">Email</label>
+          <input name="email" required type="email" className="input" onChange={onChange} />
+        </div>
+        <div>
+          <label className="label">Phone</label>
+          <input name="phone" className="input" onChange={onChange} />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label">Notes</label>
+          <textarea name="notes" rows={3} className="input" onChange={onChange} placeholder="Anything Ashley should know about your search, lifestyle, or what matters most to you nearby" />
+        </div>
+      </div>
+
+      <button type="submit" className="btn btn-primary mt-6">Ask Ashley to Compare This Area</button>
+      {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
+      <p className="text-[11px] text-taupe mt-4">Live nearby landmark results require a map/places integration such as Google Places or Mapbox. Until that is connected, this tool captures your location and lifestyle priorities so Ashley can help guide the search personally.</p>
+    </form>
   );
 }
 
