@@ -216,19 +216,22 @@ function LandmarkFinder() {
         <button className="btn btn-primary mt-5">Find Nearby</button>
       </form>
       {results && (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {results.map((m, i) => (
-            <div key={i} className="card">
-              <span className="badge bg-gold/15 text-gold mb-3">{m.cat}</span>
-              <p className="font-serif text-xl text-navy">{m.name}</p>
-              <p className="text-xs text-taupe mt-1">{m.dist}</p>
-              <p className="mt-3 text-navy/80 text-sm">★ {m.rating}</p>
+        <div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {results.map((m, i) => (
+              <div key={i} className="card">
+                <span className="badge bg-gold/15 text-gold mb-3">{m.cat}</span>
+                <p className="font-serif text-xl text-navy">{m.name}</p>
+                <p className="text-xs text-taupe mt-1">{m.dist}</p>
+                <p className="mt-3 text-navy/80 text-sm">★ {m.rating}</p>
+              </div>
+            ))}
+            <div className="card bg-navy text-ivory">
+              <p className="font-serif text-xl">Want to understand the lifestyle around this home?</p>
+              <a href="/contact" className="btn btn-gold mt-4">Connect with Ashley</a>
             </div>
-          ))}
-          <div className="card bg-navy text-ivory">
-            <p className="font-serif text-xl">Want to understand the lifestyle around this home?</p>
-            <a href="/contact" className="btn btn-gold mt-4">Connect with Ashley</a>
           </div>
+          <p className="text-[11px] text-taupe mt-4">Sample landmarks shown for illustration only. Distances, ratings, and categories are not live data. Verified local information will require a map or places integration.</p>
         </div>
       )}
     </div>
@@ -940,6 +943,7 @@ export default function BuyerTools() {
               <a href="/relocation-quiz" className="btn btn-primary">Take the Relocation Quiz</a>
               <a href="/triangle-community-guide" className="btn btn-outline">View the Triangle Community Guide</a>
             </div>
+            <p className="text-[11px] text-taupe mt-4">Information provided through website tools is for general guidance only and should be independently verified. Any home valuation request is for general informational purposes only and is not an appraisal, CMA, broker price opinion, or guarantee of market value.</p>
           </div>
         </div>
       </section>

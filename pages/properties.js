@@ -5,14 +5,22 @@ import { logEvent, KEYS } from '../lib/store';
 
 /*
  * IDX INTEGRATION NOTE (for developer reference):
- * If IDX is added later, Doorify MLS rules require:
+ * This site does NOT currently display live MLS or IDX data. No Doorify MLS
+ * IDX feed is connected. All property listings and recent sales shown on
+ * this page are layout placeholders only.
+ *
+ * Future IDX integration will require:
+ * - Approved provider details and MLS/Doorify authorization
  * - Proper MLS attribution and copyright notices on every page displaying IDX data
  * - Brokerage branding displayed alongside IDX results
  * - Data update frequency disclosed and maintained per Doorify requirements
  * - IDX display registration with Doorify MLS
  * - Approved IDX disclaimers on all pages displaying listing data
+ * - Required update/display rules and any applicable Doorify/Compass compliance language
  * - All placeholder content below must be replaced with live, attributed IDX feeds
- * Do not display Doorify MLS copyright or IDX language unless the site is actively displaying IDX data.
+ *
+ * Do not display Doorify MLS copyright or IDX attribution language unless the
+ * site is actively displaying approved IDX data from an authorized feed.
  */
 
 const TABS = [
@@ -106,9 +114,9 @@ function PropertyAlerts() {
       <input type="hidden" name="lead_source" value="website-properties-page" />
       <input type="hidden" name="client_name" value="Ashley Smith" />
       <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={onChange} /></label></p>
-      <h3 className="font-serif text-3xl text-navy">Create a Property Alert</h3>
+      <h3 className="font-serif text-3xl text-navy">Request a Property Alert</h3>
       <p className="text-navy/70 mt-2">
-        Tell Ashley what you're looking for and she'll send curated matches as they hit the market.
+        Tell Ashley what you're looking for and she will personally send curated property matches based on your criteria. This is not an automated MLS alert system. Live property alerts powered by MLS/IDX data will require future approved IDX setup.
       </p>
       <div className="grid sm:grid-cols-2 gap-4 mt-6">
         <div><label className="label">Name</label><input name="name" required className="input" onChange={onChange} /></div>
@@ -125,7 +133,7 @@ function PropertyAlerts() {
         <div className="sm:col-span-2"><label className="label">Notes</label><textarea name="notes" rows={3} className="input" onChange={onChange} /></div>
       </div>
       {error && <p className="text-sm text-red-700 mt-4">{error}</p>}
-      <button className="btn btn-primary mt-6">Set Up My Alerts</button>
+      <button className="btn btn-primary mt-6">Send My Preferences to Ashley</button>
     </form>
   );
 }

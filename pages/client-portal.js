@@ -110,19 +110,27 @@ function PortalView() {
       )}
 
       {tab === 'matches' && (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {HOME_MATCHES.map((m, i) => (
-            <div key={i} className="card p-0 overflow-hidden">
-              <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
-                <span className="text-[10px] uppercase tracking-widewide text-taupe">[Property image]</span>
+        <div>
+          <div className="rounded-xl border border-gold/30 bg-gold/5 p-4 mb-6">
+            <p className="text-sm text-navy/80">
+              <strong>Placeholder matches.</strong> The property cards below are layout placeholders only and do not represent real active listings or live MLS/IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {HOME_MATCHES.map((m, i) => (
+              <div key={i} className="card p-0 overflow-hidden">
+                <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
+                  <span className="text-[10px] uppercase tracking-widewide text-taupe">[Property image]</span>
+                </div>
+                <div className="p-5">
+                  <span className="badge bg-navy/5 text-navy/80 mb-2">Placeholder</span>
+                  <p className="font-serif text-xl text-navy">{m.addr}</p>
+                  <p className="text-sm text-taupe">{m.city}</p>
+                  <p className="mt-2 font-medium text-navy">{m.price}</p>
+                </div>
               </div>
-              <div className="p-5">
-                <p className="font-serif text-xl text-navy">{m.addr}</p>
-                <p className="text-sm text-taupe">{m.city}</p>
-                <p className="mt-2 font-medium text-navy">{m.price}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 

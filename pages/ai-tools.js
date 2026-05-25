@@ -267,7 +267,7 @@ const FEATURES = [
 function ListingWriter() {
   const [v, setV] = useState({
     address: '', type: 'Single Family Home', price: '', beds: '', baths: '', sqft: '', year: '',
-    lot: '', neighborhood: '', notes: '', tone: 'Warm & Inviting', length: 'Standard MLS', target: 'Families',
+    lot: '', neighborhood: '', notes: '', tone: 'Warm & Inviting', length: 'Standard Listing', target: 'Families',
     features: [],
   });
   const [out, setOut] = useState(null);
@@ -304,7 +304,7 @@ function ListingWriter() {
     <div className="grid lg:grid-cols-12 gap-8">
       <form onSubmit={generate} className="card lg:col-span-7">
         <h3 className="font-serif text-2xl text-navy mb-1">AI Listing Description Generator</h3>
-        <p className="text-navy/70 text-sm mb-5">Generate refined MLS, social, and email copy instantly. Front-end mock — ready to wire to a live AI API.</p>
+        <p className="text-navy/70 text-sm mb-5">Generate draft listing descriptions, social captions, and email teasers based on your property details. This is a copywriting tool only and does not use or display live MLS data.</p>
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="sm:col-span-2"><label className="label">Property address</label><input name="address" className="input" onChange={onChange} /></div>
           <div><label className="label">Property type</label>
@@ -338,7 +338,7 @@ function ListingWriter() {
           </div>
           <div><label className="label">Length</label>
             <select name="length" className="input" value={v.length} onChange={onChange}>
-              {['Short MLS', 'Standard MLS', 'Full Website/Marketing'].map((o) => <option key={o}>{o}</option>)}
+              {['Short Listing', 'Standard Listing', 'Full Website/Marketing'].map((o) => <option key={o}>{o}</option>)}
             </select>
           </div>
           <div><label className="label">Target buyer</label>
@@ -354,7 +354,7 @@ function ListingWriter() {
       <div className="lg:col-span-5 space-y-4">
         {out ? (
           [
-            ['MLS Description', out.mls],
+            ['Listing Description', out.mls],
             ['Social Caption', out.social],
             ['Email Teaser', out.teaser],
           ].map(([t, c]) => (
@@ -401,6 +401,7 @@ export default function AITools() {
             ))}
           </div>
           {tab === 'concierge' ? <Concierge /> : <ListingWriter />}
+          <p className="text-[11px] text-taupe mt-6">Information provided through website tools is for general guidance only and should be independently verified. These tools do not display live MLS, IDX, or property listing data.</p>
         </div>
       </section>
     </>
