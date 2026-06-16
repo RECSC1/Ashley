@@ -164,7 +164,7 @@ export default function Resources() {
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-navy/10 text-[11px] uppercase tracking-widewide text-taupe">
                       <span>{a.date}</span><span>{a.read} read</span>
                     </div>
-                    <a href="/contact" className="btn btn-outline mt-4 text-xs">Request This Article</a>
+                    <a href={`/request-resource?article=${encodeURIComponent(a.title)}`} className="btn btn-outline mt-4 text-xs">Request This Article</a>
                   </article>
                 ))}
               </div>
