@@ -22,6 +22,7 @@ export default function Footer() {
             <img
               src="/images/compass-logo-white.png"
               alt="Compass"
+              loading="lazy"
               className="h-6 w-auto opacity-80"
             />
           </div>
@@ -35,6 +36,7 @@ export default function Footer() {
             <li><Link href="/buyer-tools" className="hover:text-gold transition">Buyer Tools</Link></li>
             <li><Link href="/ai-tools" className="hover:text-gold transition">AI Tools</Link></li>
             <li><Link href="/resources" className="hover:text-gold transition">Resources</Link></li>
+            <li><Link href="/blog" className="hover:text-gold transition">Blog</Link></li>
             <li><Link href="/triangle-community-guide" className="hover:text-gold transition">Community Guide</Link></li>
             <li><Link href="/contact" className="hover:text-gold transition">Contact</Link></li>
           </ul>
@@ -68,7 +70,17 @@ export default function Footer() {
             <Link href="/privacy" className="hover:text-gold transition">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gold transition">Terms</Link>
           </div>
-          <p className="opacity-70">Equal Housing Opportunity</p>
+          <div className="flex items-center gap-2 opacity-70">
+            <img
+              src="/images/equal-housing-opportunity.svg"
+              alt="Equal Housing Opportunity"
+              width="28"
+              height="28"
+              loading="lazy"
+              className="h-7 w-7 invert"
+            />
+            <p>Equal Housing Opportunity</p>
+          </div>
         </div>
       </div>
     </footer>

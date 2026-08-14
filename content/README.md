@@ -26,3 +26,10 @@ to `pages/resources.js` would be required.
 
 Until then, Ashley's monthly-managed content is updated by editing those two JS
 modules directly.
+
+## Blog posts
+
+The public blog index reads post metadata from `lib/content/blog.js`. New posts
+use `components/BlogPostLayout.js` for the shared title, publication details,
+author byline, featured image, readable article width, calls to action, FAQ
+styling, related links, and post footer structure.

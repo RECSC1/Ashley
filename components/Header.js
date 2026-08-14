@@ -8,6 +8,7 @@ const NAV = [
   { href: '/buyer-tools', label: 'Buyer Tools' },
   { href: '/ai-tools', label: 'AI Tools' },
   { href: '/resources', label: 'Resources' },
+  { href: '/blog', label: 'Blog' },
   { href: '/triangle-community-guide', label: 'Community Guide' },
   { href: '/home-value', label: 'Home Value' },
   { href: '/contact', label: 'Contact' },
@@ -57,19 +58,19 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm text-navy/80 hover:text-gold transition tracking-wide"
+              className="text-xs 2xl:text-sm text-navy/80 hover:text-gold transition tracking-wide"
             >
               {n.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex xl:hidden 2xl:flex items-center gap-3">
           <Link href="/home-value" className="btn btn-outline text-xs">
             Home Value
           </Link>
@@ -81,7 +82,7 @@ export default function Header() {
         <button
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
-          className="lg:hidden p-2 -mr-2 text-navy shrink-0"
+          className="xl:hidden p-2 -mr-2 text-navy shrink-0"
           onClick={() => setOpen(!open)}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -99,7 +100,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-navy/10 bg-white max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="xl:hidden border-t border-navy/10 bg-white max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="container-wide py-4 flex flex-col gap-1">
             {NAV.map((n) => (
               <Link
