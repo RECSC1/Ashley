@@ -153,18 +153,18 @@ export default function Home() {
           </div>
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div
-              className="relative rounded-3xl overflow-hidden shadow-soft border border-navy/10 bg-warmwhite mx-auto w-full max-w-sm md:max-w-md"
-              style={{ aspectRatio: '4 / 5' }}
+              className="relative rounded-3xl overflow-hidden shadow-soft border border-navy/10 bg-warmwhite mx-auto w-full max-w-2xl lg:max-w-none"
+              style={{ aspectRatio: '4 / 3' }}
             >
               <Image
-                src="/images/ashley-smith-headshot.png"
-                alt="Ashley Smith, Realtor® with Compass North Carolina"
+                src="/images/chapel-hill-aerial-hero.jpg"
+                alt="Aerial view of Chapel Hill, North Carolina"
                 fill
                 priority
-                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 60vw, 90vw"
-                className="object-cover object-top"
+                sizes="(min-width: 1280px) 480px, (min-width: 1024px) 38vw, (min-width: 640px) 672px, calc(100vw - 2.5rem)"
+                className="object-cover object-center"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent p-5 md:p-8 text-center pointer-events-none">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent p-5 md:p-8 text-center pointer-events-none">
                 <p className="font-serif text-xl md:text-3xl text-ivory">Ashley Smith</p>
                 <p className="text-[10px] md:text-xs uppercase tracking-widewide text-gold mt-1">
                   Realtor® · Compass NC
