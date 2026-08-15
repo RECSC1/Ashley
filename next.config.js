@@ -1,6 +1,7 @@
 module.exports = {
   images: {
-    domains: ['example.com'], // List of domains that can serve images
+    formats: ['image/avif', 'image/webp'],
+    qualities: [75, 80],
   },
   reactStrictMode: true,
 };
