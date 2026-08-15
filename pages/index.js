@@ -103,39 +103,45 @@ export default function Home() {
       />
 
       {/* HERO */}
-      <section className="home-hero">
-        <div className="home-hero__media">
-          <Image
-            src="/images/chapel-hill-aerial-hero.jpg"
-            alt="Aerial view of the UNC-Chapel Hill campus and surrounding Chapel Hill landscape"
-            fill
-            priority
-            fetchPriority="high"
-            quality={95}
-            sizes="100vw"
-            className="home-hero__image"
-          />
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-ivory via-warmwhite to-ivory" />
+          <div className="absolute -top-32 -right-32 w-[40rem] h-[40rem] rounded-full bg-ivory blur-3xl" />
+          <div className="absolute -bottom-40 -left-32 w-[40rem] h-[40rem] rounded-full bg-ivory blur-3xl" />
         </div>
-        <div className="home-hero__overlay" aria-hidden="true" />
-        <div className="home-hero__content container-wide">
-          <div className="home-hero__copy">
-            <p className="home-hero__eyebrow">Chapel Hill · Carrboro · The Triangle</p>
-            <h1 className="home-hero__title">
+        <div className="container-wide pt-10 md:pt-28 pb-14 md:pb-32 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <p className="eyebrow mb-4">Chapel Hill · Carrboro · The Triangle</p>
+            <h1 className="font-serif text-navy leading-[1.08] text-[clamp(2.1rem,8.5vw,4.5rem)] md:text-7xl">
               Luxury-level guidance.
               <br />
-              Neighborly care.
+              <span className="italic text-gold">Neighborly care.</span>
             </h1>
-            <p className="home-hero__lede">
+            <p className="mt-5 text-base sm:text-lg md:text-xl text-navy/75 leading-relaxed max-w-xl">
               Elegant, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle,
               rooted in local insight, calm confidence, and genuine care.
             </p>
-            <div className="home-hero__actions">
-              <Link href="/contact" className="home-hero__button home-hero__button--primary">
+            <div className="mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-3 btn-stack-sm">
+              <Link href="/contact" className="btn btn-primary">
                 Schedule a Consultation
               </Link>
-              <Link href="/home-value" className="home-hero__button home-hero__button--secondary">
+              <Link href="/home-value" className="btn btn-outline">
                 Request a Home Value Review
               </Link>
+            </div>
+          </div>
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="relative aspect-square rounded-3xl overflow-hidden shadow-soft border border-navy/10 bg-warmwhite mx-auto w-full max-w-md">
+              <Image
+                src="/images/chapel-hill-aerial-hero.jpg"
+                alt="Aerial view of the UNC-Chapel Hill campus and surrounding Chapel Hill landscape"
+                fill
+                priority
+                fetchPriority="high"
+                quality={95}
+                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 448px, calc(100vw - 2.5rem)"
+                className="object-cover object-center"
+              />
             </div>
           </div>
         </div>
