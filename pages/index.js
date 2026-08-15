@@ -111,7 +111,7 @@ export default function Home() {
             fill
             priority
             fetchPriority="high"
-            quality={80}
+            quality={95}
             sizes="100vw"
             className="home-hero__image"
           />
