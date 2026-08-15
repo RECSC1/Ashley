@@ -110,7 +110,7 @@ function Card({ title, value, sub }) {
 function Settings() {
   const [s, setS] = useState({
     title: 'Ashley Smith | Chapel Hill Realtor® | Compass North Carolina',
-    description: 'Elegant, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle.',
+    description: 'Thoughtful, refined, people-first real estate guidance for Chapel Hill, Carrboro, and the Triangle.',
     area: 'Chapel Hill, NC',
     email: '[Ashley\'s email]',
     phone: '[Ashley\'s phone number]',
