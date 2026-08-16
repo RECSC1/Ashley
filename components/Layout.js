@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 export default function Layout({ children }) {
   const router = useRouter();
-  const hideStickyOn = ['/contact', '/admin', '/client-portal'];
+  const hideStickyOn = ['/contact', '/admin', '/demo/dashboard', '/client-portal'];
   const showSticky = !hideStickyOn.includes(router.pathname);
 
   return (

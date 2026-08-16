@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import SEO from '../components/SEO';
-import { KEYS, readLog, clearLog } from '../lib/store';
+import SEO from '../../components/SEO';
+import { KEYS, readLog, clearLog } from '../../lib/store';
 
 const SECTIONS = [
   { id: 'analytics', label: 'Analytics & Performance' },
@@ -304,7 +304,7 @@ export default function Admin() {
       <SEO
         title="Admin Preview (Demo) | Ashley Smith Real Estate"
         description="Non-functional preview of a future admin dashboard for Ashley Smith's Chapel Hill real estate website. Not connected to a CMS or live data."
-        path="/admin"
+        path="/demo/dashboard"
         noindex
       />
       {!signedIn ? (
