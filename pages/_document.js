@@ -12,6 +12,7 @@ export default function Document() {
         />
         <meta name="theme-color" content="#F8F4EF" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#1C1C1C" media="(prefers-color-scheme: dark)" />
+        <link rel="alternate" type="application/rss+xml" title="Ashley Smith Real Estate Blog" href="/rss.xml" />
         {/* Google Analytics / Search Console placeholder */}
         {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> */}
       </Head>

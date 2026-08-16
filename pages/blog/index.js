@@ -1,8 +1,9 @@
 import Link from "next/link";
 import SEO from "../../components/SEO";
-import { sortedBlogPosts } from "../../lib/content/blog";
+import { toBlogCard } from "../../lib/content/blog";
+import { getAllBlogPosts } from "../../lib/content/server";
 
-export default function BlogIndex() {
+export default function BlogIndex({ posts }) {
   return (
     <>
       <SEO
@@ -25,7 +26,7 @@ export default function BlogIndex() {
           </div>
 
           <div className="mt-10 md:mt-14 grid gap-8">
-            {sortedBlogPosts.map((post) => (
+            {posts.map((post) => (
               <article
                 key={post.slug}
                 className="card p-0 overflow-hidden grid md:grid-cols-[0.95fr_1.05fr]"
@@ -75,4 +76,8 @@ export default function BlogIndex() {
       </section>
     </>
   );
+}
+
+export function getStaticProps() {
+  return { props: { posts: getAllBlogPosts().map(toBlogCard) } };
 }

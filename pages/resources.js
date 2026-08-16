@@ -2,8 +2,9 @@ import { useState } from 'react';
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 import { logEvent, KEYS } from '../lib/store';
-import { ARTICLES, BLOG_CATEGORIES as BLOG_CATS } from '../lib/content/articles';
-import { GUIDES } from '../lib/content/guides';
+import { BLOG_CATEGORIES as BLOG_CATS, toArticleCard } from '../lib/content/articles';
+import { toGuideCard } from '../lib/content/guides';
+import { getAllBlogPosts, getAllNeighborhoods } from '../lib/content/server';
 
 const TABS = [
   { id: 'blog', label: 'Blog' },
@@ -11,52 +12,13 @@ const TABS = [
   { id: 'market', label: 'Market Updates' },
 ];
 
-function GuideCard({ g }) {
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
-  const [data, setData] = useState({});
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    setError('');
-    fetch('/netlify-forms.html', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error('Netlify form submission failed');
-        logEvent(KEYS.GUIDES, { guide: g.title, ...data });
-        setSubmitted(true);
-      })
-      .catch(() => {
-        setError('We could not submit your guide request right now. Please try again.');
-      });
-  };
+function GuideCard({ guide }) {
   return (
     <div className="card flex flex-col">
-      <div className="aspect-[5/3] rounded-xl bg-gradient-to-br from-ivory via-warmwhite to-ivory mb-5 flex items-center justify-center">
-        <span className="text-[10px] uppercase tracking-widewide text-taupe">[Guide cover]</span>
-      </div>
-      <p className="font-serif text-2xl text-navy">{g.title}</p>
-      <p className="text-sm text-navy/70 mt-2 flex-1">{g.desc}</p>
-      {error && <p className="mt-4 text-sm text-red-700">{error}</p>}
-      {submitted ? (
-        <p className="mt-5 text-sm text-gold">Sent — your guide is on its way to your inbox.</p>
-      ) : (
-        <form name="neighborhood-guide-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit} className="mt-5 space-y-2">
-          <input type="hidden" name="form-name" value="neighborhood-guide-request" />
-          <input type="hidden" name="page_name" value="resources" />
-          <input type="hidden" name="form_type" value="guide-request" />
-          <input type="hidden" name="lead_source" value="website-resources-page" />
-          <input type="hidden" name="client_name" value="Ashley Smith" />
-          <input type="hidden" name="guide_title" value={g.title} />
-          <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={(e) => setData({ ...data, bot: e.target.value })} /></label></p>
-          <input required name="name" className="input" placeholder="Your name" onChange={(e) => setData({ ...data, name: e.target.value })} />
-          <input required name="email" type="email" className="input" placeholder="Email" onChange={(e) => setData({ ...data, email: e.target.value })} />
-          <button className="btn btn-primary w-full">Download Guide</button>
-        </form>
-      )}
+      <img src={guide.featuredImage} alt={guide.featuredImageAlt} className="aspect-[5/3] rounded-xl object-cover mb-5" loading="lazy" />
+      <p className="font-serif text-2xl text-navy">{guide.title}</p>
+      <p className="text-sm text-navy/70 mt-2 flex-1">{guide.desc}</p>
+      <a href={guide.path} className="btn btn-outline mt-5">Read Neighborhood Guide</a>
     </div>
   );
 }
@@ -106,11 +68,11 @@ function MarketSignup() {
   );
 }
 
-export default function Resources() {
+export default function Resources({ articles, guides }) {
   const [tab, setTab] = useState('blog');
   const [cat, setCat] = useState('All');
 
-  const filtered = cat === 'All' ? ARTICLES : ARTICLES.filter((a) => a.cat === cat);
+  const filtered = cat === 'All' ? articles : articles.filter((article) => article.cat === cat);
 
   return (
     <>
@@ -164,7 +126,7 @@ export default function Resources() {
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-navy/10 text-[11px] uppercase tracking-widewide text-taupe">
                       <span>{a.date}</span><span>{a.read} read</span>
                     </div>
-                    <a href={`/request-resource?article=${encodeURIComponent(a.title)}`} className="btn btn-outline mt-4 text-xs">Request This Article</a>
+                    <a href={a.path} className="btn btn-outline mt-4 text-xs">Read Article</a>
                   </article>
                 ))}
               </div>
@@ -173,7 +135,13 @@ export default function Resources() {
 
           {tab === 'guides' && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {GUIDES.map((g) => <GuideCard key={g.title} g={g} />)}
+              {guides.length ? guides.map((guide) => <GuideCard key={guide.slug} guide={guide} />) : (
+                <div className="card sm:col-span-2 lg:col-span-3">
+                  <p className="font-serif text-2xl text-navy">Neighborhood guides are being prepared.</p>
+                  <p className="text-navy/70 mt-2">Use the comparison guide now, then check back as individual community guides are published.</p>
+                  <a href="/triangle-community-guide" className="btn btn-primary mt-5">Open the Triangle Community Guide</a>
+                </div>
+              )}
             </div>
           )}
 
@@ -206,4 +174,13 @@ export default function Resources() {
       </section>
     </>
   );
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      articles: getAllBlogPosts().map(toArticleCard),
+      guides: getAllNeighborhoods().map(toGuideCard),
+    },
+  };
 }

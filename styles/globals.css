@@ -433,6 +433,22 @@ h1, h2, h3, h4, .serif {
   font-size: 0.85em;
 }
 
+.article-table-wrap {
+  width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+  border: 1px solid rgba(28, 28, 28, 0.14);
+  border-radius: 1rem;
+  background: #FFFFFF;
+}
+
+.article-table-wrap table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.article-table-wrap th { background: #1C1C1C; color: #F8F4EF; text-align: left; }
+.article-table-wrap th,
+.article-table-wrap td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(28, 28, 28, 0.12); }
+.article-table-wrap tr:last-child td { border-bottom: 0; }
+.article-inline-image { width: 100%; height: auto; margin: 2rem 0; border-radius: 1rem; }
+
 .article-cta {
   margin: 4rem 0;
   padding: 2rem;
