@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SEO from '../components/SEO';
+import SEO from '../../components/SEO';
 
 const TIMELINE = [
   { label: 'Consultation', done: true },
@@ -166,7 +166,7 @@ export default function ClientPortal() {
       <SEO
         title="Client Portal | Ashley Smith Real Estate"
         description="Private client portal for buyers and sellers working with Ashley Smith, Realtor® at Compass North Carolina. Track your timeline, documents, curated home matches, and messages."
-        path="/client-portal"
+        path="/demo/client-portal"
         noindex
       />
       <section className="section">

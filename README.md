@@ -45,7 +45,8 @@ The following client-safety updates were completed:
 - Added honeypot anti-spam fields on Netlify forms.
 - Replaced placeholder `#` social links with safe contact fallbacks.
 - Added stronger demo-only messaging on Client Portal/Admin preview areas.
-- Marked demo pages (`/client-portal`, `/admin`) as `noindex` to keep them out of search results.
+- Moved demo pages to `/demo/dashboard` and `/demo/client-portal`, with `noindex` and a `/demo/` robots exclusion.
+- Added the invite-only Decap CMS at `/admin` for blog posts and neighborhood guides.
 - Added a default Open Graph image in SEO metadata.
 
 ### Netlify Settings

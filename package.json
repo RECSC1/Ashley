@@ -10,13 +10,18 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@netlify/identity": "^1.2.0",
+    "autoprefixer": "latest",
+    "gray-matter": "^4.0.3",
     "next": "16.3.1",
+    "postcss": "latest",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "tailwindcss": "^3.4.17",
-    "autoprefixer": "latest",
-    "postcss": "latest",
-    "react-helmet": "latest"
+    "react-helmet": "latest",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "eslint": "latest",

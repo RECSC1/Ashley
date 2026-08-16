@@ -37,6 +37,7 @@ export default function Footer() {
             <li><Link href="/ai-tools" className="hover:text-gold transition">AI Tools</Link></li>
             <li><Link href="/resources" className="hover:text-gold transition">Resources</Link></li>
             <li><Link href="/blog" className="hover:text-gold transition">Blog</Link></li>
+            <li><Link href="/neighborhoods" className="hover:text-gold transition">Neighborhoods</Link></li>
             <li><Link href="/triangle-community-guide" className="hover:text-gold transition">Community Guide</Link></li>
             <li><Link href="/contact" className="hover:text-gold transition">Contact</Link></li>
           </ul>

@@ -1,0 +1,84 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://ashleysmithrealestate.live
+display_url: https://ashleysmithrealestate.live
+logo_url: /images/logo.png
+publish_mode: editorial_workflow
+show_preview_links: true
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: content/blog
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    preview_path: "blog/{{fields.slug}}"
+    summary: "{{title}} — {{publish_date}}"
+    fields:
+      - { label: Title, name: title, widget: string, hint: "Write the clear, reader-facing headline shown at the top of the article." }
+      - { label: URL Slug, name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase words separated by hyphens, with no spaces.'], hint: "This becomes the page address after /blog/. Do not change it after publishing unless a redirect is planned." }
+      - { label: Publish Date, name: publish_date, widget: datetime, date_format: "MMMM D, YYYY", time_format: false, format: "YYYY-MM-DD", hint: "Choose the date readers should see as the original publication date." }
+      - { label: Updated Date, name: updated_date, widget: datetime, date_format: "MMMM D, YYYY", time_format: false, format: "YYYY-MM-DD", hint: "Update this date whenever you make a meaningful revision to the article." }
+      - { label: SEO Title, name: seo_title, widget: string, hint: "Write the search-result title, ideally about 50 to 60 characters and specific to the topic and location." }
+      - { label: Meta Description, name: meta_description, widget: text, hint: "Write one persuasive search-result summary, ideally about 140 to 160 characters." }
+      - { label: Featured Image, name: featured_image, widget: image, hint: "Upload the main landscape image. A 16:9 image at least 1600 pixels wide works best." }
+      - { label: WebP Featured Image, name: featured_image_webp, widget: image, required: false, hint: "Optional: upload a WebP copy of the featured image for faster loading. Leave blank if you do not have one." }
+      - { label: Image Alt Text, name: image_alt, widget: string, hint: "Describe what is visibly shown in the image for accessibility. Do not stuff keywords." }
+      - { label: Excerpt, name: excerpt, widget: text, hint: "Write the short summary used on blog and resource cards. Aim for one or two sentences." }
+      - { label: Category, name: category, widget: select, options: [Buying, Selling, Relocation, Luxury, Neighborhoods, "Market Updates", "UNC Moves", "Commute & Lifestyle"], hint: "Choose the single category that best matches the article's main purpose." }
+      - { label: Author, name: author, widget: string, default: "Ashley Smith", hint: "Enter the public author name exactly as it should appear in structured data." }
+      - { label: Canonical Path, name: canonical_path, widget: string, pattern: ['^/blog/[a-z0-9-]+$', 'Use the full path beginning with /blog/.'], hint: "Use the preferred site path for this article, for example /blog/your-article-slug." }
+      - { label: FAQ Section Heading, name: faq_heading, widget: string, default: "Frequently asked questions", hint: "Write the heading shown immediately above the FAQ list near the end of the article." }
+      - label: Frequently Asked Questions
+        name: faqs
+        widget: list
+        required: false
+        hint: "Add real questions readers ask. These appear on the page and automatically create FAQ search schema."
+        fields:
+          - { label: Question, name: question, widget: string, hint: "Write the question in the same natural language a client would use." }
+          - { label: Answer, name: answer, widget: text, hint: "Give a direct, accurate answer in plain English. Keep it useful without making promises." }
+      - { label: Article Body, name: body, widget: markdown, hint: "Write the main article here. Use headings to organize sections, tables only when they make information easier to compare, and links to relevant site pages." }
+
+  - name: neighborhoods
+    label: Neighborhood Guides
+    label_singular: Neighborhood Guide
+    folder: content/neighborhoods
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    preview_path: "neighborhoods/{{fields.slug}}"
+    summary: "{{title}} — {{updated_date}}"
+    fields:
+      - { label: Title, name: title, widget: string, hint: "Write the neighborhood or community name plus a clear guide label." }
+      - { label: URL Slug, name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Use lowercase words separated by hyphens, with no spaces.'], hint: "This becomes the page address after /neighborhoods/. Avoid changing it after publication." }
+      - { label: Publish Date, name: publish_date, widget: datetime, date_format: "MMMM D, YYYY", time_format: false, format: "YYYY-MM-DD", hint: "Choose the date this guide first becomes public." }
+      - { label: Updated Date, name: updated_date, widget: datetime, date_format: "MMMM D, YYYY", time_format: false, format: "YYYY-MM-DD", hint: "Change this whenever local details or recommendations are meaningfully updated." }
+      - { label: SEO Title, name: seo_title, widget: string, hint: "Write the search-result title using the community name and a useful phrase such as real estate or relocation guide." }
+      - { label: Meta Description, name: meta_description, widget: text, hint: "Summarize who the area may suit and what the guide covers, ideally in 140 to 160 characters." }
+      - { label: Featured Image, name: featured_image, widget: image, hint: "Upload a representative landscape image at least 1600 pixels wide when possible." }
+      - { label: WebP Featured Image, name: featured_image_webp, widget: image, required: false, hint: "Optional: upload a WebP copy for faster loading. Leave blank if one is not available." }
+      - { label: Image Alt Text, name: image_alt, widget: string, hint: "Describe the visible location or scene accurately for visitors using screen readers." }
+      - { label: Excerpt, name: excerpt, widget: text, hint: "Write the short introduction used on the Neighborhoods index card." }
+      - { label: Category, name: category, widget: string, default: "Neighborhoods", hint: "Keep this as Neighborhoods unless a future content plan adds another guide type." }
+      - { label: Author, name: author, widget: string, default: "Ashley Smith", hint: "Enter the public author name exactly as it should appear in structured data." }
+      - { label: Canonical Path, name: canonical_path, widget: string, pattern: ['^/neighborhoods/[a-z0-9-]+$', 'Use the full path beginning with /neighborhoods/.'], hint: "Use the preferred site path, for example /neighborhoods/carrboro." }
+      - { label: FAQ Section Heading, name: faq_heading, widget: string, default: "Frequently asked questions", hint: "Write the heading shown immediately above the FAQ list near the end of the guide." }
+      - label: Frequently Asked Questions
+        name: faqs
+        widget: list
+        required: false
+        hint: "Add practical questions relocation buyers commonly ask about this community."
+        fields:
+          - { label: Question, name: question, widget: string, hint: "Write one natural, specific question about living in or buying in this area." }
+          - { label: Answer, name: answer, widget: text, hint: "Answer clearly and avoid claims about schools, commute times, or future value that cannot be guaranteed." }
+      - { label: Guide Body, name: body, widget: markdown, hint: "Explain the area's feel, housing styles, access, tradeoffs, and best-fit considerations in clear sections." }

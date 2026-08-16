@@ -81,6 +81,7 @@ export default function TriangleCommunityGuide() {
               Helpful area guidance for buyers relocating to Chapel Hill and the greater Triangle.
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
+              <a href="/neighborhoods" className="btn btn-outline border-ivory text-ivory hover:bg-ivory hover:text-navy">Browse Neighborhood Guides</a>
               <a href="/relocation-quiz" className="btn btn-gold">Take the Relocation Match Quiz</a>
               <a href="/contact" className="btn btn-outline border-ivory text-ivory hover:bg-ivory hover:text-navy">Contact Ashley</a>
             </div>
@@ -140,6 +141,7 @@ export default function TriangleCommunityGuide() {
             <h2 className="font-serif text-3xl text-navy">Ready for personalized guidance?</h2>
             <p className="text-navy/75 mt-3">Take the Triangle Relocation Match Quiz to share your goals, or contact Ashley for one-on-one guidance tailored to your timeline.</p>
             <div className="flex flex-wrap gap-3 mt-6">
+              <a href="/neighborhoods" className="btn btn-outline">Browse Neighborhood Guides</a>
               <a href="/relocation-quiz" className="btn btn-primary">Take the Triangle Relocation Match Quiz</a>
               <a href="/contact" className="btn btn-outline">Contact Ashley</a>
             </div>

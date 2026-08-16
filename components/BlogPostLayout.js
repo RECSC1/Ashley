@@ -22,16 +22,16 @@ export function ArticleCta({ position = "mid" }) {
   );
 }
 
-export default function BlogPostLayout({ children, post }) {
+export default function BlogPostLayout({ children, post, backHref = "/blog", backLabel = "Blog" }) {
   return (
     <article>
       <header className="section pb-8 md:pb-12">
         <div className="article-container">
           <Link
-            href="/blog"
+            href={backHref}
             className="eyebrow inline-flex hover:text-navy transition mb-5"
           >
-            Blog
+            {backLabel}
           </Link>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.08] text-navy">
             {post.title}
@@ -61,7 +61,9 @@ export default function BlogPostLayout({ children, post }) {
 
       <div className="container-wide max-w-6xl">
         <picture>
-          <source srcSet={post.featuredImageWebp} type="image/webp" />
+          {post.featuredImageWebp && post.featuredImageWebp !== post.featuredImage && (
+            <source srcSet={post.featuredImageWebp} type="image/webp" />
+          )}
           <img
             src={post.featuredImage}
             alt={post.featuredImageAlt}
