@@ -22,30 +22,30 @@ faqs:
     answer: It depends entirely on the housing type. Condos generally start in the
       $300Ks. Row houses and townhomes commonly run from the upper $400Ks into
       the $800Ks. Single family homes range from around $700,000 to over $2
-      million. Reported neighborhood medians in 2026 ranged from roughly
-      $705,000 to over $1.25 million within the same year, because sales volume
-      is low and a few large closings move the number. Ask for comparable sales
-      in your specific housing type rather than relying on a neighborhood
+      million. Reported neighborhood medians in 2026 ranged from about $705,000
+      to over $1.25 million. This can happen in the same year. Sales volume is
+      low. A few big closings can shift the median fast. Ask for comparable
+      sales in your specific housing type rather than relying on a neighborhood
       median.
   - question: Is Meadowmont in Chapel Hill town limits and Orange County?
-    answer: Yes. Meadowmont is in Orange County and inside Town of Chapel Hill
-      limits, so property tax includes the county rate, the municipal rate, and
-      the Chapel Hill Carrboro City Schools district tax. Many homes with a
-      Chapel Hill mailing address sit outside town limits or in Chatham or
-      Durham County, so confirm the parcel rather than assuming.
+    answer: Yes. Meadowmont is in Orange County and within Chapel Hill town
+      limits.Your property tax includes the Orange County rate and the Chapel
+      Hill town rate.It also includes the Chapel Hill-Carrboro City Schools
+      district tax. Many homes with a Chapel Hill mailing address sit outside
+      town limits or in Chatham or Durham County, so confirm the parcel rather
+      than assuming.
   - question: What schools serve Meadowmont?
     answer: Meadowmont is served by Chapel Hill Carrboro City Schools. Rashkis
-      Elementary is located inside the neighborhood at 601 Meadowmont Lane and
-      serves grades PK through 5. Verify current assignment for a specific
-      address directly with the school district before making an offer, since
-      boundaries change and do not follow mailing addresses.
+      Elementary sits inside the neighborhood at 601 Meadowmont Lane. It serves
+      grades PK through 5. Always confirm school assignment for your exact
+      address with the district. Do this before you make an offer. Boundaries
+      can change at any time. They also may not match the mailing address.
   - question: Is Meadowmont walkable?
     answer: Parts of it are highly walkable and parts of it are not. Meadowmont
       Village includes a grocery store, restaurants, retail, and offices, and
       sidewalks and trails run throughout the 435 acre plan. How walkable your
-      daily life is depends on which section of the neighborhood you buy in,
-      since the development is spread across a much larger footprint than a
-      typical Chapel Hill neighborhood.
+      daily life feels depends on where you buy in the neighborhood. The
+      development covers a larger area than most Chapel Hill neighborhoods.
   - question: How far is Meadowmont from UNC, Duke, and RDU?
     answer: Meadowmont is about two miles from the UNC campus and about two miles
       from I-40. Duke and downtown Durham typically run 15 to 25 minutes, and
