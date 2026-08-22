@@ -15,7 +15,7 @@ excerpt: Meadowmont's reported median swung from $705K to over $1.25M inside the
   cost, and how the neighborhood really compares to Southern Village.
 category: Neighborhoods
 author: Ashley Smith
-canonical_path: /neighborhoods/meadowmont-neighborhood-guide
+canonical_path: /neighborhoods/meadowmont
 faq_heading: Frequently asked questions
 faqs:
   - question: How much do homes cost in Meadowmont, Chapel Hill?
