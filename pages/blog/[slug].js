@@ -13,11 +13,22 @@ export default function BlogPostPage({ post }) {
     headline: post.title,
     description: post.description,
     image: post.featuredImageUrl,
-    author: { '@type': 'Person', name: post.author, jobTitle: 'REALTOR®', url: `${SITE_URL}/about` },
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      jobTitle: 'REALTOR®',
+      url: `${SITE_URL}/about`,
+      ...(post.schema_about && {
+        worksFor: { '@type': 'RealEstateAgent', name: 'Compass North Carolina, LLC' },
+      }),
+    },
     publisher: { '@type': 'Organization', name: 'Ashley Smith Real Estate | Compass', logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` } },
     datePublished: post.datePublished,
     dateModified: post.dateModified,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${post.canonicalPath}` },
+    ...(post.schema_about && {
+      about: { '@type': 'Place', name: post.schema_about },
+    }),
   };
   const faqSchema = post.faqs.length ? {
     '@context': 'https://schema.org',
