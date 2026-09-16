@@ -70,7 +70,7 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} Ashley Smith &middot; Compass</p>
             <p className="mt-1 text-[11px] text-white/50">
               Website designed by{' '}
-              -a
+              <a
                 href="https://conciergeforrealtors.com"
                 target="_blank"
                 rel="noopener noreferrer"
