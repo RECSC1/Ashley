@@ -66,7 +66,20 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-wide py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-white/60">
-          <p>&copy; {new Date().getFullYear()} Ashley Smith &middot; Compass</p>
+                  <div>
+            <p>&copy; {new Date().getFullYear()} Ashley Smith &middot; Compass</p>
+            <p className="mt-1 text-[11px] text-white/50">
+              Website designed by{' '}
+              
+                href="https://conciergeforrealtors.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold transition"
+              >
+                Real Estate Concierge Services Co, LLC
+              </a>
+            </p>
+          </div>
           <div className="flex gap-5">
             <Link href="/privacy" className="hover:text-gold transition">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gold transition">Terms</Link>
