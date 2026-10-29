@@ -1,8 +1,8 @@
 ---
 title: "The Due Diligence Fee: The Check North Carolina Buyers Don't Get Back"
 slug: "nc-due-diligence-fee-chapel-hill-buyers"
-publish_date: "2026-10-29"
-updated_date: "2026-10-29"
+publish_date: "2026-10-28"
+updated_date: "2026-10-28"
 seo_title: "NC Due Diligence Fee 2026: What Chapel Hill Buyers Pay"
 meta_description: "In NC you pay the seller a non-refundable due diligence fee up front. What it is, how it differs from earnest money, and what changed July 1, 2026."
 featured_image: "/images/chapel-hill-market-2026.jpg"
