@@ -69,14 +69,14 @@ export default function Footer() {
                   <div>
             <p>&copy; {new Date().getFullYear()} Ashley Smith &middot; Compass</p>
             <p className="mt-1 text-[11px] text-white/50">
-              Website designed by{' '}
+              Website built by{' '}
               <a
-                href="https://conciergeforrealtors.com"
+                href="https://oakandalgorithm.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gold transition"
               >
-                Real Estate Concierge Services Co, LLC
+                Oak &amp; Algorithm
               </a>
             </p>
           </div>
