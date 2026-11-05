@@ -255,7 +255,7 @@ And do not price off the community median. Briar Chapel has townhomes, single fa
 
 ## Thinking about Briar Chapel?
 
-If you are relocating and Briar Chapel is on your list, I can walk you through the county and school consequences before you get attached, pull the actual dues stack for any address you are considering, and show you the two or three communities you should be weighing it against. Meadowmont and Southern Village are the usual comparison, and they are a genuinely different purchase.
+If you are relocating and Briar Chapel is on your list, I can walk you through the county and school consequences before you get attached, pull the actual dues stack for any address you are considering, and show you the two or three communities you should be weighing it against. [Meadowmont](/neighborhoods/meadowmont-chapel-hill) and [Southern Village](/neighborhoods/southern-village-chapel-hill) are the usual comparison, and they are a genuinely different purchase.
 
 If you already live here and are thinking about your next move, I can tell you what your specific village and housing type are doing right now, not what the community average says.
 

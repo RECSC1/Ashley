@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import RelatedLinks from './RelatedLinks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -15,7 +16,10 @@ export default function Layout({ children }) {
       }`}
     >
       <Header />
-      <main className="flex-1 w-full">{children}</main>
+      <main className="flex-1 w-full">
+        {children}
+        <RelatedLinks />
+      </main>
       <Footer />
       {showSticky && (
         <div className="md:hidden sticky-cta">

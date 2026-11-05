@@ -226,7 +226,7 @@ Here is where they actually differ.
 | **Best access to** | I-40, Durham, RTP, RDU | UNC campus, downtown Chapel Hill, Franklin Street |
 | **Village center** | Meadowmont Village: grocery, restaurants, offices | Market Street: restaurants, movie theater, retail |
 
-The short version: if your life points east toward Durham, RTP, or the airport, Meadowmont is the better address. If your life points at campus and downtown, Southern Village is closer to it.
+The short version: if your life points east toward Durham, RTP, or the airport, Meadowmont is the better address. If your life points at campus and downtown, [Southern Village](/neighborhoods/southern-village-chapel-hill) is closer to it.
 
 The less obvious difference is density. Southern Village concentrates everything around Market Street, so nearly every home is a short walk to the center. Meadowmont covers 435 acres, so the walkability varies a lot by where you buy. That cuts both ways. More spread means more privacy and more yard on some streets. It also means the Village is not equally close to everyone.
 
