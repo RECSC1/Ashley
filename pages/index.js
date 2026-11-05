@@ -3,6 +3,8 @@ import Image from 'next/image';
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
 import LeadForm from '../components/LeadForm';
+import PropertyCard from '../components/PropertyCard';
+import { getVisibleProperties } from '../lib/properties';
 
 const SERVICES = [
   {
@@ -58,13 +60,6 @@ const TOOLS = [
   { title: 'Home Valuation Request', exclusive: false, href: '/buyer-tools?tab=valuation' },
 ];
 
-const LISTINGS = [
-  { tag: 'Placeholder', title: '[Listing data pending]', city: 'Chapel Hill, NC', price: '$—' },
-  { tag: 'Placeholder', title: '[Sale data pending]', city: 'Carrboro, NC', price: '$—' },
-  { tag: 'Placeholder', title: '[Coming soon]', city: 'Durham, NC', price: '$—' },
-  { tag: 'Client Story (Pending)', title: '[Approved client story]', city: 'Cary, NC', price: '' },
-];
-
 const TESTIMONIALS = [
   {
     quote:
@@ -86,15 +81,7 @@ const TESTIMONIALS = [
   },
 ];
 
-const METRICS = [
-  { label: 'Median Home Price', value: '$—', sub: 'Triangle market · placeholder' },
-  { label: 'Average Days on Market', value: '—', sub: 'Updated when live data is connected' },
-  { label: 'Inventory Level', value: '—', sub: 'Months of supply · placeholder' },
-  { label: 'Buyer Competition', value: '—', sub: 'Demand index · placeholder' },
-  { label: 'Luxury Market Activity', value: '—', sub: '$1M+ segment · placeholder' },
-];
-
-export default function Home() {
+export default function Home({ featured, hasListings }) {
   return (
     <>
       <SEO
@@ -284,49 +271,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LISTINGS */}
-      <section className="section bg-warmwhite">
-        <div className="container-wide">
-          <SectionHeader
-            eyebrow="Properties"
-            title="Listing previews & client stories"
-            subtitle="The property cards below are placeholders only and do not represent live MLS or IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available."
-          />
-          <div className="mt-6 rounded-2xl border border-navy/10 bg-ivory p-5 md:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p className="text-sm md:text-base text-navy/80">
-              Not sure where to start? Explore the Triangle Community Guide for side-by-side local insight before you tour.
-            </p>
-            <Link href="/triangle-community-guide" className="btn btn-outline whitespace-nowrap">
-              Explore the Community Guide
-            </Link>
+      {/* LISTINGS & RECENT SALES (data: lib/properties.js) */}
+      {featured.length > 0 && (
+        <section className="section bg-warmwhite">
+          <div className="container-wide">
+            <SectionHeader
+              eyebrow="Properties"
+              title={hasListings ? 'Current Listings & Recent Sales' : 'Recent Sales'}
+              subtitle="Real homes, real clients, real results across Chapel Hill, Durham, Raleigh, and the Triangle."
+            />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featured.map((p) => (
+                <PropertyCard key={p.id} p={p} showNote={false} />
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <Link href="/properties" className="btn btn-outline">
+                See All Listings &amp; Sales
+              </Link>
+            </div>
           </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {LISTINGS.map((l, i) => (
-              <div key={i} className="card p-0 overflow-hidden">
-                <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
-                  <span className="text-[10px] uppercase tracking-widewide text-taupe">
-                    [Property image]
-                  </span>
-                </div>
-                <div className="p-5">
-                  <span className="badge bg-navy/5 text-navy/80 mb-3">{l.tag}</span>
-                  <p className="font-serif text-xl text-navy">{l.title}</p>
-                  <p className="text-sm text-taupe">{l.city}</p>
-                  {l.price && (
-                    <p className="mt-3 text-navy/80 text-sm font-medium">{l.price}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/properties" className="btn btn-outline">
-              View all properties
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* TESTIMONIALS */}
       <section className="section">
@@ -355,29 +321,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MARKET SNAPSHOT */}
-      <section className="section bg-navy text-ivory">
-        <div className="container-wide">
-          <div className="max-w-2xl mx-auto text-center mb-12">
-            <p className="eyebrow mb-3">Market Snapshot</p>
-            <h2 className="font-serif text-4xl md:text-5xl">Chapel Hill & Triangle market pulse</h2>
-            <div className="divider-thin mt-6 mx-auto" />
-            <p className="mt-4 text-ivory/70">
-              The market metrics below are placeholders only and do not represent live market data.
-              Live metrics will populate this section once a market data feed is connected.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-            {METRICS.map((m) => (
-              <div key={m.label} className="rounded-2xl bg-ivory/5 border border-ivory/10 p-6 text-center">
-                <p className="font-serif text-4xl text-gold">{m.value}</p>
-                <p className="mt-2 text-xs uppercase tracking-widewide text-ivory/70">{m.label}</p>
-                <p className="mt-3 text-[11px] text-ivory/50">{m.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* MARKET SNAPSHOT removed Nov 2026: it only showed "$—" placeholder metrics.
+          Restore from git history (commit before "Replace placeholder properties")
+          once a live market data feed is connected. */}
 
       {/* LEAD CAPTURE */}
       <section className="section">
@@ -431,4 +377,13 @@ export default function Home() {
       </section>
     </>
   );
+}
+
+// Rebuilds hourly so dated listings go live on their own.
+export function getStaticProps() {
+  const { listings, sold } = getVisibleProperties();
+  return {
+    props: { featured: [...listings, ...sold].slice(0, 3), hasListings: listings.length > 0 },
+    revalidate: 3600,
+  };
 }

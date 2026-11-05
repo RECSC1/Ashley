@@ -1,77 +1,20 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import SEO from '../components/SEO';
 import SectionHeader from '../components/SectionHeader';
+import PropertyCard from '../components/PropertyCard';
+import { getVisibleProperties } from '../lib/properties';
 import { logEvent, KEYS } from '../lib/store';
 
 /*
- * IDX INTEGRATION NOTE (for developer reference):
- * This site does NOT currently display live MLS or IDX data. No Doorify MLS
- * IDX feed is connected. All property listings and recent sales shown on
- * this page are layout placeholders only.
- *
- * Future IDX integration will require:
- * - Approved provider details and MLS/Doorify authorization
- * - Proper MLS attribution and copyright notices on every page displaying IDX data
- * - Brokerage branding displayed alongside IDX results
- * - Data update frequency disclosed and maintained per Doorify requirements
- * - IDX display registration with Doorify MLS
- * - Approved IDX disclaimers on all pages displaying listing data
- * - Required update/display rules and any applicable Doorify/Compass compliance language
- * - All placeholder content below must be replaced with live, attributed IDX feeds
- *
- * Do not display Doorify MLS copyright or IDX attribution language unless the
- * site is actively displaying approved IDX data from an authorized feed.
+ * IDX NOTE (developer reference):
+ * This site does NOT display live MLS or IDX data. The listings and sales on
+ * this page are Ashley's own transactions, entered by hand in
+ * lib/properties.js. If a Doorify MLS IDX feed is connected in the future,
+ * add the required MLS attribution, brokerage branding, update-frequency
+ * disclosure, and approved IDX disclaimers. Do not display Doorify MLS
+ * copyright or IDX attribution language until an approved feed is live.
  */
-
-const TABS = [
-  { id: 'active', label: 'Current Listings (Placeholder)' },
-  { id: 'sold', label: 'Recent Sales (Placeholder)' },
-  { id: 'communities', label: 'Featured Communities' },
-  { id: 'alerts', label: 'Property Alerts' },
-];
-
-const PLACEHOLDER_LISTINGS = [
-  { status: 'Active', address: '[Listing address 1]', city: 'Chapel Hill, NC', price: '$—', beds: '—', baths: '—', sqft: '—' },
-  { status: 'Active', address: '[Listing address 2]', city: 'Carrboro, NC', price: '$—', beds: '—', baths: '—', sqft: '—' },
-  { status: 'Active', address: '[Listing address 3]', city: 'Durham, NC', price: '$—', beds: '—', baths: '—', sqft: '—' },
-];
-
-const PLACEHOLDER_SOLD = [
-  { status: 'Sold', address: '[Recent sale 1]', city: 'Chapel Hill, NC', price: '$—', beds: '—', baths: '—', sqft: '—' },
-  { status: 'Sold', address: '[Recent sale 2]', city: 'Cary, NC', price: '$—', beds: '—', baths: '—', sqft: '—' },
-  { status: 'Sold', address: '[Recent sale 3]', city: 'Raleigh, NC', price: '$—', beds: '—', baths: '—', sqft: '—' },
-];
-
-const COMMUNITIES = [
-  { name: 'Chapel Hill', blurb: 'Historic charm, leafy streets, and proximity to UNC.' },
-  { name: 'Carrboro', blurb: 'Walkable, artistic, and rich with independent shops.' },
-  { name: 'Durham', blurb: 'Innovation, food culture, and creative neighborhoods.' },
-  { name: 'Hillsborough', blurb: 'Quiet luxury and storybook downtown character.' },
-  { name: 'Cary', blurb: 'Family-centered communities and exceptional schools.' },
-  { name: 'Raleigh', blurb: 'Capital-city energy with established, leafy enclaves.' },
-];
-
-function ListingCard({ l }) {
-  return (
-    <div className="card p-0 overflow-hidden flex flex-col">
-      <div className="aspect-[4/3] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
-        <span className="text-[10px] uppercase tracking-widewide text-taupe">[Property image]</span>
-      </div>
-      <div className="p-5 flex-1 flex flex-col">
-        <span className="badge bg-navy/5 text-navy/80 mb-3 self-start">{l.status}</span>
-        <p className="font-serif text-xl text-navy">{l.address}</p>
-        <p className="text-sm text-taupe">{l.city}</p>
-        <div className="mt-4 grid grid-cols-3 gap-2 text-xs text-navy/70">
-          <div><span className="block text-[10px] uppercase tracking-widewide text-taupe">Beds</span>{l.beds}</div>
-          <div><span className="block text-[10px] uppercase tracking-widewide text-taupe">Baths</span>{l.baths}</div>
-          <div><span className="block text-[10px] uppercase tracking-widewide text-taupe">Sq Ft</span>{l.sqft}</div>
-        </div>
-        <p className="mt-4 font-medium text-navy">{l.price}</p>
-        <a href="/contact" className="btn btn-outline mt-5 text-xs self-start">Request Details</a>
-      </div>
-    </div>
-  );
-}
 
 function PropertyAlerts() {
   const [submitted, setSubmitted] = useState(false);
@@ -114,9 +57,9 @@ function PropertyAlerts() {
       <input type="hidden" name="lead_source" value="website-properties-page" />
       <input type="hidden" name="client_name" value="Ashley Smith" />
       <p className="hidden"><label>Don't fill this out: <input name="bot-field" onChange={onChange} /></label></p>
-      <h3 className="font-serif text-3xl text-navy">Request a Property Alert</h3>
+      <h3 className="font-serif text-3xl text-navy">Get first look at Ashley's next listings</h3>
       <p className="text-navy/70 mt-2">
-        Tell Ashley what you're looking for and she will personally send curated property matches based on your criteria. This is not an automated MLS alert system. Live property alerts powered by MLS/IDX data will require future approved IDX setup.
+        Tell Ashley what you're looking for. She'll personally send matches, including her own listings before they hit the public market. This is a personal service from Ashley, not an automated MLS alert.
       </p>
       <div className="grid sm:grid-cols-2 gap-4 mt-6">
         <div><label className="label">Name</label><input name="name" required className="input" onChange={onChange} /></div>
@@ -138,14 +81,12 @@ function PropertyAlerts() {
   );
 }
 
-export default function Properties() {
-  const [tab, setTab] = useState('active');
-
+export default function Properties({ listings, sold }) {
   return (
     <>
       <SEO
-        title="Chapel Hill & Triangle Homes | Ashley Smith Realtor®"
-        description="Explore Chapel Hill, Carrboro, Durham, Cary, and Raleigh real estate with Ashley Smith, Realtor® with Compass North Carolina. Featured Triangle communities, personalized property alerts, and concierge listing previews."
+        title="Listings & Recent Sales in Chapel Hill, Durham & Raleigh | Ashley Smith, Compass"
+        description="See Ashley Smith's current and coming soon listings plus homes she recently sold for buyers and sellers in Chapel Hill, Durham, Raleigh, and the Triangle."
         path="/properties"
       />
 
@@ -153,67 +94,64 @@ export default function Properties() {
         <div className="container-wide">
           <SectionHeader
             eyebrow="Properties"
-            title="Concierge listing previews & featured Triangle communities"
-            subtitle="The listings and recent sales shown below are placeholders. Listings and recent sales will be updated once approved property data or IDX integration is available. Ashley will share current availability and next steps directly after you reach out."
+            title="Listings & Recent Sales"
+            subtitle="Ashley's current listings, what's coming next, and the homes she's recently helped buyers and sellers close across Chapel Hill, Durham, Raleigh, and the Triangle. New listings show up here first."
           />
 
-          {/* TABS */}
-          <div className="flex flex-wrap gap-2 border-b border-navy/10 mb-10">
-            {TABS.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className={`px-5 py-3 text-sm tracking-wide transition border-b-2 ${
-                  tab === t.id
-                    ? 'border-gold text-navy font-medium'
-                    : 'border-transparent text-navy/60 hover:text-navy'
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-
-          {tab === 'active' && (
-            <>
-              <div className="rounded-xl border border-gold/30 bg-gold/5 p-4 mb-6">
-                <p className="text-sm text-navy/80">
-                  <strong>Placeholder listings.</strong> The property cards below are layout placeholders only and do not represent real active listings or live MLS/IDX data. Listings and recent sales will be updated once approved property data or IDX integration is available.
-                </p>
+          {listings.length > 0 && (
+            <div className="mb-20">
+              <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Current &amp; Coming Soon</h2>
+                <p className="text-sm text-taupe">Listed by Ashley Smith, Compass</p>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {PLACEHOLDER_LISTINGS.map((l, i) => <ListingCard l={l} key={i} />)}
+                {listings.map((p, i) => <PropertyCard key={p.id} p={p} priority={i === 0} />)}
               </div>
-            </>
-          )}
-          {tab === 'sold' && (
-            <>
-              <div className="rounded-xl border border-gold/30 bg-gold/5 p-4 mb-6">
-                <p className="text-sm text-navy/80">
-                  <strong>Placeholder sales data.</strong> The cards below are layout placeholders only and do not represent real recent sales or live MLS/IDX data. Recent sales will be updated once approved property data or IDX integration is available.
-                </p>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {PLACEHOLDER_SOLD.map((l, i) => <ListingCard l={l} key={i} />)}
-              </div>
-            </>
-          )}
-          {tab === 'communities' && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {COMMUNITIES.map((c) => (
-                <div key={c.name} className="card">
-                  <p className="font-serif text-2xl text-navy">{c.name}</p>
-                  <p className="mt-2 text-navy/70">{c.blurb}</p>
-                  <a href="/contact" className="btn btn-outline mt-5 text-xs">Request Community Details</a>
-                </div>
-              ))}
             </div>
           )}
-          {tab === 'alerts' && (
-            <div className="max-w-2xl mx-auto"><PropertyAlerts /></div>
+
+          {sold.length > 0 && (
+            <div>
+              <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Recently Sold</h2>
+                <p className="text-sm text-taupe">Buyers and sellers Ashley represented</p>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sold.map((p) => <PropertyCard key={p.id} p={p} />)}
+              </div>
+            </div>
           )}
+
+          <p className="mt-10 text-xs text-taupe max-w-3xl">
+            Sold information reflects transactions in which Ashley represented a buyer and/or seller. Photos are used with permission. This site does not display live MLS or IDX data. Information is deemed reliable but not guaranteed.
+          </p>
+        </div>
+      </section>
+
+      {/* SELLER CTA */}
+      <section className="section bg-navy text-ivory">
+        <div className="container-narrow text-center">
+          <p className="eyebrow mb-3">Thinking About Selling?</p>
+          <h2 className="font-serif text-3xl md:text-5xl leading-tight">Your home could be the next one on this page.</h2>
+          <div className="divider-thin mt-6 mx-auto" />
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:justify-center btn-stack-sm">
+            <Link href="/home-value" className="btn btn-gold">See What Your Home Is Worth</Link>
+            <Link href="/contact" className="btn border border-ivory/50 text-ivory hover:bg-ivory hover:text-navy">Schedule a Consultation</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ALERTS */}
+      <section className="section">
+        <div className="container-wide">
+          <div className="max-w-2xl mx-auto"><PropertyAlerts /></div>
         </div>
       </section>
     </>
   );
+}
+
+// Rebuilds hourly so dated listings (publishFrom / activeFrom) flip on their own.
+export function getStaticProps() {
+  return { props: getVisibleProperties(), revalidate: 3600 };
 }

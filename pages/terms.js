@@ -21,11 +21,10 @@ export default function Terms() {
               a licensed professional for transaction-specific advice.
             </p>
             <p>
-              This website does not currently display live MLS or IDX data. All property listing
-              cards, recent sales sections, and market metrics shown on this site are placeholders
-              only and do not represent real active listings, completed sales, or live market data.
-              Listings and recent sales will be updated once approved property data or IDX
-              integration is available.
+              This website does not display live MLS or IDX data. Listings and recent sales shown
+              on this site are transactions in which Ashley Smith represented a buyer and/or seller,
+              entered manually and deemed reliable but not guaranteed. Any market metrics marked as
+              placeholders do not represent live market data.
             </p>
             <p>
               Any home valuation request is for general informational purposes only and is not an
