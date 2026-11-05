@@ -150,13 +150,19 @@ export default function Resources({ articles, guides }) {
               <div className="lg:col-span-2 card">
                 <p className="eyebrow mb-3">Triangle Market</p>
                 <p className="font-serif text-3xl text-navy">A thoughtful look at where the market is headed.</p>
-                <p className="text-navy/70 mt-3">The market metrics below are placeholders only and do not represent live market data or MLS/IDX information. Live market metrics will populate this section once a market data feed is connected.</p>
-                <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                  {['Median Price', 'Days on Market', 'Inventory'].map((m) => (
-                    <div key={m} className="rounded-xl bg-ivory p-5 border border-navy/10">
-                      <p className="font-serif text-3xl text-gold">$—</p>
-                      <p className="text-xs uppercase tracking-widewide text-taupe mt-2">{m}</p>
-                    </div>
+                <p className="text-navy/70 mt-3">Ashley&apos;s market reads, written for Chapel Hill and the Triangle. Real numbers, sourced and dated, with what they actually mean for buyers and sellers.</p>
+                <div className="grid sm:grid-cols-2 gap-4 mt-6">
+                  {[
+                    { href: '/blog/chapel-hill-housing-market-2026', kicker: 'Market Report', title: 'Chapel Hill Housing Market 2026' },
+                    { href: '/blog/what-is-my-chapel-hill-home-worth-2026', kicker: 'Home Values', title: 'What Is My Chapel Hill Home Worth in 2026?' },
+                    { href: '/blog/nc-due-diligence-fee-chapel-hill-buyers', kicker: 'Buyer Costs', title: 'The NC Due Diligence Fee, Explained' },
+                    { href: '/properties', kicker: 'Recent Sales', title: 'See What Ashley Recently Sold' },
+                  ].map((m) => (
+                    <a key={m.href} href={m.href} className="group rounded-xl bg-ivory p-5 border border-navy/10 hover:border-gold transition">
+                      <p className="text-xs uppercase tracking-widewide text-gold">{m.kicker}</p>
+                      <p className="font-serif text-xl text-navy mt-2 group-hover:text-gold transition">{m.title}</p>
+                      <p className="text-xs uppercase tracking-widewide text-taupe mt-3">Read &rarr;</p>
+                    </a>
                   ))}
                 </div>
               </div>

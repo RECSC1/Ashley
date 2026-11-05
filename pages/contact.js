@@ -50,8 +50,14 @@ export default function Contact() {
               </p>
               <a href="/home-value" className="btn btn-outline mt-4">Request Home Value Review</a>
             </div>
-            <div className="mt-8 rounded-2xl overflow-hidden border border-navy/10 aspect-[16/9] bg-gradient-to-br from-ivory via-warmwhite to-ivory flex items-center justify-center">
-              <span className="text-xs uppercase tracking-widewide text-taupe">[Service area map placeholder]</span>
+            <div className="mt-8 rounded-2xl overflow-hidden border border-navy/10 aspect-[16/9] bg-ivory">
+              <iframe
+                title="Map of Ashley Smith's Triangle service area, centered on Chapel Hill, NC"
+                src="https://www.google.com/maps?q=Chapel+Hill,+NC&z=9&output=embed"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
           <div className="lg:col-span-7">
